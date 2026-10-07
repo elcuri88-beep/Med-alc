@@ -1,0 +1,17 @@
+{
+  "id": "mantenimiento",
+  "orden": 8,
+  "titulo": "Mantenimiento y limpieza",
+  "resumen": "Filtros, limpieza entre pacientes y comprobaciones periódicas.",
+  "secciones": [
+    {
+      "id": "limpieza",
+      "titulo": "Limpieza y filtros",
+      "afirmaciones": [
+        { "id": "man-lim-01", "texto": "El filtro de entrada y los filtros de circuito se revisan y sustituyen con la periodicidad indicada por el fabricante.", "fuentes": ["manual-v60"], "pendienteRevision": true, "notas": "Añadir periodicidades concretas solo desde el manual." },
+        { "id": "man-lim-02", "texto": "Entre pacientes, el circuito y la interfase desechables se sustituyen y el equipo se limpia y desinfecta con los productos y el procedimiento autorizados por el fabricante y por el servicio de control de infecciones del centro.", "fuentes": ["manual-v60"], "pendienteRevision": true },
+        { "id": "man-lim-03", "texto": "Las comprobaciones periódicas y el mantenimiento preventivo los realiza el servicio técnico autorizado según el plan del fabricante.", "fuentes": ["manual-v60"], "pendienteRevision": true }
+      ]
+    }
+  ]
+}

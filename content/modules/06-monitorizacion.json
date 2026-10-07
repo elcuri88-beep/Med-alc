@@ -1,0 +1,25 @@
+{
+  "id": "monitorizacion",
+  "orden": 6,
+  "titulo": "Monitorización y seguimiento",
+  "resumen": "Qué vigilar en pantalla y en el paciente, y cuándo reevaluar.",
+  "secciones": [
+    {
+      "id": "vigilar",
+      "titulo": "Qué vigilar",
+      "afirmaciones": [
+        { "id": "mon-vig-01", "texto": "En el equipo: presiones, volumen corriente estimado, frecuencia, fuga y alarmas activas.", "fuentes": ["manual-v60"], "pendienteRevision": true },
+        { "id": "mon-vig-02", "texto": "En el paciente: frecuencia respiratoria, uso de musculatura accesoria, nivel de conciencia, SpO2, frecuencia cardiaca, tensión arterial y tolerancia.", "fuentes": ["bts-ics-2016"], "pendienteRevision": true }
+      ]
+    },
+    {
+      "id": "reevaluar",
+      "titulo": "Reevaluación y criterios",
+      "afirmaciones": [
+        { "id": "mon-ree-01", "texto": "Se recomienda una reevaluación clínica y gasométrica precoz (en torno a 1-2 h) tras iniciar la VMNI.", "fuentes": ["bts-ics-2016"], "pendienteRevision": true, "notas": "Confirmar los tiempos exactos que indica la guía." },
+        { "id": "mon-ree-02", "texto": "Éxito: mejoría del pH y de la PaCO2, descenso de la frecuencia respiratoria y mejoría del trabajo respiratorio y del nivel de conciencia.", "fuentes": ["bts-ics-2016"], "pendienteRevision": true },
+        { "id": "mon-ree-03", "texto": "Fracaso: empeoramiento o ausencia de mejoría gasométrica y clínica, deterioro del nivel de conciencia, intolerancia o inestabilidad hemodinámica.", "fuentes": ["bts-ics-2016"], "pendienteRevision": true }
+      ]
+    }
+  ]
+}

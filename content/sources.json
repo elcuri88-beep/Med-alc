@@ -1,0 +1,46 @@
+[
+  {
+    "id": "manual-v60",
+    "titulo": "Philips Respironics BiPAP V60 Ventilator – User Manual / Clinical Manual (versión vigente del fabricante)",
+    "tipo": "manual",
+    "nota": "Páginas y valores exactos pendientes de cotejar con el manual del equipo disponible en el centro."
+  },
+  {
+    "id": "ers-ats-2017",
+    "titulo": "Rochwerg B, et al. Official ERS/ATS clinical practice guidelines: noninvasive ventilation for acute respiratory failure. Eur Respir J 2017;50:1602426.",
+    "tipo": "guia"
+  },
+  {
+    "id": "bts-ics-2016",
+    "titulo": "Davidson AC, et al. BTS/ICS guideline for the ventilatory management of acute hypercapnic respiratory failure in adults. Thorax 2016;71(Suppl 2):ii1-ii35.",
+    "tipo": "guia"
+  },
+  {
+    "id": "gold",
+    "titulo": "Global Initiative for Chronic Obstructive Lung Disease (GOLD). Informe anual vigente.",
+    "tipo": "guia",
+    "nota": "Edición y sección concretas pendientes."
+  },
+  {
+    "id": "separ",
+    "titulo": "Recomendaciones/normativa SEPAR sobre ventilación mecánica no invasiva.",
+    "tipo": "guia",
+    "nota": "Documento y año exactos pendientes de identificar."
+  },
+  {
+    "id": "iec-60601-1-8",
+    "titulo": "IEC 60601-1-8: sistemas de alarma en equipos electromédicos (prioridades y colores: alta=rojo, media=amarillo, baja=cian/amarillo).",
+    "tipo": "norma"
+  },
+  {
+    "id": "definicion",
+    "titulo": "Definición fisiológica/aritmética estándar (no requiere cita específica).",
+    "tipo": "definicion"
+  },
+  {
+    "id": "consenso-docente",
+    "titulo": "Conocimiento clínico de consenso pendiente de asignar a una fuente primaria.",
+    "tipo": "pendiente",
+    "nota": "Toda afirmación con esta fuente debe estar marcada como pendiente de revisión."
+  }
+]

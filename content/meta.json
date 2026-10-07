@@ -1,0 +1,10 @@
+{
+  "appName": "V60 Academy",
+  "contentVersion": "0.1.0-borrador",
+  "lastReview": null,
+  "reviewStatus": "SIN REVISAR POR UN CLÍNICO",
+  "language": "es-ES",
+  "disclaimer": "Aplicación exclusivamente educativa. No sustituye el manual del fabricante (Philips Respironics BiPAP V60), la formación oficial ni el criterio clínico. Los valores de los casos y del simulador son ficticios y el simulador es una aproximación didáctica que no reproduce el firmware del equipo. Compruebe siempre los protocolos de su centro.",
+  "privacy": "La app no recoge datos personales ni datos de pacientes. El progreso se guarda únicamente en este dispositivo.",
+  "legal": "Contenido en borrador generado para revisión clínica. Cada afirmación indica su fuente y su estado (verificado / pendiente de revisión). Nada de lo aquí contenido constituye consejo médico."
+}

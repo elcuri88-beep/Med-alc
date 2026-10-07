@@ -1,0 +1,37 @@
+{
+  "id": "equipo",
+  "orden": 2,
+  "titulo": "Anatomía del equipo",
+  "resumen": "Pantalla, controles, conexiones, circuitos e interfases.",
+  "secciones": [
+    {
+      "id": "panel",
+      "titulo": "Panel, conexiones y filtros",
+      "afirmaciones": [
+        { "id": "equ-pan-01", "texto": "El V60 dispone de pantalla táctil con valores numéricos, curvas y alarmas, e indicadores luminosos de estado de alimentación y alarma.", "fuentes": ["manual-v60"], "pendienteRevision": true, "notas": "Describir con la nomenclatura exacta del manual (botones, LEDs, pantallas de configuración)." },
+        { "id": "equ-pan-02", "texto": "El oxígeno se conecta a la entrada de O2 de baja presión del equipo; la FiO2 resultante depende del flujo de O2, de las fugas y de las presiones.", "fuentes": ["manual-v60"], "pendienteRevision": true, "notas": "Confirmar tipo de entrada, flujo máximo y existencia de sensor de O2 según modelo." },
+        { "id": "equ-pan-03", "texto": "El aire de entrada pasa por un filtro que debe revisarse y sustituirse según las instrucciones del fabricante.", "fuentes": ["manual-v60"], "pendienteRevision": true }
+      ]
+    },
+    {
+      "id": "circuitos",
+      "titulo": "Circuito pasivo y activo",
+      "afirmaciones": [
+        { "id": "equ-cir-01", "texto": "Circuito pasivo: una sola rama con puerto espiratorio (fuga intencional) por el que se elimina el gas espirado; es la configuración habitual en VMNI.", "fuentes": ["manual-v60"], "pendienteRevision": true },
+        { "id": "equ-cir-02", "texto": "Circuito activo: tiene válvula espiratoria controlada por el equipo; permite medir volúmenes espirados con más fiabilidad y se usa cuando se quiere reducir la reinhalación o controlar mejor la espiración.", "fuentes": ["manual-v60"], "pendienteRevision": true, "notas": "Revisar indicaciones y limitaciones exactas (monitorización de volumen, compatibilidad de modos y de AVAPS)." },
+        { "id": "equ-cir-03", "texto": "Con circuito pasivo existe riesgo de reinhalación de CO2 si la EPAP es demasiado baja para lavar el circuito.", "fuentes": ["manual-v60"], "pendienteRevision": true, "notas": "Verificar EPAP mínima recomendada por el fabricante." }
+      ]
+    },
+    {
+      "id": "interfases",
+      "titulo": "Interfases",
+      "afirmaciones": [
+        { "id": "equ-int-01", "texto": "La mascarilla oronasal es la interfase más usada en VMNI aguda por su equilibrio entre control de fugas y tolerancia.", "fuentes": ["ers-ats-2017", "bts-ics-2016"], "pendienteRevision": true, "notas": "Contrastar con la sección de interfases de la guía." },
+        { "id": "equ-int-02", "texto": "La mascarilla facial total puede tolerarse mejor en uso prolongado y reduce las lesiones por presión en el puente nasal, pero tiene mayor espacio muerto y riesgo con el vómito.", "fuentes": ["consenso-docente"], "pendienteRevision": true },
+        { "id": "equ-int-03", "texto": "El casco (helmet) tiene espacio muerto elevado y requiere presiones y ajustes específicos; su uso con el V60 debe confirmarse con el fabricante y el protocolo local.", "fuentes": ["ers-ats-2017", "manual-v60"], "pendienteRevision": true },
+        { "id": "equ-int-04", "texto": "La mascarilla nasal es poco adecuada en agudos con respiración bucal por la fuga oral.", "fuentes": ["consenso-docente"], "pendienteRevision": true },
+        { "id": "equ-int-05", "texto": "La talla de la mascarilla se elige con la guía de medición del fabricante; una talla excesiva o insuficiente produce fugas y lesiones.", "fuentes": ["consenso-docente"], "pendienteRevision": true }
+      ]
+    }
+  ]
+}

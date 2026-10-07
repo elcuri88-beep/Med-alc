@@ -1,0 +1,35 @@
+{
+  "id": "parametros",
+  "orden": 4,
+  "titulo": "Parámetros y ajustes",
+  "resumen": "IPAP, EPAP, presión de soporte, FR, tiempos, rise time, sensibilidad y compensación de fugas.",
+  "secciones": [
+    {
+      "id": "presiones",
+      "titulo": "Presiones y tiempos",
+      "afirmaciones": [
+        { "id": "par-pre-01", "texto": "IPAP es la presión inspiratoria total; EPAP es la presión espiratoria. La presión de soporte efectiva es la diferencia IPAP − EPAP.", "fuentes": ["definicion"], "pendienteRevision": false },
+        { "id": "par-pre-02", "texto": "La BTS/ICS sugiere iniciar con presiones bajas (IPAP e EPAP) e ir subiendo la IPAP según tolerancia y respuesta.", "fuentes": ["bts-ics-2016"], "pendienteRevision": true, "notas": "Copiar los valores de inicio y de objetivo de la guía solo tras cotejarlos con el texto original." },
+        { "id": "par-pre-03", "texto": "El tiempo inspiratorio (mínimo y máximo) acota la duración de la inspiración en modos con ciclado por flujo.", "fuentes": ["manual-v60"], "pendienteRevision": true },
+        { "id": "par-pre-04", "texto": "El rise time determina la rapidez con que se alcanza la IPAP: un rise time corto puede ser incómodo, uno largo puede acortar el tiempo efectivo de presión.", "fuentes": ["manual-v60"], "pendienteRevision": true },
+        { "id": "par-pre-05", "texto": "La FR de seguridad (backup) debe elegirse para asegurar ventilación si el paciente deja de disparar.", "fuentes": ["consenso-docente"], "pendienteRevision": true }
+      ]
+    },
+    {
+      "id": "autotrak",
+      "titulo": "Auto-Trak y compensación de fugas",
+      "afirmaciones": [
+        { "id": "par-aut-01", "texto": "Auto-Trak ajusta de forma automática los umbrales de disparo y ciclado según la señal de flujo y compensa las fugas.", "fuentes": ["manual-v60"], "pendienteRevision": true, "notas": "Verificar nombre exacto (Digital Auto-Trak) y condiciones de funcionamiento." },
+        { "id": "par-aut-02", "texto": "La compensación de fugas tiene un límite: con fugas muy elevadas aparecen asincronías y alarma de fuga.", "fuentes": ["manual-v60"], "pendienteRevision": true }
+      ]
+    },
+    {
+      "id": "ajuste",
+      "titulo": "Cómo ajustar",
+      "afirmaciones": [
+        { "id": "par-aju-01", "texto": "Los ajustes se guían por gasometría (pH y PaCO2), trabajo respiratorio, sincronía y tolerancia del paciente.", "fuentes": ["bts-ics-2016"], "pendienteRevision": true },
+        { "id": "par-aju-02", "texto": "Si la PaCO2 sigue elevada, se puede aumentar la presión de soporte (o la FR) para aumentar la ventilación minuto; si la oxigenación es insuficiente, se ajusta FiO2 y/o EPAP.", "fuentes": ["consenso-docente"], "pendienteRevision": true }
+      ]
+    }
+  ]
+}

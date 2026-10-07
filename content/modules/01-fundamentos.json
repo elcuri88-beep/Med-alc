@@ -1,0 +1,40 @@
+{
+  "id": "fundamentos",
+  "orden": 1,
+  "titulo": "Fundamentos de la VMNI",
+  "resumen": "Indicaciones, contraindicaciones, criterios de fracaso y fisiología básica.",
+  "secciones": [
+    {
+      "id": "indicaciones",
+      "titulo": "Indicaciones",
+      "afirmaciones": [
+        { "id": "fun-ind-01", "texto": "En la agudización de EPOC con acidosis respiratoria hipercápnica, las guías recomiendan VMNI como tratamiento de primera línea además del tratamiento médico.", "fuentes": ["ers-ats-2017", "bts-ics-2016"], "pendienteRevision": false },
+        { "id": "fun-ind-02", "texto": "La BTS/ICS plantea la VMNI en la agudización de EPOC cuando persiste acidosis respiratoria (pH < 7,35 con PaCO2 elevada) tras tratamiento médico óptimo inicial.", "fuentes": ["bts-ics-2016"], "pendienteRevision": true, "notas": "Confirmar umbrales exactos y el tiempo de espera del tratamiento médico en el texto de la guía." },
+        { "id": "fun-ind-03", "texto": "En el edema agudo de pulmón cardiogénico, la ERS/ATS recomienda tratamiento con CPAP o VMNI con dos niveles de presión.", "fuentes": ["ers-ats-2017"], "pendienteRevision": false },
+        { "id": "fun-ind-04", "texto": "En pacientes inmunodeprimidos con insuficiencia respiratoria aguda, la ERS/ATS sugiere VMNI (recomendación condicional).", "fuentes": ["ers-ats-2017"], "pendienteRevision": false },
+        { "id": "fun-ind-05", "texto": "En el destete de la ventilación invasiva en pacientes con EPOC e hipercapnia, se recomienda la extubación precoz seguida de VMNI.", "fuentes": ["ers-ats-2017"], "pendienteRevision": false },
+        { "id": "fun-ind-06", "texto": "La evidencia es insuficiente para emitir una recomendación general de VMNI en asma agudo, neumonía o insuficiencia respiratoria hipoxémica de novo.", "fuentes": ["ers-ats-2017"], "pendienteRevision": true, "notas": "Verificar la formulación exacta de cada recomendación (la guía distingue 'sin recomendación' y 'recomendación condicional')." }
+      ]
+    },
+    {
+      "id": "contraindicaciones",
+      "titulo": "Contraindicaciones y cuándo intubar",
+      "afirmaciones": [
+        { "id": "fun-con-01", "texto": "Contraindicaciones absolutas habituales: parada cardiorrespiratoria, obstrucción de vía aérea superior, imposibilidad de ajustar la interfase (cirugía o traumatismo facial) y neumotórax no drenado.", "fuentes": ["bts-ics-2016", "separ"], "pendienteRevision": true, "notas": "Clasificar según el documento SEPAR concreto; distinguir absolutas y relativas." },
+        { "id": "fun-con-02", "texto": "Contraindicaciones relativas habituales: inestabilidad hemodinámica grave, bajo nivel de conciencia que impida proteger la vía aérea, vómitos o hemorragia digestiva alta, secreciones abundantes, agitación no controlable.", "fuentes": ["separ"], "pendienteRevision": true },
+        { "id": "fun-con-03", "texto": "Si no hay mejoría clínica y gasométrica en la reevaluación temprana (primeras 1-2 h) o hay deterioro, se debe plantear la intubación y ventilación invasiva, salvo que exista una orden de limitación terapéutica.", "fuentes": ["bts-ics-2016"], "pendienteRevision": true, "notas": "Cotejar los tiempos y los criterios de fracaso exactos con la guía." },
+        { "id": "fun-con-04", "texto": "El retraso en la intubación cuando la VMNI fracasa se asocia a peor pronóstico, por lo que el paciente debe estar en un entorno con capacidad de monitorización e intubación.", "fuentes": ["consenso-docente"], "pendienteRevision": true }
+      ]
+    },
+    {
+      "id": "fisiologia",
+      "titulo": "Fisiología básica",
+      "afirmaciones": [
+        { "id": "fun-fis-01", "texto": "Presión de soporte = IPAP − EPAP.", "fuentes": ["definicion"], "pendienteRevision": false },
+        { "id": "fun-fis-02", "texto": "Ventilación minuto = volumen corriente × frecuencia respiratoria.", "fuentes": ["definicion"], "pendienteRevision": false },
+        { "id": "fun-fis-03", "texto": "La EPAP (equivalente a la PEEP) mantiene abiertas las vías aéreas, reduce el trabajo inspiratorio en presencia de auto-PEEP y mejora la oxigenación al reclutar alvéolos; en el V60 también garantiza el lavado del CO2 del circuito pasivo.", "fuentes": ["manual-v60", "consenso-docente"], "pendienteRevision": true, "notas": "Dividir en dos afirmaciones y citar la sección del manual sobre lavado de CO2 con puerto espiratorio." },
+        { "id": "fun-fis-04", "texto": "A igual EPAP, aumentar la presión de soporte aumenta el volumen corriente y la ventilación alveolar, lo que reduce la PaCO2.", "fuentes": ["definicion"], "pendienteRevision": false }
+      ]
+    }
+  ]
+}

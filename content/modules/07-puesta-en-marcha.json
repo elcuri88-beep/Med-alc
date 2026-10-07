@@ -1,0 +1,20 @@
+{
+  "id": "puesta-en-marcha",
+  "orden": 7,
+  "titulo": "Puesta en marcha paso a paso",
+  "resumen": "Checklist de montaje, comprobación, programación, conexión y registro.",
+  "secciones": [
+    {
+      "id": "checklist",
+      "titulo": "Checklist",
+      "afirmaciones": [
+        { "id": "pue-chk-01", "texto": "1. Montar el circuito (pasivo o activo según el caso) y colocar el filtro.", "fuentes": ["manual-v60"], "pendienteRevision": true },
+        { "id": "pue-chk-02", "texto": "2. Conectar a la red eléctrica y al oxígeno y encender el equipo; realizar las comprobaciones que indique el manual.", "fuentes": ["manual-v60"], "pendienteRevision": true },
+        { "id": "pue-chk-03", "texto": "3. Elegir la interfase y la talla; ajustar el arnés para limitar la fuga sin lesionar la piel.", "fuentes": ["consenso-docente"], "pendienteRevision": true },
+        { "id": "pue-chk-04", "texto": "4. Programar el modo y los parámetros iniciales según la indicación y el protocolo del centro.", "fuentes": ["bts-ics-2016", "manual-v60"], "pendienteRevision": true },
+        { "id": "pue-chk-05", "texto": "5. Explicar la técnica al paciente, conectar y adaptar progresivamente.", "fuentes": ["consenso-docente"], "pendienteRevision": true },
+        { "id": "pue-chk-06", "texto": "6. Vigilar y registrar parámetros, alarmas, constantes y gasometría.", "fuentes": ["consenso-docente"], "pendienteRevision": true }
+      ]
+    }
+  ]
+}
