@@ -1,0 +1,17 @@
+{
+  "aviso": "El simulador es una aproximación didáctica y NO reproduce el firmware del V60. Esta lista recoge todo lo que NO procede del manual y debe revisar un clínico o técnico.",
+  "pendienteRevision": true,
+  "aproximaciones": [
+    { "id": "ap-modelo", "texto": "Modelo mecánico de un compartimento (resistencia R, distensibilidad C): flujo = (presión de vía aérea − EPAP − presión muscular − V/C) / R." },
+    { "id": "ap-subida", "texto": "El ajuste Subida (1 a 5) se traduce en una constante de tiempo de 0,05 a 0,13 s. El manual no da los tiempos reales." },
+    { "id": "ap-trigger", "texto": "Disparo del paciente: se dispara si el esfuerzo muscular supera un umbral (0,5 cmH2O más un incremento por fuga no intencional). Auto-Trak real es un algoritmo distinto (método de volumen y de señal de forma)." },
+    { "id": "ap-ciclo", "texto": "Ciclado espontáneo: cuando el flujo cae al 25 % del pico (mínimo 0,3 s) o a los 3 s en IPAP (este último dato sí consta en el manual, p. 4-3). El umbral del 25 % es una aproximación de Auto-Trak." },
+    { "id": "ap-fuga", "texto": "Fuga no intencional: Q = k·√P. Si supera 30 L/min, se reduce la presión inspiratoria efectiva en proporción ((Q−30)/150, máximo 60 %). Valores no procedentes del manual." },
+    { "id": "ap-avaps", "texto": "AVAPS: la presión se ajusta ±0,5 cmH2O por respiración hacia la que haría falta para alcanzar el VT objetivo. La velocidad de ajuste real no consta en el manual. La presión inicial sí procede del manual (p. 4-11)." },
+    { "id": "ap-desconexion", "texto": "Desconexión paciente: fuga no intencional ≥ 100 L/min mantenida 11 s (los 11 s constan en el manual, p. 9-10; el criterio de fuga es una aproximación)." },
+    { "id": "ap-ocluido", "texto": "Circuito ocluido: flujo del paciente nulo durante 5 s. El criterio real del equipo no consta en el manual." },
+    { "id": "ap-pib", "texto": "PIB: se evalúa sobre la presión pico de cada respiración; la demora PIB T se aplica como tiempo de persistencia." },
+    { "id": "ap-vt", "texto": "VT, VE y FR monitorizados se calculan sobre el volumen y los ciclos reales de la simulación, sin el error de estimación que introducen las fugas en el equipo real." },
+    { "id": "ap-defecto", "texto": "Los ajustes de alarma por defecto del simulador (p. ej., PIA = IPAP + 10 cmH2O) son valores de partida didácticos, no recomendaciones clínicas." }
+  ]
+}

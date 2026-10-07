@@ -7,7 +7,10 @@ export default function Learn() {
   const favorites = useApp((s) => s.favorites);
   return (
     <div className="space-y-3">
-      <h2 className="text-xl font-bold">Módulos</h2>
+      <div className="flex items-center justify-between">
+        <h2 className="text-xl font-bold">Módulos</h2>
+        <Link to="/calculadoras" className="flex min-h-[48px] items-center text-sm underline">Calculadoras</Link>
+      </div>
       {MODULES.map((m) => {
         const ids = m.secciones.flatMap((s) => s.afirmaciones.map((c) => c.id));
         const done = ids.filter((id) => readClaims.includes(id)).length;

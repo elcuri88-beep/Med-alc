@@ -34,6 +34,8 @@ interface AppState {
   disclaimerAccepted: boolean;
   favorites: string[];
   readClaims: string[];
+  deviceModel: 'V60' | 'V60 Plus';
+  setDeviceModel: (m: 'V60' | 'V60 Plus') => void;
   setTheme: (t: Theme) => void;
   acceptDisclaimer: () => void;
   toggleFavorite: (id: string) => void;
@@ -47,6 +49,8 @@ export const useApp = create<AppState>()(
       disclaimerAccepted: false,
       favorites: [],
       readClaims: [],
+      deviceModel: 'V60 Plus',
+      setDeviceModel: (deviceModel) => setState({ deviceModel }),
       setTheme: (theme) => setState({ theme }),
       acceptDisclaimer: () => setState({ disclaimerAccepted: true }),
       toggleFavorite: (id) =>

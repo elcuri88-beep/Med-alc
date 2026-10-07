@@ -15,6 +15,11 @@ for (const f of readdirSync(dir).filter((x) => x.endsWith('.json')).sort()) {
       out += `| ${c.id} | ${m.titulo} › ${s.titulo} | ${c.texto} | ${c.fuentes.join(', ')} | ${c.pendienteRevision ? 'PENDIENTE' : (c.verificacion === 'directa' ? 'verificado en manual' : c.verificacion === 'secundaria' ? 'contrastado (fuente secundaria)' : 'fuente identificada')} | ${c.notas ?? ''} |\n`;
     }
 }
+const lim = JSON.parse(readFileSync(new URL('../content/simulator/limits.json', import.meta.url), 'utf8'));
+out += '\n## Parámetros del simulador (verificados con el manual V60/V60 Plus)\n\n| Parámetro | Mín | Máx | Unidad | Manual |\n|---|---|---|---|---|\n';
+for (const grupo of ['ajustes', 'alarmas']) for (const [k, v] of Object.entries(lim[grupo])) out += `| ${v.etiqueta} (${k}) | ${v.min} | ${v.max} | ${v.unidad} | p. ${v.pagina} |\n`;
+const ap = JSON.parse(readFileSync(new URL('../content/simulator/approximations.json', import.meta.url), 'utf8'));
+out += '\n## Aproximaciones del simulador (NO proceden del manual; PENDIENTE de revisión)\n\n' + ap.aproximaciones.map((a) => `- **${a.id}**: ${a.texto}`).join('\n') + '\n';
 out += `\nTotal: ${n}\n\n## Fuentes\n` + Object.entries(sources).map(([k, v]) => `- **${k}**: ${v}`).join('\n') + '\n';
 writeFileSync(new URL('../CLAIMS.md', import.meta.url), out);
 console.log(`CLAIMS.md generado con ${n} afirmaciones`);

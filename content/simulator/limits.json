@@ -1,0 +1,33 @@
+{
+  "fuente": "manual-v60",
+  "nota": "Intervalos de ajuste tomados del manual de usuario V60/V60 Plus (Tablas 6-3 y 6-4). Verificados con el manual; un clínico/técnico debe confirmarlos con el equipo del centro.",
+  "ajustes": {
+    "ipap": { "etiqueta": "IPAP", "unidad": "cmH2O", "min": 4, "max": 40, "paso": 1, "pagina": "6-24" },
+    "epap": { "etiqueta": "EPAP/CPAP", "unidad": "cmH2O", "min": 4, "max": 25, "paso": 1, "pagina": "6-24", "nota": "EPAP debe ser menor o igual que IPAP" },
+    "tins": { "etiqueta": "T. Insp.", "unidad": "s", "min": 0.3, "max": 3.0, "paso": 0.1, "pagina": "6-25", "nota": "No se permite relación I:E invertida" },
+    "rate": { "etiqueta": "Frecuencia", "unidad": "rpm", "min": 4, "max": 60, "paso": 1, "pagina": "6-26", "nota": "No se permite relación I:E invertida" },
+    "rise": { "etiqueta": "Subida", "unidad": "", "min": 1, "max": 5, "paso": 1, "pagina": "6-26", "nota": "1 es la más rápida" },
+    "fio2": { "etiqueta": "O2", "unidad": "%", "min": 21, "max": 100, "paso": 1, "pagina": "6-26" },
+    "vt": { "etiqueta": "VT objetivo (AVAPS)", "unidad": "ml", "min": 200, "max": 2000, "paso": 10, "pagina": "6-27" },
+    "pmin": { "etiqueta": "P Mín (AVAPS)", "unidad": "cmH2O", "min": 5, "max": 30, "paso": 1, "pagina": "6-26" },
+    "pmax": { "etiqueta": "P Máx (AVAPS)", "unidad": "cmH2O", "min": 6, "max": 40, "paso": 1, "pagina": "6-25" }
+  },
+  "alarmas": {
+    "frecAlta": { "etiqueta": "Frec. alta", "unidad": "rpm", "min": 5, "max": 90, "paso": 1, "pagina": "6-27" },
+    "frecBaja": { "etiqueta": "Frec. baja", "unidad": "rpm", "min": 1, "max": 89, "paso": 1, "pagina": "6-27" },
+    "vtAlto": { "etiqueta": "VT alto", "unidad": "ml", "min": 200, "max": 3500, "paso": 10, "pagina": "6-27" },
+    "vtBajo": { "etiqueta": "VT bajo", "unidad": "ml", "min": 0, "max": 1500, "paso": 10, "pagina": "6-27", "nota": "0 = OFF" },
+    "pia": { "etiqueta": "PIA", "unidad": "cmH2O", "min": 5, "max": 50, "paso": 1, "pagina": "6-27" },
+    "pib": { "etiqueta": "PIB", "unidad": "cmH2O", "min": 0, "max": 40, "paso": 1, "pagina": "6-27", "nota": "0 = OFF. En S/T y PCV, 3 a 5 cmH2O por debajo de IPAP (p. 6-28)" },
+    "pibT": { "etiqueta": "PIB T", "unidad": "s", "min": 5, "max": 60, "paso": 1, "pagina": "6-28" },
+    "veBaja": { "etiqueta": "Baja VE", "unidad": "L/min", "min": 0, "max": 99, "paso": 0.5, "pagina": "6-28", "nota": "0 = OFF" }
+  },
+  "tiempos": {
+    "desconexionPacienteSeg": { "valor": 11, "pagina": "9-10" },
+    "escaladaPrioridadSeg": { "valor": 60, "pagina": "9-10" },
+    "silencioAlarmaSeg": { "valor": 120, "pagina": "9-5" },
+    "frecBajaSinRespiracionSeg": { "valor": 15, "pagina": "9-10", "nota": "Para ajuste de Frec. baja > 4 rpm; con ≤ 4 rpm es 60/ajuste" },
+    "cicloMaxIpapSeg": { "valor": 3, "pagina": "4-3", "nota": "Mecanismo de seguridad temporizado en nivel IPAP" }
+  },
+  "ventanasOnda": { "segundos": [3, 6, 12, 24], "pagina": "8-1/8-3" }
+}

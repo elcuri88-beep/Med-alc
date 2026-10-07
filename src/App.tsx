@@ -7,6 +7,8 @@ import ModuleView from './features/ModuleView';
 import Search from './features/Search';
 import About from './features/About';
 import Placeholder from './features/Placeholder';
+import Simulator from './features/simulator/Simulator';
+import Calculators from './features/Calculators';
 
 const tabs = [
   { to: '/aprender', label: 'Aprender', icon: '📘' },
@@ -47,7 +49,8 @@ export default function App() {
           <Route path="/" element={<Navigate to="/aprender" replace />} />
           <Route path="/aprender" element={<Learn />} />
           <Route path="/aprender/:moduleId" element={<ModuleView />} />
-          <Route path="/simulador" element={<Placeholder title="Simulador" phase="B" />} />
+          <Route path="/simulador" element={<Simulator />} />
+          <Route path="/calculadoras" element={<Calculators />} />
           <Route path="/casos" element={<Placeholder title="Casos clínicos" phase="C" />} />
           <Route path="/quiz" element={<Placeholder title="Quiz" phase="C" />} />
           <Route path="/repaso" element={<Placeholder title="Repaso" phase="C" />} />

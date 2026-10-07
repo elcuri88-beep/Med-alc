@@ -1,0 +1,11 @@
+{
+  "aviso": "Valores FICTICIOS, con fines didácticos. No proceden de pacientes reales ni son valores de referencia clínica.",
+  "pendienteRevision": true,
+  "perfiles": [
+    { "id": "normal", "nombre": "Mecánica normal (ficticio)", "compliance": 80, "resistencia": 4, "frecuenciaEspontanea": 16, "esfuerzo": 4, "tiempoNeuralInsp": 1.0, "fuga10": 0, "ocluido": false, "descripcion": "Distensibilidad y resistencia normales, esfuerzo conservado." },
+    { "id": "epoc", "nombre": "Obstructivo tipo EPOC (ficticio)", "compliance": 60, "resistencia": 15, "frecuenciaEspontanea": 24, "esfuerzo": 5, "tiempoNeuralInsp": 0.8, "fuga10": 8, "ocluido": false, "descripcion": "Resistencia elevada, taquipnea, fuga intencional/no intencional moderada." },
+    { "id": "restrictivo", "nombre": "Restrictivo tipo edema (ficticio)", "compliance": 30, "resistencia": 6, "frecuenciaEspontanea": 28, "esfuerzo": 6, "tiempoNeuralInsp": 0.8, "fuga10": 5, "ocluido": false, "descripcion": "Distensibilidad baja, taquipnea." },
+    { "id": "debil", "nombre": "Esfuerzo muy débil (ficticio)", "compliance": 60, "resistencia": 8, "frecuenciaEspontanea": 14, "esfuerzo": 0.4, "tiempoNeuralInsp": 0.9, "fuga10": 5, "ocluido": false, "descripcion": "Esfuerzos inspiratorios que no llegan a disparar el ventilador (esfuerzos ineficaces)." },
+    { "id": "apnea", "nombre": "Apnea (ficticio)", "compliance": 70, "resistencia": 6, "frecuenciaEspontanea": 0, "esfuerzo": 0, "tiempoNeuralInsp": 1.0, "fuga10": 5, "ocluido": false, "descripcion": "Sin esfuerzo inspiratorio: solo hay respiraciones obligatorias si el modo las proporciona." }
+  ]
+}

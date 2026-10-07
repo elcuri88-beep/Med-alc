@@ -84,6 +84,42 @@
 | man-lim-02 | Mantenimiento y limpieza › Limpieza y filtros | Limpieza del exterior y de la pantalla táctil: paño empapado sin gotear (no pulverizar líquidos sobre las superficies), con agua y jabón con detergente aprobado; desinfección con lejía al 5 % diluida 1:9 (2 min de contacto) o peróxido de hidrógeno al 3 % (15 min), con enjuague posterior. No se debe esterilizar el ventilador en autoclave. Los accesorios de un solo paciente no necesitan limpieza ni desinfección; el circuito se trata según el fabricante. | manual-v60 | verificado en manual | Manual de usuario V60/V60 Plus (ref. 1152841_ES), pp. 10-1 a 10-3. |
 | man-lim-03 | Mantenimiento y limpieza › Limpieza y filtros | La vida útil prevista del equipo es de 10 años. Mantenimiento preventivo: cada año, mantenimiento del ventilador y revisión y prueba de la batería de reserva (por personal autorizado); la batería de reserva se sustituye cada 5 años. Solo el personal autorizado debe reemplazar piezas internas. | manual-v60 | verificado en manual | Manual de usuario V60/V60 Plus (ref. 1152841_ES), pp. 10-4 y 10-5. |
 
+## Parámetros del simulador (verificados con el manual V60/V60 Plus)
+
+| Parámetro | Mín | Máx | Unidad | Manual |
+|---|---|---|---|---|
+| IPAP (ipap) | 4 | 40 | cmH2O | p. 6-24 |
+| EPAP/CPAP (epap) | 4 | 25 | cmH2O | p. 6-24 |
+| T. Insp. (tins) | 0.3 | 3 | s | p. 6-25 |
+| Frecuencia (rate) | 4 | 60 | rpm | p. 6-26 |
+| Subida (rise) | 1 | 5 |  | p. 6-26 |
+| O2 (fio2) | 21 | 100 | % | p. 6-26 |
+| VT objetivo (AVAPS) (vt) | 200 | 2000 | ml | p. 6-27 |
+| P Mín (AVAPS) (pmin) | 5 | 30 | cmH2O | p. 6-26 |
+| P Máx (AVAPS) (pmax) | 6 | 40 | cmH2O | p. 6-25 |
+| Frec. alta (frecAlta) | 5 | 90 | rpm | p. 6-27 |
+| Frec. baja (frecBaja) | 1 | 89 | rpm | p. 6-27 |
+| VT alto (vtAlto) | 200 | 3500 | ml | p. 6-27 |
+| VT bajo (vtBajo) | 0 | 1500 | ml | p. 6-27 |
+| PIA (pia) | 5 | 50 | cmH2O | p. 6-27 |
+| PIB (pib) | 0 | 40 | cmH2O | p. 6-27 |
+| PIB T (pibT) | 5 | 60 | s | p. 6-28 |
+| Baja VE (veBaja) | 0 | 99 | L/min | p. 6-28 |
+
+## Aproximaciones del simulador (NO proceden del manual; PENDIENTE de revisión)
+
+- **ap-modelo**: Modelo mecánico de un compartimento (resistencia R, distensibilidad C): flujo = (presión de vía aérea − EPAP − presión muscular − V/C) / R.
+- **ap-subida**: El ajuste Subida (1 a 5) se traduce en una constante de tiempo de 0,05 a 0,13 s. El manual no da los tiempos reales.
+- **ap-trigger**: Disparo del paciente: se dispara si el esfuerzo muscular supera un umbral (0,5 cmH2O más un incremento por fuga no intencional). Auto-Trak real es un algoritmo distinto (método de volumen y de señal de forma).
+- **ap-ciclo**: Ciclado espontáneo: cuando el flujo cae al 25 % del pico (mínimo 0,3 s) o a los 3 s en IPAP (este último dato sí consta en el manual, p. 4-3). El umbral del 25 % es una aproximación de Auto-Trak.
+- **ap-fuga**: Fuga no intencional: Q = k·√P. Si supera 30 L/min, se reduce la presión inspiratoria efectiva en proporción ((Q−30)/150, máximo 60 %). Valores no procedentes del manual.
+- **ap-avaps**: AVAPS: la presión se ajusta ±0,5 cmH2O por respiración hacia la que haría falta para alcanzar el VT objetivo. La velocidad de ajuste real no consta en el manual. La presión inicial sí procede del manual (p. 4-11).
+- **ap-desconexion**: Desconexión paciente: fuga no intencional ≥ 100 L/min mantenida 11 s (los 11 s constan en el manual, p. 9-10; el criterio de fuga es una aproximación).
+- **ap-ocluido**: Circuito ocluido: flujo del paciente nulo durante 5 s. El criterio real del equipo no consta en el manual.
+- **ap-pib**: PIB: se evalúa sobre la presión pico de cada respiración; la demora PIB T se aplica como tiempo de persistencia.
+- **ap-vt**: VT, VE y FR monitorizados se calculan sobre el volumen y los ciclos reales de la simulación, sin el error de estimación que introducen las fugas en el equipo real.
+- **ap-defecto**: Los ajustes de alarma por defecto del simulador (p. ej., PIA = IPAP + 10 cmH2O) son valores de partida didácticos, no recomendaciones clínicas.
+
 Total: 81
 
 ## Fuentes
