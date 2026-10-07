@@ -36,6 +36,8 @@ interface AppState {
   readClaims: string[];
   deviceModel: 'V60' | 'V60 Plus';
   setDeviceModel: (m: 'V60' | 'V60 Plus') => void;
+  scenarioProgress: Record<string, { done: boolean; errors: number }>;
+  setScenarioResult: (id: string, errors: number) => void;
   setTheme: (t: Theme) => void;
   acceptDisclaimer: () => void;
   toggleFavorite: (id: string) => void;
@@ -51,6 +53,12 @@ export const useApp = create<AppState>()(
       readClaims: [],
       deviceModel: 'V60 Plus',
       setDeviceModel: (deviceModel) => setState({ deviceModel }),
+      scenarioProgress: {},
+      setScenarioResult: (id, errors) =>
+        setState((s) => {
+          const prev = s.scenarioProgress[id];
+          return { scenarioProgress: { ...s.scenarioProgress, [id]: { done: true, errors: prev?.done ? Math.min(prev.errors, errors) : errors } } };
+        }),
       setTheme: (theme) => setState({ theme }),
       acceptDisclaimer: () => setState({ disclaimerAccepted: true }),
       toggleFavorite: (id) =>

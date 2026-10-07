@@ -9,6 +9,9 @@ import About from './features/About';
 import Placeholder from './features/Placeholder';
 import Simulator from './features/simulator/Simulator';
 import Calculators from './features/Calculators';
+import Practice from './features/Practice';
+import ScenarioList from './features/scenarios/ScenarioList';
+import ScenarioPlayer from './features/scenarios/ScenarioPlayer';
 
 const tabs = [
   { to: '/aprender', label: 'Aprender', icon: '📘' },
@@ -52,7 +55,9 @@ export default function App() {
           <Route path="/simulador" element={<Simulator />} />
           <Route path="/calculadoras" element={<Calculators />} />
           <Route path="/casos" element={<Placeholder title="Casos clínicos" phase="C" />} />
-          <Route path="/quiz" element={<Placeholder title="Quiz" phase="C" />} />
+          <Route path="/quiz" element={<Practice />} />
+          <Route path="/escenarios" element={<ScenarioList />} />
+          <Route path="/escenarios/:id" element={<ScenarioPlayer />} />
           <Route path="/repaso" element={<Placeholder title="Repaso" phase="C" />} />
           <Route path="/buscar" element={<Search />} />
           <Route path="/acerca" element={<About />} />

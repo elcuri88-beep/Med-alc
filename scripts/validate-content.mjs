@@ -21,5 +21,16 @@ for (const f of readdirSync(dir).filter((x) => x.endsWith('.json'))) {
       if (typeof c.pendienteRevision !== 'boolean') bad('falta pendienteRevision');
     }
 }
+const sc = JSON.parse(readFileSync(new URL('../content/scenarios/alarm-scenarios.json', import.meta.url), 'utf8'));
+const scIds = new Set();
+for (const e of sc.escenarios) {
+  const bad = (m) => { console.error(`escenario ${e.id}: ${m}`); errors++; };
+  if (scIds.has(e.id)) bad('ID duplicado');
+  scIds.add(e.id);
+  if (!e.pasos?.length || e.pasos.length < 2) bad('menos de 2 pasos');
+  if (!e.distractores?.length) bad('sin acciones incorrectas');
+  for (const p of e.pasos ?? []) if (!/^\d+-\d+$/.test(p.pagina ?? '')) bad(`paso sin página: ${p.id}`);
+}
+console.log(`Escenarios válidos (${scIds.size})`);
 if (errors) { console.error(`${errors} errores`); process.exit(1); }
 console.log(`Contenido válido (${seen.size} afirmaciones)`);

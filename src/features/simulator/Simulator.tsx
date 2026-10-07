@@ -111,7 +111,7 @@ export default function Simulator() {
     <div className="space-y-4">
       <div className="flex items-center justify-between gap-2">
         <h2 className="text-xl font-bold">Simulador del panel V60</h2>
-        <Link to="/calculadoras" className="min-h-[48px] py-3 text-sm underline">Calculadoras</Link>
+        <span className="flex gap-4"><Link to="/escenarios" className="min-h-[48px] py-3 text-sm underline">Escenarios</Link><Link to="/calculadoras" className="min-h-[48px] py-3 text-sm underline">Calculadoras</Link></span>
       </div>
 
       <div role="alert" className="rounded-lg border border-amber-400 bg-amber-50 p-3 text-sm text-amber-900 dark:bg-amber-950 dark:text-amber-100">

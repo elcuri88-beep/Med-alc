@@ -120,6 +120,104 @@
 - **ap-vt**: VT, VE y FR monitorizados se calculan sobre el volumen y los ciclos reales de la simulación, sin el error de estimación que introducen las fugas en el equipo real.
 - **ap-defecto**: Los ajustes de alarma por defecto del simulador (p. ej., PIA = IPAP + 10 cmH2O) son valores de partida didácticos, no recomendaciones clínicas.
 
+## Escenarios de alarma
+
+Pasos correctos: verificados en el manual (página indicada). Acciones incorrectas y explicaciones: PENDIENTE de revisión clínica.
+
+### Desconexión paciente (esc-desconexion)
+1. Acercarse de inmediato al paciente y garantizar una ventilación suficiente y eficaz. _(manual p. 9-1)_
+2. Comprobar el estado del paciente. _(manual p. 9-10)_
+3. Volver a conectar el circuito del paciente (y la mascarilla). _(manual p. 9-10)_
+4. Confirmar que los ajustes del ventilador y de la alarma son adecuados. _(manual p. 9-10)_
+5. Si el problema persiste, proporcionar una ventilación alternativa y avisar para que reparen el ventilador. _(manual p. 9-10)_
+- ✗ Subir la IPAP para compensar la falta de ciclos. — La alarma indica que el paciente no está recibiendo apoyo por una desconexión; cambiar la presión no resuelve el problema y puede ser peligroso al reconectar. _(PENDIENTE)_
+- ✗ Apagar el ventilador y esperar a que se restablezca la alarma. — Apagar el equipo deja al paciente sin soporte; hay que acudir y reconectar. _(PENDIENTE)_
+- ✗ Silenciar la alarma y seguir con el aseo. — Silenciar no corrige la causa; el paciente sigue sin soporte. _(PENDIENTE)_
+
+### Circuito del paciente ocluido (esc-ocluido)
+1. Acercarse de inmediato al paciente y garantizar una ventilación suficiente y eficaz. _(manual p. 9-1)_
+2. Comprobar el estado del paciente. _(manual p. 9-9)_
+3. Buscar en el circuito acumulación de líquido u obstáculos y comprobar si el filtro está bloqueado. _(manual p. 9-9)_
+4. Confirmar que los ajustes del ventilador y de la alarma son adecuados. _(manual p. 9-9)_
+5. Si el problema persiste, proporcionar una ventilación alternativa y avisar para que reparen el ventilador. _(manual p. 9-9)_
+- ✗ Aumentar el límite de PIA para que deje de sonar. — La alarma es de oclusión, no de presión alta; cambiar un límite no desobstruye el circuito. _(PENDIENTE)_
+- ✗ Desconectar la línea de presión proximal. — Eso genera otra alarma (Desconectar línea de presión proximal) y no resuelve la oclusión. _(PENDIENTE)_
+
+### Presión inspiratoria alta (esc-pia)
+1. Acercarse de inmediato al paciente y garantizar una ventilación suficiente y eficaz. _(manual p. 9-1)_
+2. Comprobar el estado del paciente. _(manual p. 9-13)_
+3. Confirmar que los ajustes del ventilador y de la alarma son adecuados. _(manual p. 9-13)_
+4. Si el problema persiste, proporcionar una ventilación alternativa y avisar para que reparen el ventilador. _(manual p. 9-13)_
+- ✗ Subir la PIA al máximo sin valorar al paciente. — Primero se valora al paciente; modificar el límite sin conocer la causa elimina una protección. _(PENDIENTE)_
+- ✗ Apagar la alarma de presión alta. — La alarma es una medida de seguridad; no se desactiva para evitar el aviso. _(PENDIENTE)_
+
+### Presión inspiratoria baja (esc-pib)
+1. Acercarse de inmediato al paciente y garantizar una ventilación suficiente y eficaz. _(manual p. 9-1)_
+2. Comprobar el estado del paciente. _(manual p. 9-14)_
+3. Confirmar que los ajustes del ventilador y de la alarma son adecuados. _(manual p. 9-14)_
+4. Si el problema persiste, proporcionar una ventilación alternativa y avisar para que reparen el ventilador. _(manual p. 9-14)_
+- ✗ Poner la PIB en OFF para que deje de sonar. — Desactivar el límite elimina el aviso de fallo de activación o de fuga excesiva que el manual asocia a esta alarma. _(PENDIENTE)_
+- ✗ Ignorarla porque el paciente respira. — Una presión baja puede indicar una fuga que degrada el soporte; hay que valorar al paciente. _(PENDIENTE)_
+
+### Frec. baja (esc-frecbaja)
+1. Acercarse de inmediato al paciente y garantizar una ventilación suficiente y eficaz. _(manual p. 9-1)_
+2. Comprobar el estado del paciente. _(manual p. 9-10)_
+3. Confirmar que los ajustes del ventilador y de la alarma son adecuados. _(manual p. 9-10)_
+4. Si el problema persiste, proporcionar una ventilación alternativa y avisar para que reparen el ventilador. _(manual p. 9-10)_
+- ✗ Bajar la Frec. baja a 1 rpm para que se calle. — Rebajar el umbral sin valorar al paciente oculta una posible apnea. _(PENDIENTE)_
+- ✗ Esperar un minuto antes de acercarse. — El manual indica acercarse de inmediato al paciente. _(PENDIENTE)_
+
+### Frec. alta (esc-frecalta)
+1. Acercarse de inmediato al paciente y garantizar una ventilación suficiente y eficaz. _(manual p. 9-1)_
+2. Comprobar el estado del paciente. _(manual p. 9-10)_
+3. Confirmar que los ajustes del ventilador y de la alarma son adecuados. _(manual p. 9-10)_
+4. Si el problema persiste, proporcionar una ventilación alternativa y avisar para que reparen el ventilador. _(manual p. 9-10)_
+- ✗ Subir el límite de Frec. alta a 90 rpm sin valorar al paciente. — Se pierde el aviso; antes hay que valorar por qué respira rápido. _(PENDIENTE)_
+- ✗ Sedar al paciente para reducir la frecuencia. — Fuera del ámbito de este manual y de esta app; la respuesta del manual empieza por valorar al paciente. _(PENDIENTE)_
+
+### Volumen corriente bajo (esc-vtbajo)
+1. Acercarse de inmediato al paciente y garantizar una ventilación suficiente y eficaz. _(manual p. 9-1)_
+2. Comprobar el estado del paciente. _(manual p. 9-15)_
+3. Confirmar que los ajustes del ventilador y de la alarma son adecuados. _(manual p. 9-15)_
+4. Si el problema persiste, proporcionar una ventilación alternativa y avisar para que reparen el ventilador. _(manual p. 9-15)_
+- ✗ Poner VT bajo en OFF y no volver a mirar. — Se desactiva una protección sin valorar la causa. _(PENDIENTE)_
+- ✗ Dar por válido el valor sin más: el volumen que se muestra es exacto siempre. — El manual advierte que el VT espirado estimado puede ser inexacto con fugas significativas (p. 9-7). _(PENDIENTE)_
+
+### Ventilación minuto baja (esc-vebaja)
+1. Acercarse de inmediato al paciente y garantizar una ventilación suficiente y eficaz. _(manual p. 9-1)_
+2. Comprobar el estado del paciente. _(manual p. 9-15)_
+3. Confirmar que los ajustes del ventilador y de la alarma son adecuados. _(manual p. 9-15)_
+4. Si el problema persiste, proporcionar una ventilación alternativa y avisar para que reparen el ventilador. _(manual p. 9-15)_
+- ✗ Silenciar 2 minutos y volver a mirar después. — Silenciar no corrige la causa; primero hay que atender al paciente. _(PENDIENTE)_
+
+### Fuga baja-riesgo reinhalación CO2 (esc-fugareinhalacion)
+1. Acercarse de inmediato al paciente y garantizar una ventilación suficiente y eficaz. _(manual p. 9-1)_
+2. Comprobar el estado del paciente, porque la posibilidad de reinhalar CO2 puede ser un problema potencial. _(manual p. 9-11)_
+3. Comprobar si hay puertos de exhalación ocluidos y que los ajustes de interfaz y puerto sean los apropiados. _(manual p. 9-11)_
+4. Si el puerto aprobado no está ocluido, la colocación y los ajustes son correctos y persiste, aumentar el flujo de referencia agregando una fuga o aumentando la EPAP, si es posible. _(manual p. 9-11)_
+- ✗ Reducir la EPAP al mínimo para disminuir el flujo. — El manual indica lo contrario: más EPAP significa más flujo por el puerto de exhalación, que purga el CO2 del circuito (p. 3-2). _(PENDIENTE)_
+- ✗ Tapar el puerto de exhalación para evitar la fuga. — Ocluir el puerto favorece la reinhalación; hay que comprobar que no esté ocluido. _(PENDIENTE)_
+
+### Batería int. baja (esc-bateria)
+1. Acercarse de inmediato al paciente y garantizar una ventilación suficiente y eficaz. _(manual p. 9-1)_
+2. Conectar el ventilador a la alimentación de CA. _(manual p. 9-8)_
+3. Si no es posible, proporcionar una ventilación alternativa. _(manual p. 9-8)_
+- ✗ Silenciarla: la batería dura todavía horas. — El manual indica que, con esta alarma, la batería puede alimentar el equipo unos 15 minutos adicionales en condiciones normales. _(PENDIENTE)_
+- ✗ Apagar el ventilador para ahorrar batería. — Dejaría al paciente sin soporte. _(PENDIENTE)_
+
+### Pérdida de alimentación (pantalla apagada) (esc-perdida)
+1. Acercarse de inmediato al paciente y garantizar una ventilación suficiente y eficaz. _(manual p. 9-1)_
+2. Interrumpir el uso del ventilador y proporcionar de inmediato un medio de ventilación alternativo. _(manual p. 9-1)_
+- ✗ Dejar al paciente conectado al circuito sin energía mientras vuelve la corriente. — Con puertos de exhalación pasiva, sin energía no llega suficiente aire por el circuito y puede producirse reinhalación del aire exhalado (p. 9-1). _(PENDIENTE)_
+
+### Oxígeno no disponible (esc-o2)
+1. Acercarse de inmediato al paciente y garantizar una ventilación suficiente y eficaz. _(manual p. 9-1)_
+2. Comprobar el estado del paciente. _(manual p. 9-12)_
+3. Comprobar si la fuente de O2 (presión alta o baja) es el problema y solucionarlo. _(manual p. 9-12)_
+4. Si el problema persiste, proporcionar una ventilación alternativa y avisar para que reparen el ventilador. _(manual p. 9-12)_
+- ✗ Conectar el oxígeno a la toma de aire del ventilador. — El manual indica conectar el oxígeno solo a la entrada de alta presión de la parte posterior y mantener el oxígeno de flujo libre alejado de la toma de aire (p. 5-1). _(PENDIENTE)_
+
+
 Total: 81
 
 ## Fuentes
