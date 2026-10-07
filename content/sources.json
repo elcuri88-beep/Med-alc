@@ -3,17 +3,23 @@
     "id": "manual-v60",
     "titulo": "Philips Respironics BiPAP V60 Ventilator – User Manual / Clinical Manual (versión vigente del fabricante)",
     "tipo": "manual",
-    "nota": "Páginas y valores exactos pendientes de cotejar con el manual del equipo disponible en el centro."
+    "nota": "No se pudo acceder al manual (images.philips.com y otros repositorios bloqueados por la red). Ninguna afirmación del equipo está contrastada. Hay manual oficial en español (V60/V60 Plus) en images.philips.com; contrastar con la versión del centro."
   },
   {
     "id": "ers-ats-2017",
     "titulo": "Rochwerg B, et al. Official ERS/ATS clinical practice guidelines: noninvasive ventilation for acute respiratory failure. Eur Respir J 2017;50:1602426.",
-    "tipo": "guia"
+    "tipo": "guia",
+    "pmid": "28860265",
+    "doi": "10.1183/13993003.02426-2016",
+    "nota": "Existencia y referencia comprobadas en PubMed. Solo se pudo leer el resumen (confirma que hay recomendaciones para EPOC, edema cardiogénico, hipoxémica, inmunodeprimidos, trauma torácico, paliativos, postoperatorio, destete y postextubación); fuerza y certeza de cada una sin contrastar."
   },
   {
     "id": "bts-ics-2016",
     "titulo": "Davidson AC, et al. BTS/ICS guideline for the ventilatory management of acute hypercapnic respiratory failure in adults. Thorax 2016;71(Suppl 2):ii1-ii35.",
-    "tipo": "guia"
+    "tipo": "guia",
+    "pmid": "26976648",
+    "doi": "10.1136/thoraxjnl-2015-208209",
+    "nota": "Existencia y referencia comprobadas en PubMed. Resumen no disponible y texto completo inaccesible: umbrales, ajustes y tiempos sin contrastar."
   },
   {
     "id": "gold",

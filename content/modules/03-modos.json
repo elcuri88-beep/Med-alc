@@ -8,32 +8,97 @@
       "id": "cpap",
       "titulo": "CPAP",
       "afirmaciones": [
-        { "id": "mod-cpap-01", "texto": "En CPAP se aplica una presión continua; no hay soporte inspiratorio, por lo que la ventilación depende por completo del esfuerzo del paciente.", "fuentes": ["definicion"], "pendienteRevision": false },
-        { "id": "mod-cpap-02", "texto": "La CPAP es una opción en el edema agudo de pulmón cardiogénico.", "fuentes": ["ers-ats-2017"], "pendienteRevision": false }
+        {
+          "id": "mod-cpap-01",
+          "texto": "En CPAP se aplica una presión continua; no hay soporte inspiratorio, por lo que la ventilación depende por completo del esfuerzo del paciente.",
+          "fuentes": [
+            "definicion"
+          ],
+          "pendienteRevision": false
+        },
+        {
+          "id": "mod-cpap-02",
+          "texto": "La CPAP es una opción en el edema agudo de pulmón cardiogénico.",
+          "fuentes": [
+            "ers-ats-2017"
+          ],
+          "pendienteRevision": true,
+          "notas": "Fuente identificada y existente en PubMed, pero el texto completo no se pudo consultar (acceso bloqueado): recomendación sin contrastar."
+        }
       ]
     },
     {
       "id": "st",
       "titulo": "S, S/T y T",
       "afirmaciones": [
-        { "id": "mod-st-01", "texto": "Modo S (espontáneo): cada ciclo lo dispara el paciente y el equipo lo cicla; no hay frecuencia de respaldo.", "fuentes": ["definicion", "manual-v60"], "pendienteRevision": true, "notas": "Confirmar si el V60 ofrece un modo S independiente o si se obtiene dentro de S/T." },
-        { "id": "mod-st-02", "texto": "Modo S/T: el paciente dispara y cicla los ciclos espontáneos y, si no respira antes del intervalo programado, el equipo administra un ciclo temporizado a la frecuencia de seguridad.", "fuentes": ["definicion", "manual-v60"], "pendienteRevision": false },
-        { "id": "mod-st-03", "texto": "Modo T (temporizado): todos los ciclos se inician por tiempo según la frecuencia programada, con independencia del esfuerzo del paciente.", "fuentes": ["definicion", "manual-v60"], "pendienteRevision": true, "notas": "Confirmar disponibilidad de modo T en el V60." }
+        {
+          "id": "mod-st-01",
+          "texto": "Modo S (espontáneo): cada ciclo lo dispara el paciente y el equipo lo cicla; no hay frecuencia de respaldo.",
+          "fuentes": [
+            "definicion",
+            "manual-v60"
+          ],
+          "pendienteRevision": true,
+          "notas": "Confirmar si el V60 ofrece un modo S independiente o si se obtiene dentro de S/T."
+        },
+        {
+          "id": "mod-st-02",
+          "texto": "Modo S/T: el paciente dispara y cicla los ciclos espontáneos y, si no respira antes del intervalo programado, el equipo administra un ciclo temporizado a la frecuencia de seguridad.",
+          "fuentes": [
+            "definicion",
+            "manual-v60"
+          ],
+          "pendienteRevision": true,
+          "notas": "Fuente identificada y existente en PubMed, pero el texto completo no se pudo consultar (acceso bloqueado): recomendación sin contrastar."
+        },
+        {
+          "id": "mod-st-03",
+          "texto": "Modo T (temporizado): todos los ciclos se inician por tiempo según la frecuencia programada, con independencia del esfuerzo del paciente.",
+          "fuentes": [
+            "definicion",
+            "manual-v60"
+          ],
+          "pendienteRevision": true,
+          "notas": "Confirmar disponibilidad de modo T en el V60."
+        }
       ]
     },
     {
       "id": "pc",
       "titulo": "PC (control por presión)",
       "afirmaciones": [
-        { "id": "mod-pc-01", "texto": "En PC los ciclos se inician por tiempo o por el paciente y se ciclan por el tiempo inspiratorio programado, no por flujo.", "fuentes": ["definicion", "manual-v60"], "pendienteRevision": true }
+        {
+          "id": "mod-pc-01",
+          "texto": "En PC los ciclos se inician por tiempo o por el paciente y se ciclan por el tiempo inspiratorio programado, no por flujo.",
+          "fuentes": [
+            "definicion",
+            "manual-v60"
+          ],
+          "pendienteRevision": true
+        }
       ]
     },
     {
       "id": "avaps",
       "titulo": "AVAPS (volumen asegurado)",
       "afirmaciones": [
-        { "id": "mod-avaps-01", "texto": "AVAPS ajusta automáticamente la presión de soporte entre un mínimo y un máximo programados para alcanzar un volumen corriente objetivo.", "fuentes": ["manual-v60"], "pendienteRevision": true, "notas": "Confirmar disponibilidad según versión V60 / V60 Plus y los rangos programables." },
-        { "id": "mod-avaps-02", "texto": "AVAPS no compensa fugas no intencionales de forma ilimitada: con fugas muy elevadas el volumen estimado puede ser poco fiable.", "fuentes": ["manual-v60"], "pendienteRevision": true }
+        {
+          "id": "mod-avaps-01",
+          "texto": "AVAPS ajusta automáticamente la presión de soporte entre un mínimo y un máximo programados para alcanzar un volumen corriente objetivo.",
+          "fuentes": [
+            "manual-v60"
+          ],
+          "pendienteRevision": true,
+          "notas": "Confirmar disponibilidad según versión V60 / V60 Plus y los rangos programables."
+        },
+        {
+          "id": "mod-avaps-02",
+          "texto": "AVAPS no compensa fugas no intencionales de forma ilimitada: con fugas muy elevadas el volumen estimado puede ser poco fiable.",
+          "fuentes": [
+            "manual-v60"
+          ],
+          "pendienteRevision": true
+        }
       ]
     }
   ]

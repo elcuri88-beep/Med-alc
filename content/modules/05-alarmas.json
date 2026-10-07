@@ -8,30 +8,116 @@
       "id": "prioridad",
       "titulo": "Prioridad y colores",
       "afirmaciones": [
-        { "id": "ala-pri-01", "texto": "Por convención (IEC 60601-1-8) la prioridad alta se señala en rojo, la media en amarillo y la baja en cian o amarillo.", "fuentes": ["iec-60601-1-8"], "pendienteRevision": false },
-        { "id": "ala-pri-02", "texto": "La clasificación de cada alarma del V60 en alta, media o baja debe cotejarse con el manual del equipo.", "fuentes": ["manual-v60"], "pendienteRevision": true }
+        {
+          "id": "ala-pri-01",
+          "texto": "Por convención (IEC 60601-1-8) la prioridad alta se señala en rojo, la media en amarillo y la baja en cian o amarillo.",
+          "fuentes": [
+            "iec-60601-1-8"
+          ],
+          "pendienteRevision": true,
+          "notas": "Fuente identificada y existente en PubMed, pero el texto completo no se pudo consultar (acceso bloqueado): recomendación sin contrastar."
+        },
+        {
+          "id": "ala-pri-02",
+          "texto": "La clasificación de cada alarma del V60 en alta, media o baja debe cotejarse con el manual del equipo.",
+          "fuentes": [
+            "manual-v60"
+          ],
+          "pendienteRevision": true
+        }
       ]
     },
     {
       "id": "habituales",
       "titulo": "Alarmas habituales",
       "afirmaciones": [
-        { "id": "ala-hab-01", "texto": "Desconexión del circuito: comprobar primero al paciente, después las conexiones y la mascarilla, y reconectar; si persiste, cambiar el circuito.", "fuentes": ["consenso-docente", "manual-v60"], "pendienteRevision": true },
-        { "id": "ala-hab-02", "texto": "Fuga excesiva: reposicionar o reajustar la mascarilla, revisar la talla, comprobar el circuito y valorar otra interfase.", "fuentes": ["consenso-docente"], "pendienteRevision": true },
-        { "id": "ala-hab-03", "texto": "Volumen minuto o volumen corriente bajo: valorar fugas, esfuerzo del paciente, secreciones y necesidad de aumentar presión de soporte o FR.", "fuentes": ["consenso-docente"], "pendienteRevision": true },
-        { "id": "ala-hab-04", "texto": "Apnea: comprobar si el paciente respira y está despierto; si no hay esfuerzo, asegurar la ventilación y avisar al médico.", "fuentes": ["consenso-docente"], "pendienteRevision": true },
-        { "id": "ala-hab-05", "texto": "Presión alta o baja: buscar obstrucción del circuito, tos, secreciones o fuga.", "fuentes": ["consenso-docente"], "pendienteRevision": true },
-        { "id": "ala-hab-06", "texto": "Fallo de alimentación: comprobar el cable y la batería y conectar un equipo alternativo si no se restablece de inmediato.", "fuentes": ["manual-v60"], "pendienteRevision": true },
-        { "id": "ala-hab-07", "texto": "Frecuencia alta: valorar taquipnea por fracaso de la VMNI, autodisparo o ansiedad.", "fuentes": ["consenso-docente"], "pendienteRevision": true }
+        {
+          "id": "ala-hab-01",
+          "texto": "Desconexión del circuito: comprobar primero al paciente, después las conexiones y la mascarilla, y reconectar; si persiste, cambiar el circuito.",
+          "fuentes": [
+            "consenso-docente",
+            "manual-v60"
+          ],
+          "pendienteRevision": true
+        },
+        {
+          "id": "ala-hab-02",
+          "texto": "Fuga excesiva: reposicionar o reajustar la mascarilla, revisar la talla, comprobar el circuito y valorar otra interfase.",
+          "fuentes": [
+            "consenso-docente"
+          ],
+          "pendienteRevision": true
+        },
+        {
+          "id": "ala-hab-03",
+          "texto": "Volumen minuto o volumen corriente bajo: valorar fugas, esfuerzo del paciente, secreciones y necesidad de aumentar presión de soporte o FR.",
+          "fuentes": [
+            "consenso-docente"
+          ],
+          "pendienteRevision": true
+        },
+        {
+          "id": "ala-hab-04",
+          "texto": "Apnea: comprobar si el paciente respira y está despierto; si no hay esfuerzo, asegurar la ventilación y avisar al médico.",
+          "fuentes": [
+            "consenso-docente"
+          ],
+          "pendienteRevision": true
+        },
+        {
+          "id": "ala-hab-05",
+          "texto": "Presión alta o baja: buscar obstrucción del circuito, tos, secreciones o fuga.",
+          "fuentes": [
+            "consenso-docente"
+          ],
+          "pendienteRevision": true
+        },
+        {
+          "id": "ala-hab-06",
+          "texto": "Fallo de alimentación: comprobar el cable y la batería y conectar un equipo alternativo si no se restablece de inmediato.",
+          "fuentes": [
+            "manual-v60"
+          ],
+          "pendienteRevision": true
+        },
+        {
+          "id": "ala-hab-07",
+          "texto": "Frecuencia alta: valorar taquipnea por fracaso de la VMNI, autodisparo o ansiedad.",
+          "fuentes": [
+            "consenso-docente"
+          ],
+          "pendienteRevision": true
+        }
       ]
     },
     {
       "id": "asincronias",
       "titulo": "Asincronías",
       "afirmaciones": [
-        { "id": "ala-asi-01", "texto": "Autodisparo: ciclos disparados sin esfuerzo del paciente, a menudo por fugas o sensibilidad excesiva.", "fuentes": ["consenso-docente"], "pendienteRevision": true },
-        { "id": "ala-asi-02", "texto": "Doble disparo: dos ciclos seguidos por un tiempo inspiratorio demasiado corto frente a la demanda del paciente.", "fuentes": ["consenso-docente"], "pendienteRevision": true },
-        { "id": "ala-asi-03", "texto": "Ciclado tardío: la inspiración se prolonga por fugas o por un umbral de ciclado inadecuado; el paciente empieza a espirar mientras el equipo sigue en inspiración.", "fuentes": ["consenso-docente"], "pendienteRevision": true }
+        {
+          "id": "ala-asi-01",
+          "texto": "Autodisparo: ciclos disparados sin esfuerzo del paciente, a menudo por fugas o sensibilidad excesiva.",
+          "fuentes": [
+            "consenso-docente"
+          ],
+          "pendienteRevision": true
+        },
+        {
+          "id": "ala-asi-02",
+          "texto": "Doble disparo: dos ciclos seguidos por un tiempo inspiratorio demasiado corto frente a la demanda del paciente.",
+          "fuentes": [
+            "consenso-docente"
+          ],
+          "pendienteRevision": true
+        },
+        {
+          "id": "ala-asi-03",
+          "texto": "Ciclado tardío: la inspiración se prolonga por fugas o por un umbral de ciclado inadecuado; el paciente empieza a espirar mientras el equipo sigue en inspiración.",
+          "fuentes": [
+            "consenso-docente"
+          ],
+          "pendienteRevision": true
+        }
       ]
     }
   ]
