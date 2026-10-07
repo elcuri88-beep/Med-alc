@@ -73,6 +73,16 @@
           "pendienteRevision": false,
           "verificacion": "directa",
           "notas": "Manual de usuario V60/V60 Plus (ref. 1152841_ES), índice y pp. 5-9 y 5-10."
+        },
+        {
+          "id": "pue-chk-08",
+          "texto": "Con aspiración cerrada durante la ventilación invasiva se puede usar cualquier modo y configuración; hay que montar el circuito con un sistema de catéter de aspiración cerrada y comprobar que la alarma de desconexión del paciente está activada antes de realizar el procedimiento.",
+          "fuentes": [
+            "manual-v60"
+          ],
+          "pendienteRevision": false,
+          "verificacion": "directa",
+          "notas": "Manual de usuario V60/V60 Plus (ref. 1152841_ES), p. 6-1."
         }
       ]
     }

@@ -1,0 +1,133 @@
+{
+  "modulo": "fundamentos",
+  "preguntas": [
+    {
+      "id": "q-fun-01",
+      "enunciado": "Según la guía ERS/ATS 2017, ¿en cuál de estas situaciones se recomienda (recomendación fuerte) la VMNI con dos niveles de presión?",
+      "correcta": "Insuficiencia respiratoria aguda con acidosis respiratoria (pH ≤ 7,35) por agudización de EPOC",
+      "incorrectas": ["Agudización de EPOC con hipercapnia pero sin acidosis", "Asma agudo", "Insuficiencia respiratoria hipoxémica de novo"],
+      "explicacion": "La recomendación fuerte (certeza alta) es para la agudización de EPOC con acidosis respiratoria. En hipercapnia sin acidosis la guía sugiere no usarla, y en asma y en insuficiencia de novo no emite recomendación.",
+      "afirmaciones": ["fun-ind-01"]
+    },
+    {
+      "id": "q-fun-02",
+      "enunciado": "En el edema agudo de pulmón cardiogénico, ¿qué recomienda la ERS/ATS 2017?",
+      "correcta": "CPAP o VMNI con dos niveles de presión",
+      "incorrectas": ["Solo CPAP", "Solo VMNI con dos niveles de presión", "No recomienda ninguna de las dos"],
+      "explicacion": "La guía recomienda cualquiera de las dos modalidades (recomendación fuerte, certeza moderada).",
+      "afirmaciones": ["fun-ind-03", "mod-cpap-02"]
+    },
+    {
+      "id": "q-fun-03",
+      "enunciado": "¿Qué grado de recomendación da la ERS/ATS 2017 a la VMNI precoz en pacientes inmunodeprimidos con insuficiencia respiratoria aguda?",
+      "correcta": "Sugerencia condicional (certeza moderada)",
+      "incorrectas": ["Recomendación fuerte con certeza alta", "No ofrece recomendación por incertidumbre", "Sugiere no utilizarla"],
+      "explicacion": "La guía sugiere la VMNI precoz como recomendación condicional con certeza moderada.",
+      "afirmaciones": ["fun-ind-04"]
+    },
+    {
+      "id": "q-fun-04",
+      "enunciado": "¿Qué dice la ERS/ATS 2017 sobre el uso de VMNI en el asma agudo?",
+      "correcta": "No ofrece recomendación, por la incertidumbre de la evidencia",
+      "incorrectas": ["La recomienda con fuerza", "La sugiere de forma condicional", "Recomienda no utilizarla"],
+      "explicacion": "Para el asma agudo, y también para la insuficiencia respiratoria aguda de novo, la guía no emite recomendación por incertidumbre de la evidencia.",
+      "afirmaciones": ["fun-ind-06"]
+    },
+    {
+      "id": "q-fun-05",
+      "enunciado": "En una agudización de EPOC con hipercapnia pero sin acidosis, ¿qué sugiere la ERS/ATS 2017?",
+      "correcta": "No usar VMNI (recomendación condicional, certeza baja)",
+      "incorrectas": ["Usar VMNI con dos niveles de presión de forma sistemática", "Usar solo CPAP", "Intubar de entrada"],
+      "explicacion": "La guía sugiere no utilizar VMNI en la hipercapnia sin acidosis durante una agudización de EPOC.",
+      "afirmaciones": ["fun-ind-07"]
+    },
+    {
+      "id": "q-fun-06",
+      "enunciado": "¿Qué sugiere la ERS/ATS 2017 en pacientes con traumatismo torácico e insuficiencia respiratoria aguda?",
+      "correcta": "VMNI (recomendación condicional, certeza moderada)",
+      "incorrectas": ["Intubación sistemática", "No usar VMNI (recomendación fuerte)", "No emite recomendación"],
+      "explicacion": "La guía sugiere VMNI en el trauma torácico con insuficiencia respiratoria aguda, como recomendación condicional.",
+      "afirmaciones": ["fun-ind-08"]
+    },
+    {
+      "id": "q-fun-07",
+      "enunciado": "Un paciente con EPOC y acidosis respiratoria se considera candidato a intubación, pero no se deteriora de forma inmediata. Según la ERS/ATS 2017, ¿qué se recomienda?",
+      "correcta": "Un ensayo de VMNI con dos niveles de presión",
+      "incorrectas": ["Intubar de inmediato en todos los casos", "Contraindicar la VMNI", "Usar únicamente oxigenoterapia convencional"],
+      "explicacion": "La guía recomienda un ensayo de VMNI bilevel (recomendación fuerte, certeza moderada) salvo deterioro inmediato.",
+      "afirmaciones": ["fun-ind-09"]
+    },
+    {
+      "id": "q-fun-08",
+      "enunciado": "¿Cuál de los siguientes estados figura como contraindicación en el manual del V60/V60 Plus?",
+      "correcta": "Hipotensión",
+      "incorrectas": ["Insuficiencia respiratoria crónica", "Apnea obstructiva del sueño", "Insuficiencia respiratoria en un paciente que respira espontáneamente"],
+      "explicacion": "Las tres últimas son indicaciones de uso del equipo. Entre las contraindicaciones del manual están la hipotensión, la carencia de impulso respiratorio, la imposibilidad de mantener la vía aérea, el riesgo de aspiración, la sinusitis aguda u otitis media, la tos ferina no tratada y la epistaxis.",
+      "afirmaciones": ["fun-con-01", "fun-ind-10"]
+    },
+    {
+      "id": "q-fun-09",
+      "enunciado": "Según el manual, ¿a partir de qué peso está indicado el V60/V60 Plus en pacientes pediátricos?",
+      "correcta": "20 kg o más",
+      "incorrectas": ["10 kg o más", "30 kg o más", "No está indicado en pediátricos"],
+      "explicacion": "El manual indica el equipo para niños y adolescentes con un peso de 20 kg o superior, además de adultos.",
+      "afirmaciones": ["fun-ind-10"]
+    },
+    {
+      "id": "q-fun-10",
+      "enunciado": "¿Puede usarse el V60/V60 Plus en pacientes intubados?",
+      "correcta": "Sí, si cumplen los mismos criterios de selección que en las aplicaciones no invasivas",
+      "incorrectas": ["No, solo es un ventilador no invasivo", "Solo con traqueotomía, nunca con tubo endotraqueal", "Solo en pacientes pediátricos"],
+      "explicacion": "El manual indica expresamente el uso en pacientes intubados que cumplan los mismos criterios de selección.",
+      "afirmaciones": ["fun-ind-10"]
+    },
+    {
+      "id": "q-fun-11",
+      "enunciado": "Con IPAP 16 cmH2O y EPAP 6 cmH2O, ¿cuál es la presión de soporte?",
+      "correcta": "10 cmH2O",
+      "incorrectas": ["22 cmH2O", "6 cmH2O", "16 cmH2O"],
+      "explicacion": "Presión de soporte = IPAP − EPAP = 16 − 6 = 10 cmH2O.",
+      "afirmaciones": ["fun-fis-01"]
+    },
+    {
+      "id": "q-fun-12",
+      "enunciado": "Un paciente tiene un volumen corriente de 450 ml y una frecuencia de 20 rpm. ¿Cuál es su ventilación minuto?",
+      "correcta": "9 L/min",
+      "incorrectas": ["4,5 L/min", "22,5 L/min", "90 L/min"],
+      "explicacion": "VE = VT × FR = 450 ml × 20 = 9000 ml/min = 9 L/min.",
+      "afirmaciones": ["fun-fis-02"]
+    },
+    {
+      "id": "q-fun-13",
+      "enunciado": "En una agudización de EPOC, ¿qué componente de la presión reduce sobre todo el trabajo inspiratorio de unos músculos fatigados?",
+      "correcta": "La IPAP (soporte inspiratorio)",
+      "incorrectas": ["La EPAP", "La FiO2", "El tiempo de rampa"],
+      "explicacion": "Según la revisión consultada, en la EPOC la EPAP contrarresta el colapso dinámico y la auto-PEEP, mientras que la IPAP es la que descarga la musculatura inspiratoria.",
+      "afirmaciones": ["fun-fis-03"]
+    },
+    {
+      "id": "q-fun-14",
+      "enunciado": "En el edema agudo cardiogénico, ¿qué presión es la que más mejora la situación del paciente con VMNI?",
+      "correcta": "La presión espiratoria (PEEP/CPAP)",
+      "incorrectas": ["La IPAP", "La presión de soporte", "El tiempo inspiratorio"],
+      "explicacion": "Según la revisión consultada, el beneficio procede sobre todo de los efectos respiratorios y hemodinámicos de la PEEP/CPAP, a diferencia de la EPOC, donde pesa más la IPAP.",
+      "afirmaciones": ["fun-fis-05"]
+    },
+    {
+      "id": "q-fun-15",
+      "enunciado": "Manteniendo la EPAP, ¿qué efecto tiene aumentar la presión de soporte?",
+      "correcta": "Aumenta el volumen corriente y la ventilación alveolar, lo que tiende a reducir la PaCO2",
+      "incorrectas": ["Disminuye el volumen corriente", "Aumenta la PaCO2", "No modifica la ventilación"],
+      "explicacion": "A igual EPAP, más presión de soporte significa más volumen corriente y más ventilación alveolar.",
+      "afirmaciones": ["fun-fis-04"]
+    },
+    {
+      "id": "q-fun-16",
+      "enunciado": "Según la BTS/ICS, ¿cuándo se plantea la VMNI en la agudización de EPOC?",
+      "correcta": "Cuando persiste acidosis respiratoria tras el tratamiento médico óptimo inicial",
+      "incorrectas": ["Antes de cualquier otro tratamiento, en todos los pacientes", "Solo si hay parada respiratoria", "Solo si el paciente está intubado"],
+      "explicacion": "La afirmación está pendiente de contrastar con el texto de la guía BTS/ICS (umbrales y tiempos exactos).",
+      "afirmaciones": ["fun-ind-02"]
+    }
+  ]
+}

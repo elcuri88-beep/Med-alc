@@ -102,6 +102,16 @@
           "pendienteRevision": false,
           "verificacion": "secundaria",
           "notas": "Verificado en fuente secundaria (acep-emp-2024, que cita literalmente la ERS/ATS); falta cotejar con la guía original. Revisar el contexto exacto de la población (la cita se refiere a EPOC con acidosis en la tabla consultada)."
+        },
+        {
+          "id": "fun-ind-10",
+          "texto": "Según el manual, el V60/V60 Plus está indicado para pacientes adultos y pediátricos (niños y adolescentes de 20 kg o más) que respiran espontáneamente pero requieren ventilación mecánica (insuficiencia respiratoria, insuficiencia respiratoria crónica o apnea obstructiva del sueño), bajo la supervisión de un médico y por profesionales cualificados; también en pacientes intubados que cumplan los mismos criterios de selección que en las aplicaciones no invasivas.",
+          "fuentes": [
+            "manual-v60"
+          ],
+          "pendienteRevision": false,
+          "verificacion": "directa",
+          "notas": "Manual de usuario V60/V60 Plus (ref. 1152841_ES), pp. 3-1 y 3-2."
         }
       ]
     },

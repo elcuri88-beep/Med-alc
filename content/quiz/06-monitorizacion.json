@@ -1,0 +1,69 @@
+{
+  "modulo": "monitorizacion",
+  "preguntas": [
+    {
+      "id": "q-mon-01",
+      "enunciado": "¿Cómo muestra el V60/V60 Plus los parámetros monitorizados?",
+      "correcta": "Como valores numéricos y como ondas en tiempo real (presión, flujo y volumen)",
+      "incorrectas": ["Solo como valores numéricos", "Solo como ondas, sin números", "Solo en un registro impreso"],
+      "explicacion": "Las ondas se pueden congelar y el cursor muestra los valores de presión, flujo y volumen.",
+      "afirmaciones": ["mon-vig-01", "mon-vig-03"]
+    },
+    {
+      "id": "q-mon-02",
+      "enunciado": "¿Qué limitación tiene el volumen corriente espirado que muestra el ventilador?",
+      "correcta": "Es estimado y puede ser inexacto con fugas significativas",
+      "incorrectas": ["Es siempre exacto", "Solo se muestra en CPAP", "Se mide en el paciente con un neumotacógrafo externo"],
+      "explicacion": "Si la lectura no es precisa, hay que buscar fugas, comprobar los ajustes y ajustar la mascarilla.",
+      "afirmaciones": ["mon-vig-01"]
+    },
+    {
+      "id": "q-mon-03",
+      "enunciado": "¿Qué ventanas de tiempo de las ondas ofrece el equipo?",
+      "correcta": "3, 6, 12 o 24 segundos",
+      "incorrectas": ["1, 2 o 5 segundos", "10, 30 o 60 segundos", "Solo 12 segundos"],
+      "explicacion": "Además, el botón de pausa congela las ondas y se descongelan con el botón de reanudación.",
+      "afirmaciones": ["mon-vig-03"]
+    },
+    {
+      "id": "q-mon-04",
+      "enunciado": "Según la revisión consultada, ¿cuándo se reevalúa y se decide si intubar en edema cardiogénico o agudización de EPOC?",
+      "correcta": "A la 1–2 horas del inicio de la VMNI",
+      "incorrectas": ["A los 10 minutos", "A las 24 horas", "Solo si salta una alarma roja"],
+      "explicacion": "Es la propuesta de una revisión de 2024; conviene cotejarla con el protocolo local.",
+      "afirmaciones": ["mon-ree-01"]
+    },
+    {
+      "id": "q-mon-05",
+      "enunciado": "Entre los criterios de intubación a 1–2 h en agudización de EPOC que cita la revisión consultada está:",
+      "correcta": "Acidosis respiratoria grave (pH < 7,2)",
+      "incorrectas": ["pH > 7,45", "Frecuencia cardiaca menor de 100 lpm", "Cualquier alarma amarilla"],
+      "explicacion": "También figuran la fatiga respiratoria a pesar de VMNI óptima y el deterioro del nivel de conciencia. El umbral de pH no es un criterio de guía.",
+      "afirmaciones": ["mon-ree-04"]
+    },
+    {
+      "id": "q-mon-06",
+      "enunciado": "¿Qué se vigila en el paciente durante la VMNI?",
+      "correcta": "Frecuencia respiratoria, musculatura accesoria, nivel de conciencia, SpO2, frecuencia cardiaca, tensión arterial y tolerancia",
+      "incorrectas": ["Solo la SpO2", "Solo los valores numéricos del ventilador", "Únicamente la temperatura"],
+      "explicacion": "Afirmación pendiente de revisión clínica.",
+      "afirmaciones": ["mon-vig-02"]
+    },
+    {
+      "id": "q-mon-07",
+      "enunciado": "¿Qué indica una buena respuesta a la VMNI?",
+      "correcta": "Mejoría del pH y de la PaCO2, descenso de la frecuencia respiratoria y mejoría del trabajo respiratorio y de la conciencia",
+      "incorrectas": ["Aumento de la frecuencia respiratoria", "Empeoramiento del nivel de conciencia", "Aparición de inestabilidad hemodinámica"],
+      "explicacion": "Afirmación pendiente de revisión clínica (guía BTS/ICS sin contrastar).",
+      "afirmaciones": ["mon-ree-02"]
+    },
+    {
+      "id": "q-mon-08",
+      "enunciado": "¿Cuál es un signo de fracaso de la VMNI?",
+      "correcta": "Ausencia de mejoría gasométrica y clínica o deterioro del nivel de conciencia",
+      "incorrectas": ["Descenso de la PaCO2", "Disminución del trabajo respiratorio", "Buena tolerancia de la mascarilla"],
+      "explicacion": "Afirmación pendiente de revisión clínica (guía BTS/ICS sin contrastar).",
+      "afirmaciones": ["mon-ree-03"]
+    }
+  ]
+}

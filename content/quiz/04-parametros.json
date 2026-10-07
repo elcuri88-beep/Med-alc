@@ -1,0 +1,141 @@
+{
+  "modulo": "parametros",
+  "preguntas": [
+    {
+      "id": "q-par-01",
+      "enunciado": "¿Cuál es el intervalo de IPAP programable en el V60/V60 Plus?",
+      "correcta": "4 a 40 cmH2O",
+      "incorrectas": ["4 a 25 cmH2O", "5 a 30 cmH2O", "10 a 50 cmH2O"],
+      "explicacion": "La IPAP va de 4 a 40 cmH2O; la EPAP/CPAP, de 4 a 25 cmH2O, y la EPAP debe ser menor o igual que la IPAP.",
+      "afirmaciones": ["par-pre-06"]
+    },
+    {
+      "id": "q-par-02",
+      "enunciado": "¿Qué relación debe cumplir la EPAP respecto a la IPAP?",
+      "correcta": "La EPAP debe ser menor o igual que la IPAP",
+      "incorrectas": ["La EPAP debe ser mayor que la IPAP", "Deben diferir siempre en 5 cmH2O", "No hay ninguna restricción"],
+      "explicacion": "El manual indica que la EPAP debe ser inferior o igual a la IPAP.",
+      "afirmaciones": ["par-pre-06"]
+    },
+    {
+      "id": "q-par-03",
+      "enunciado": "¿Cuál es el intervalo del tiempo inspiratorio (T. Insp.) programable?",
+      "correcta": "0,30 a 3,00 s",
+      "incorrectas": ["0,10 a 1,00 s", "1,00 a 5,00 s", "0,50 a 10,00 s"],
+      "explicacion": "El T. Insp. se programa de 0,30 a 3,00 s y no se permite relación I:E invertida.",
+      "afirmaciones": ["par-pre-06"]
+    },
+    {
+      "id": "q-par-04",
+      "enunciado": "¿Cuál es el intervalo de la frecuencia respiratoria programable?",
+      "correcta": "4 a 60 rpm",
+      "incorrectas": ["1 a 30 rpm", "8 a 40 rpm", "5 a 90 rpm"],
+      "explicacion": "La frecuencia programable va de 4 a 60 rpm. El intervalo de 5 a 90 rpm corresponde a la alarma Frec. alta.",
+      "afirmaciones": ["par-pre-06"]
+    },
+    {
+      "id": "q-par-05",
+      "enunciado": "¿Permite el V60/V60 Plus programar una relación I:E invertida?",
+      "correcta": "No",
+      "incorrectas": ["Sí, en cualquier modo", "Solo en PCV", "Solo con AVAPS"],
+      "explicacion": "El manual indica que no se permite la relación inversa en la ventilación para T. Insp. y Frecuencia.",
+      "afirmaciones": ["par-pre-06"]
+    },
+    {
+      "id": "q-par-06",
+      "enunciado": "En el ajuste Subida (tiempo de subida), ¿qué valor corresponde a la subida más rápida?",
+      "correcta": "1",
+      "incorrectas": ["5", "3", "OFF"],
+      "explicacion": "Subida va de 1 a 5, siendo 1 la más rápida.",
+      "afirmaciones": ["par-pre-04", "par-pre-06"]
+    },
+    {
+      "id": "q-par-07",
+      "enunciado": "Si el tiempo de subida es insuficiente para alcanzar la IPAP objetivo, ¿qué indica el manual?",
+      "correcta": "Modificar el ajuste de Subida o el de T. Insp.",
+      "incorrectas": ["Aumentar la FiO2", "Reducir la EPAP a 4 cmH2O", "Cambiar a modo CPAP"],
+      "explicacion": "Ambos ajustes determinan si se llega a la presión objetivo durante la inspiración.",
+      "afirmaciones": ["par-pre-04"]
+    },
+    {
+      "id": "q-par-08",
+      "enunciado": "¿Qué intervalo tiene el tiempo de rampa?",
+      "correcta": "OFF o de 5 a 45 minutos",
+      "incorrectas": ["OFF o de 1 a 5 minutos", "10 a 120 minutos", "0,3 a 3 segundos"],
+      "explicacion": "La rampa aumenta la presión linealmente durante el intervalo para ayudar a reducir la ansiedad del paciente.",
+      "afirmaciones": ["par-pre-06"]
+    },
+    {
+      "id": "q-par-09",
+      "enunciado": "¿Qué criterio de ciclo tiene T. Insp. en S/T, AVAPS y PCV?",
+      "correcta": "Cicla las respiraciones temporizadas (y en PCV también las espontáneas)",
+      "incorrectas": ["Cicla solo las respiraciones espontáneas", "No interviene en el ciclo", "Cicla solo en CPAP"],
+      "explicacion": "En S/T y AVAPS las espontáneas las cicla Auto-Trak; en PCV todas se ciclan por T. Insp.",
+      "afirmaciones": ["par-pre-03"]
+    },
+    {
+      "id": "q-par-10",
+      "enunciado": "En S/T, PCV y AVAPS, ¿qué papel tiene la Frecuencia programada?",
+      "correcta": "Es la frecuencia de respaldo: si el paciente no dispara en el intervalo, se administra una respiración obligatoria",
+      "incorrectas": ["Es la frecuencia máxima permitida al paciente", "Solo se usa en CPAP", "Fija el tiempo de rampa"],
+      "explicacion": "El intervalo entre respiraciones obligatorias lo determina el ajuste de Frecuencia.",
+      "afirmaciones": ["par-pre-05"]
+    },
+    {
+      "id": "q-par-11",
+      "enunciado": "En el sistema Auto-Trak estándar, ¿debe el usuario ajustar la sensibilidad de disparo y de ciclado?",
+      "correcta": "No: el algoritmo la ajusta automáticamente (solo la opción Auto-Trak+ permite ajustarla)",
+      "incorrectas": ["Sí, siempre con un ajuste de 1 a 5", "Sí, mediante el ajuste Subida", "Solo en CPAP"],
+      "explicacion": "Auto-Trak compensa fugas y ajusta umbrales de disparo y ciclado; Auto-Trak+ permite ajustar Trigger y Ciclo E.",
+      "afirmaciones": ["par-aut-01"]
+    },
+    {
+      "id": "q-par-12",
+      "enunciado": "¿Qué valores admite el ajuste Trigger de Auto-Trak+?",
+      "correcta": "Normal y +1 a +7",
+      "incorrectas": ["−2 a +6", "OFF y 1 a 3", "4 a 25"],
+      "explicacion": "Cuanto mayor es el valor, mayor es la sensibilidad de activación.",
+      "afirmaciones": ["par-aut-01"]
+    },
+    {
+      "id": "q-par-13",
+      "enunciado": "¿Qué valores admite el ajuste Ciclo E de Auto-Trak+?",
+      "correcta": "−2 a −1, Normal y +1 a +6",
+      "incorrectas": ["Normal y +1 a +7", "OFF y 1 a 3", "5 a 45"],
+      "explicacion": "En el valor más bajo (−2) la inspiración termina más tarde; en el más alto (+6), antes.",
+      "afirmaciones": ["par-aut-01"]
+    },
+    {
+      "id": "q-par-14",
+      "enunciado": "¿Cuándo recalcula el ventilador el flujo de línea de base para compensar las fugas?",
+      "correcta": "En cada respiración, al final de la exhalación",
+      "incorrectas": ["Solo al encender el equipo", "Una vez por minuto", "Solo cuando suena una alarma"],
+      "explicacion": "Usa el ajuste del flujo espiratorio y el del volumen corriente.",
+      "afirmaciones": ["par-aut-02"]
+    },
+    {
+      "id": "q-par-15",
+      "enunciado": "Para compensar bien las fugas, ¿qué necesita conocer el ventilador?",
+      "correcta": "La fuga intencional de la mascarilla y del puerto de exhalación seleccionados",
+      "incorrectas": ["El peso del paciente", "La FiO2 medida", "La temperatura del humidificador"],
+      "explicacion": "Por eso hay que registrar el tipo de mascarilla y de puerto en el menú.",
+      "afirmaciones": ["par-aut-02"]
+    },
+    {
+      "id": "q-par-16",
+      "enunciado": "Una revisión de 2024 propone, en la agudización de EPOC, una EPAP de:",
+      "correcta": "5–8 cmH2O (por debajo de la auto-PEEP)",
+      "incorrectas": ["15–20 cmH2O", "10–12 cmH2O", "Siempre 4 cmH2O"],
+      "explicacion": "Es una propuesta de los autores de una revisión, no de una guía; debe cotejarse con el protocolo del centro.",
+      "afirmaciones": ["par-pre-02"]
+    },
+    {
+      "id": "q-par-17",
+      "enunciado": "Si la PaCO2 sigue elevada con soporte insuficiente, ¿qué ajuste puede aumentar la ventilación minuto?",
+      "correcta": "Aumentar la presión de soporte (o la frecuencia)",
+      "incorrectas": ["Disminuir la presión de soporte", "Bajar el volumen minuto", "Solo aumentar la FiO2"],
+      "explicacion": "Afirmación pendiente de revisión clínica.",
+      "afirmaciones": ["par-aju-02"]
+    }
+  ]
+}

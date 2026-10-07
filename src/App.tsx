@@ -10,6 +10,7 @@ import Placeholder from './features/Placeholder';
 import Simulator from './features/simulator/Simulator';
 import Calculators from './features/Calculators';
 import Practice from './features/Practice';
+import QuizSession from './features/quiz/QuizSession';
 import ScenarioList from './features/scenarios/ScenarioList';
 import ScenarioPlayer from './features/scenarios/ScenarioPlayer';
 
@@ -56,6 +57,7 @@ export default function App() {
           <Route path="/calculadoras" element={<Calculators />} />
           <Route path="/casos" element={<Placeholder title="Casos clínicos" phase="C" />} />
           <Route path="/quiz" element={<Practice />} />
+          <Route path="/quiz/sesion" element={<QuizSession />} />
           <Route path="/escenarios" element={<ScenarioList />} />
           <Route path="/escenarios/:id" element={<ScenarioPlayer />} />
           <Route path="/repaso" element={<Placeholder title="Repaso" phase="C" />} />

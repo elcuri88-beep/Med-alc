@@ -31,6 +31,23 @@ for (const e of sc.escenarios) {
   if (!e.distractores?.length) bad('sin acciones incorrectas');
   for (const p of e.pasos ?? []) if (!/^\d+-\d+$/.test(p.pagina ?? '')) bad(`paso sin página: ${p.id}`);
 }
+const claimIds = seen;
+const qSeen = new Set();
+for (const f of readdirSync(new URL('../content/quiz/', import.meta.url)).filter((x) => x.endsWith('.json'))) {
+  const qf = JSON.parse(readFileSync(new URL('../content/quiz/' + f, import.meta.url), 'utf8'));
+  for (const q of qf.preguntas) {
+    const bad = (m) => { console.error(`pregunta ${q.id}: ${m}`); errors++; };
+    if (qSeen.has(q.id)) bad('ID duplicado');
+    qSeen.add(q.id);
+    if (q.incorrectas?.length !== 3) bad('debe tener 3 respuestas incorrectas');
+    if (new Set([q.correcta, ...(q.incorrectas ?? [])]).size !== 4) bad('opciones repetidas');
+    if (!q.explicacion) bad('sin explicación');
+    if (!q.afirmaciones?.length) bad('sin afirmaciones de referencia');
+    for (const a of q.afirmaciones ?? []) if (!claimIds.has(a)) bad(`afirmación inexistente: ${a}`);
+  }
+}
+if (qSeen.size < 100) { console.error(`Hay ${qSeen.size} preguntas; se requieren al menos 100`); errors++; }
+console.log(`Preguntas válidas (${qSeen.size})`);
 console.log(`Escenarios válidos (${scIds.size})`);
 if (errors) { console.error(`${errors} errores`); process.exit(1); }
 console.log(`Contenido válido (${seen.size} afirmaciones)`);

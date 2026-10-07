@@ -83,6 +83,16 @@
           "pendienteRevision": false,
           "verificacion": "directa",
           "notas": "Manual de usuario V60/V60 Plus (ref. 1152841_ES), pp. 6-15 a 6-17."
+        },
+        {
+          "id": "equ-cir-05",
+          "texto": "Si la interfaz seleccionada es ET/Traq o Fuga 1, el puerto de exhalación no puede ser \"Ninguno\": en los modos de ventilación, los tubos ET/de traqueotomía y la mayoría de las mascarillas de Philips Respironics requieren un puerto de espiración.",
+          "fuentes": [
+            "manual-v60"
+          ],
+          "pendienteRevision": false,
+          "verificacion": "directa",
+          "notas": "Manual de usuario V60/V60 Plus (ref. 1152841_ES), p. 6-16."
         }
       ]
     },

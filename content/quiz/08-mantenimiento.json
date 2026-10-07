@@ -1,0 +1,93 @@
+{
+  "modulo": "mantenimiento",
+  "preguntas": [
+    {
+      "id": "q-man-01",
+      "enunciado": "¿Con qué frecuencia se inspecciona el filtro del ventilador de refrigeración?",
+      "correcta": "Cada mes",
+      "incorrectas": ["Cada día", "Cada año", "Cada 5 años"],
+      "explicacion": "Si está descolorido o sucio, se extrae y se lava o enjuaga bien, y se deja secar por completo antes de reinstalarlo.",
+      "afirmaciones": ["man-lim-01"]
+    },
+    {
+      "id": "q-man-02",
+      "enunciado": "¿Qué se hace con el filtro de la toma de aire cuando está sucio?",
+      "correcta": "Se sustituye por uno nuevo aprobado por Philips (el de refrigeración es el que se limpia)",
+      "incorrectas": ["Se lava con agua y jabón y se reutiliza", "Se retira y se usa sin filtro", "Se esteriliza en autoclave"],
+      "explicacion": "El filtro de la toma de aire se sustituye; el filtro del ventilador de refrigeración se limpia.",
+      "afirmaciones": ["man-lim-01", "equ-pan-03"]
+    },
+    {
+      "id": "q-man-03",
+      "enunciado": "¿Cuándo se sustituye el filtro antibacteriano del flujo principal?",
+      "correcta": "Entre pacientes y a intervalos regulares, según las directrices del centro y del fabricante",
+      "incorrectas": ["Solo cuando se rompe", "Una vez al año", "Nunca, es permanente"],
+      "explicacion": "Así se evita la contaminación del paciente o del ventilador.",
+      "afirmaciones": ["man-lim-01"]
+    },
+    {
+      "id": "q-man-04",
+      "enunciado": "¿Se puede esterilizar el ventilador en autoclave?",
+      "correcta": "No: el manual advierte de no esterilizarlo en autoclave ni por otros medios",
+      "incorrectas": ["Sí, a 134 °C", "Sí, pero solo la pantalla", "Sí, si se desmonta la batería"],
+      "explicacion": "Tampoco debe gotearse ni pulverizarse líquido directamente sobre las superficies.",
+      "afirmaciones": ["man-lim-02"]
+    },
+    {
+      "id": "q-man-05",
+      "enunciado": "¿Cómo se aplica el producto de limpieza sobre el exterior y la pantalla táctil?",
+      "correcta": "Con un paño sin pelusa empapado pero que no gotee",
+      "incorrectas": ["Pulverizándolo directamente sobre la pantalla", "Sumergiendo el panel frontal", "Con un cepillo abrasivo"],
+      "explicacion": "Un cepillo o dispositivo abrasivo puede dañar la pantalla táctil de forma irreparable.",
+      "afirmaciones": ["man-lim-02"]
+    },
+    {
+      "id": "q-man-06",
+      "enunciado": "Con la solución de lejía al 5 % diluida 1:9, ¿cuál es el tiempo de contacto indicado?",
+      "correcta": "2 minutos",
+      "incorrectas": ["15 minutos", "30 segundos", "1 hora"],
+      "explicacion": "Con peróxido de hidrógeno al 3 % el tiempo de contacto es de 15 minutos; después se enjuaga con un paño húmedo.",
+      "afirmaciones": ["man-lim-02"]
+    },
+    {
+      "id": "q-man-07",
+      "enunciado": "¿Qué tiempo de contacto indica el manual para el peróxido de hidrógeno al 3 % como desinfectante del exterior?",
+      "correcta": "15 minutos",
+      "incorrectas": ["2 minutos", "1 minuto", "No requiere tiempo de contacto"],
+      "explicacion": "Antes de desinfectar hay que limpiar, porque la desinfección es más eficaz en dispositivos previamente limpiados.",
+      "afirmaciones": ["man-lim-02"]
+    },
+    {
+      "id": "q-man-08",
+      "enunciado": "¿Cuál es la vida útil prevista del V60/V60 Plus según el manual?",
+      "correcta": "10 años",
+      "incorrectas": ["2 años", "5 años", "20 años"],
+      "explicacion": "Los equipos utilizados más allá de esa vida útil pueden necesitar mantenimiento y reparaciones más frecuentes.",
+      "afirmaciones": ["man-lim-03"]
+    },
+    {
+      "id": "q-man-09",
+      "enunciado": "¿Cada cuánto se sustituye la batería de reserva?",
+      "correcta": "Cada 5 años (por personal de mantenimiento autorizado)",
+      "incorrectas": ["Cada mes", "Cada año", "Cada 10 años"],
+      "explicacion": "Además, la batería se inspecciona y se prueba cada año.",
+      "afirmaciones": ["man-lim-03"]
+    },
+    {
+      "id": "q-man-10",
+      "enunciado": "¿Quién debe reemplazar piezas internas y hacer el mantenimiento preventivo anual del ventilador?",
+      "correcta": "Solo personal de mantenimiento autorizado",
+      "incorrectas": ["Cualquier enfermera de la unidad", "El propio paciente", "Cualquier técnico, sin formación específica"],
+      "explicacion": "El personal no autorizado corre el riesgo de sufrir descargas eléctricas.",
+      "afirmaciones": ["man-lim-03"]
+    },
+    {
+      "id": "q-man-11",
+      "enunciado": "Los accesorios de un solo paciente, como el circuito desechable, ¿necesitan limpieza y desinfección entre pacientes?",
+      "correcta": "No: no es necesario limpiar y desinfectar los accesorios para un solo paciente",
+      "incorrectas": ["Sí, siempre con lejía", "Sí, en autoclave", "Solo el filtro principal"],
+      "explicacion": "Para la interfaz para varios pacientes y los accesorios del circuito se siguen las instrucciones de uso del producto.",
+      "afirmaciones": ["man-lim-02"]
+    }
+  ]
+}

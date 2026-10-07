@@ -1,0 +1,133 @@
+{
+  "modulo": "equipo",
+  "preguntas": [
+    {
+      "id": "q-equ-01",
+      "enunciado": "¿Cómo es la pantalla del V60/V60 Plus?",
+      "correcta": "Pantalla táctil en color de 12,1 pulgadas",
+      "incorrectas": ["Pantalla monocroma de 7 pulgadas con solo botones físicos", "Pantalla de 5 pulgadas no táctil", "No tiene pantalla, solo indicadores luminosos"],
+      "explicacion": "El manual describe una pantalla táctil en color de 12,1 pulgadas, el botón Aceptar y un panel de teclas.",
+      "afirmaciones": ["equ-pan-01"]
+    },
+    {
+      "id": "q-equ-02",
+      "enunciado": "¿Por dónde se conecta el oxígeno al V60/V60 Plus?",
+      "correcta": "Por la entrada de alta presión de la parte posterior del ventilador",
+      "incorrectas": ["Por la toma de aire del ventilador", "Directamente a la mascarilla", "Por el puerto de exhalación"],
+      "explicacion": "El oxígeno entra por una conexión de alta presión situada en la parte posterior; el manual advierte de mantener el oxígeno de flujo libre alejado de la toma de aire.",
+      "afirmaciones": ["equ-pan-02"]
+    },
+    {
+      "id": "q-equ-03",
+      "enunciado": "¿Qué intervalo de concentración de oxígeno se puede programar en el V60/V60 Plus?",
+      "correcta": "21 a 100 %",
+      "incorrectas": ["30 a 100 %", "21 a 60 %", "40 a 100 %"],
+      "explicacion": "El mezclador de oxígeno permite ajustar del 21 al 100 % en todos los modos.",
+      "afirmaciones": ["equ-pan-02"]
+    },
+    {
+      "id": "q-equ-04",
+      "enunciado": "Para comprobar la concentración de oxígeno realmente administrada, el manual indica:",
+      "correcta": "Utilizar un controlador (monitor) de oxígeno externo",
+      "incorrectas": ["Fiarse únicamente del ajuste de O2 del ventilador", "Mirar el color de la barra de alarma", "Medir la presión de la línea proximal"],
+      "explicacion": "El manual recomienda un controlador de oxígeno externo para verificar la concentración y detectar un posible gas incorrecto conectado.",
+      "afirmaciones": ["equ-pan-02"]
+    },
+    {
+      "id": "q-equ-05",
+      "enunciado": "¿Con qué frecuencia se inspecciona el filtro de la toma de aire?",
+      "correcta": "Cada mes, y se sustituye si es necesario",
+      "incorrectas": ["Cada día", "Cada 5 años", "Solo cuando suena una alarma"],
+      "explicacion": "El programa de mantenimiento preventivo indica inspección mensual del filtro de la toma de aire.",
+      "afirmaciones": ["equ-pan-03", "man-lim-01"]
+    },
+    {
+      "id": "q-equ-06",
+      "enunciado": "¿Dónde debe instalarse siempre un filtro de bacterias?",
+      "correcta": "En la salida de gas hacia el paciente (flujo principal o inspiratorio)",
+      "incorrectas": ["En la entrada de oxígeno", "Solo en el puerto de exhalación", "No es necesario filtro de bacterias"],
+      "explicacion": "El equipo muestra el mensaje \"El filtro de bacterias debe estar instalado en la salida de gas\" y el manual lo incluye en el montaje del circuito.",
+      "afirmaciones": ["equ-pan-03", "pue-chk-01"]
+    },
+    {
+      "id": "q-equ-07",
+      "enunciado": "¿Qué tipo de circuito de paciente usa el V60/V60 Plus?",
+      "correcta": "Circuito de un solo brazo con puerto de espiración (pasivo)",
+      "incorrectas": ["Circuito de dos ramas con válvula espiratoria controlada por el equipo", "Circuito cerrado sin ninguna fuga", "Solo circuitos de alto flujo"],
+      "explicacion": "El gas espirado se evacua de forma continua por el puerto de espiración, lo que minimiza la reinhalación y garantiza la eliminación del CO2.",
+      "afirmaciones": ["equ-cir-01"]
+    },
+    {
+      "id": "q-equ-08",
+      "enunciado": "¿Describe el manual del V60/V60 Plus un circuito «activo» con válvula espiratoria controlada por el equipo?",
+      "correcta": "No; solo describe el circuito de un brazo con puerto de espiración",
+      "incorrectas": ["Sí, es el recomendado para VMNI", "Sí, pero solo en modo AVAPS", "Sí, pero solo en el V60 Plus"],
+      "explicacion": "La distinción entre circuito pasivo y activo no consta en este manual.",
+      "afirmaciones": ["equ-cir-02"]
+    },
+    {
+      "id": "q-equ-09",
+      "enunciado": "Para reducir la posibilidad de reinhalación de CO2, el manual indica:",
+      "correcta": "Aumentar la EPAP",
+      "incorrectas": ["Disminuir la EPAP", "Alargar el tiempo inspiratorio", "Ocluir el puerto de exhalación"],
+      "explicacion": "A mayor presión, mayor flujo por el puerto de exhalación, que purga el CO2 del circuito.",
+      "afirmaciones": ["equ-cir-03"]
+    },
+    {
+      "id": "q-equ-10",
+      "enunciado": "¿Cómo influye alargar el tiempo inspiratorio en el riesgo de reinhalación de CO2?",
+      "correcta": "Lo aumenta, porque queda menos tiempo de exhalación para purgar el circuito",
+      "incorrectas": ["Lo disminuye", "No lo modifica", "Lo elimina por completo"],
+      "explicacion": "Un tiempo inspiratorio más prolongado reduce el tiempo de exhalación; además, volúmenes corrientes mayores aumentan el CO2 reinhalado.",
+      "afirmaciones": ["equ-cir-03"]
+    },
+    {
+      "id": "q-equ-11",
+      "enunciado": "Si no se ejecuta la prueba del puerto de exhalación o falla, ¿qué se muestra en la ventana de datos del paciente?",
+      "correcta": "«Fuga tot.» en lugar de «Fuga pac.»",
+      "incorrectas": ["Una alarma de batería baja", "La pantalla «Vent. inoperativo»", "No se muestra ninguna fuga"],
+      "explicacion": "Sin la prueba se desconoce la fuga intencional, por lo que el equipo muestra la fuga total.",
+      "afirmaciones": ["equ-cir-04"]
+    },
+    {
+      "id": "q-equ-12",
+      "enunciado": "¿Con qué tipo de puerto de exhalación es obligatoria la prueba del puerto?",
+      "correcta": "«Otro» (puerto no suministrado por Philips Respironics)",
+      "incorrectas": ["Whisper Swivel", "FEP", "PED"],
+      "explicacion": "Para los puertos FEP, PED, Whisper Swivel y «Ninguno» la prueba no está recomendada; con «Otro» es obligatoria.",
+      "afirmaciones": ["equ-cir-04"]
+    },
+    {
+      "id": "q-equ-13",
+      "enunciado": "¿Cuál de estas interfaces NO aparece entre las descritas en el manual del V60/V60 Plus?",
+      "correcta": "Casco (helmet)",
+      "incorrectas": ["Mascarilla oronasal AF541", "Mascarilla facial total PerforMax", "Tubo endotraqueal o de traqueotomía"],
+      "explicacion": "El manual describe mascarillas oronasales, la facial total PerforMax y tubos ET/traqueotomía; el casco no consta.",
+      "afirmaciones": ["equ-int-03"]
+    },
+    {
+      "id": "q-equ-14",
+      "enunciado": "Si la interfaz seleccionada es ET/Traq o «Fuga 1», ¿qué puerto de exhalación NO se puede elegir?",
+      "correcta": "«Ninguno»",
+      "incorrectas": ["FEP", "PED", "Whisper Swivel"],
+      "explicacion": "Los tubos ET/traqueotomía y la mayoría de las mascarillas requieren un puerto de espiración.",
+      "afirmaciones": ["equ-cir-05"]
+    },
+    {
+      "id": "q-equ-15",
+      "enunciado": "¿Qué problema suele tener una mascarilla nasal en pacientes agudos que respiran por la boca?",
+      "correcta": "La fuga oral reduce la eficacia de la ventilación",
+      "incorrectas": ["Aumenta el espacio muerto por encima de cualquier otra interfase", "Impide la monitorización", "No admite presiones superiores a 5 cmH2O"],
+      "explicacion": "Afirmación pendiente de revisión clínica (fuente: conocimiento docente).",
+      "afirmaciones": ["equ-int-04"]
+    },
+    {
+      "id": "q-equ-16",
+      "enunciado": "¿Qué ventaja y qué inconveniente se atribuyen a la mascarilla facial total?",
+      "correcta": "Mejor tolerancia en uso prolongado y menos lesión en el puente nasal; mayor espacio muerto y más riesgo con el vómito",
+      "incorrectas": ["Menor espacio muerto y ningún riesgo con el vómito", "Es la única válida con CPAP", "Evita cualquier fuga y no necesita arnés"],
+      "explicacion": "Afirmación pendiente de revisión clínica (fuente: conocimiento docente).",
+      "afirmaciones": ["equ-int-02"]
+    }
+  ]
+}

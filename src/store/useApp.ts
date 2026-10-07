@@ -37,6 +37,10 @@ interface AppState {
   deviceModel: 'V60' | 'V60 Plus';
   setDeviceModel: (m: 'V60' | 'V60 Plus') => void;
   scenarioProgress: Record<string, { done: boolean; errors: number }>;
+  quizStats: Record<string, { seen: number; correct: number; last: boolean }>;
+  examHistory: { fecha: string; modulo: string; correctas: number; total: number; segundos: number }[];
+  recordAnswers: (results: { id: string; ok: boolean }[]) => void;
+  addExam: (e: { fecha: string; modulo: string; correctas: number; total: number; segundos: number }) => void;
   setScenarioResult: (id: string, errors: number) => void;
   setTheme: (t: Theme) => void;
   acceptDisclaimer: () => void;
@@ -54,6 +58,18 @@ export const useApp = create<AppState>()(
       deviceModel: 'V60 Plus',
       setDeviceModel: (deviceModel) => setState({ deviceModel }),
       scenarioProgress: {},
+      quizStats: {},
+      examHistory: [],
+      recordAnswers: (results) =>
+        setState((s) => {
+          const next = { ...s.quizStats };
+          for (const r of results) {
+            const p = next[r.id] ?? { seen: 0, correct: 0, last: false };
+            next[r.id] = { seen: p.seen + 1, correct: p.correct + (r.ok ? 1 : 0), last: r.ok };
+          }
+          return { quizStats: next };
+        }),
+      addExam: (e) => setState((s) => ({ examHistory: [e, ...s.examHistory].slice(0, 20) })),
       setScenarioResult: (id, errors) =>
         setState((s) => {
           const prev = s.scenarioProgress[id];

@@ -1,0 +1,147 @@
+{
+  "modulo": "puesta-en-marcha",
+  "preguntas": [
+    {
+      "id": "q-pue-01",
+      "enunciado": "¿Qué componentes incluye el montaje del circuito del paciente según el manual?",
+      "correcta": "Filtro de bacterias del flujo principal, línea de presión proximal y conector en T del sensor de oxígeno (y humidificador o nebulizador si se desean)",
+      "incorrectas": [
+        "Solo la mascarilla y el arnés",
+        "Válvula espiratoria controlada y circuito de dos ramas",
+        "Cánula nasal de alto flujo en todos los casos"
+      ],
+      "explicacion": "El filtro de bacterias es imprescindible en la salida de gas del paciente.",
+      "afirmaciones": [
+        "pue-chk-01"
+      ]
+    },
+    {
+      "id": "q-pue-02",
+      "enunciado": "¿A qué tipo de fuente se conecta el oxígeno?",
+      "correcta": "Una fuente de oxígeno de uso médico de alta presión",
+      "incorrectas": [
+        "Un caudalímetro de baja presión",
+        "Cualquier gas comprimido",
+        "La toma de aire del ventilador"
+      ],
+      "explicacion": "El manual advierte de conectar solo oxígeno al conector de alta presión y de usar un controlador de oxígeno externo.",
+      "afirmaciones": [
+        "pue-chk-02",
+        "equ-pan-02"
+      ]
+    },
+    {
+      "id": "q-pue-03",
+      "enunciado": "Al encender el ventilador, ¿con qué modo y ajustes arranca?",
+      "correcta": "Con los que estaban activos antes de apagarse: hay que comprobarlos y cambiarlos si hace falta",
+      "incorrectas": [
+        "Siempre en CPAP con 4 cmH2O",
+        "Siempre con los ajustes de fábrica",
+        "Sin modo hasta que se seleccione uno"
+      ],
+      "explicacion": "Por eso conviene revisar modo y ajustes antes de conectar a un paciente.",
+      "afirmaciones": [
+        "pue-chk-02"
+      ]
+    },
+    {
+      "id": "q-pue-04",
+      "enunciado": "¿Dónde se registran la mascarilla y el puerto de exhalación en el ventilador?",
+      "correcta": "En la pestaña Menú, opción Masc./Puerto",
+      "incorrectas": [
+        "En la ventana de ajustes de alarma",
+        "En el modo En espera, con el botón de rampa",
+        "No hace falta registrarlos"
+      ],
+      "explicacion": "Con el puerto «Otro» es obligatoria la prueba del puerto de exhalación.",
+      "afirmaciones": [
+        "pue-chk-03",
+        "equ-cir-04"
+      ]
+    },
+    {
+      "id": "q-pue-05",
+      "enunciado": "Has cambiado parámetros en la ventana Modos. ¿Cómo se aplican?",
+      "correcta": "Seleccionando «Activar modo»",
+      "incorrectas": [
+        "Se aplican al tocar cada valor",
+        "Apagando y encendiendo el equipo",
+        "Pulsando Silenciar alarma"
+      ],
+      "explicacion": "Los valores que se acaban de modificar aparecen en amarillo hasta que se aplican.",
+      "afirmaciones": [
+        "pue-chk-04"
+      ]
+    },
+    {
+      "id": "q-pue-06",
+      "enunciado": "Antes de conectar a un paciente, ¿qué comprobación indica el manual que se haga siempre?",
+      "correcta": "La comprobación completa previa al funcionamiento y las pruebas de alarma; si falla alguna, no se usa el equipo",
+      "incorrectas": [
+        "Solo comprobar que la pantalla enciende",
+        "Ninguna, si el equipo se usó el día anterior",
+        "Solo la prueba de la batería"
+      ],
+      "explicacion": "Si el ventilador no supera alguna prueba, hay que interrumpir de inmediato su uso clínico hasta repararlo.",
+      "afirmaciones": [
+        "pue-chk-04"
+      ]
+    },
+    {
+      "id": "q-pue-07",
+      "enunciado": "¿Cuál de estas alarmas se incluye entre las pruebas previas a la conexión del paciente?",
+      "correcta": "Presión inspiratoria alta, volumen corriente bajo, desconexión paciente y circuito ocluido",
+      "incorrectas": [
+        "Batería baja y oxígeno no disponible únicamente",
+        "Frec. alta y PPV Máx P",
+        "Ninguna"
+      ],
+      "explicacion": "Son las cuatro pruebas de alarma que enumera el capítulo 5.",
+      "afirmaciones": [
+        "pue-chk-07"
+      ]
+    },
+    {
+      "id": "q-pue-08",
+      "enunciado": "Durante la ventilación invasiva con aspiración cerrada, ¿qué debe comprobarse antes del procedimiento?",
+      "correcta": "Que la alarma de desconexión del paciente esté activada",
+      "incorrectas": [
+        "Que la FiO2 sea del 21 %",
+        "Que el modo sea CPAP",
+        "Que el filtro de bacterias esté retirado"
+      ],
+      "explicacion": "El manual indica configurar el circuito con un sistema de catéter de aspiración cerrada y comprobar la alarma de desconexión.",
+      "afirmaciones": [
+        "pue-chk-08"
+      ]
+    },
+    {
+      "id": "q-pue-09",
+      "enunciado": "¿Qué conviene hacer antes de conectar a un paciente despierto?",
+      "correcta": "Explicarle la técnica, conectar y adaptarlo progresivamente",
+      "incorrectas": [
+        "Conectarlo sin explicar nada para que no se asuste",
+        "Programar siempre la IPAP máxima",
+        "Ocluir el puerto de exhalación"
+      ],
+      "explicacion": "Afirmación pendiente de revisión clínica (conocimiento docente).",
+      "afirmaciones": [
+        "pue-chk-05"
+      ]
+    },
+    {
+      "id": "q-pue-10",
+      "enunciado": "¿Qué se registra durante la vigilancia del paciente en VMNI?",
+      "correcta": "Parámetros, alarmas, constantes y gasometría",
+      "incorrectas": [
+        "Solo la hora de inicio",
+        "Solo la marca del ventilador",
+        "Nada, si no hay incidencias"
+      ],
+      "explicacion": "Afirmación pendiente de revisión clínica (conocimiento docente).",
+      "afirmaciones": [
+        "pue-chk-06"
+      ]
+    }
+  ]
+}

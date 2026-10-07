@@ -1,0 +1,181 @@
+{
+  "modulo": "alarmas",
+  "preguntas": [
+    {
+      "id": "q-ala-01",
+      "enunciado": "En el V60/V60 Plus, ¿de qué color se muestra una alarma de prioridad alta?",
+      "correcta": "Rojo (con LED parpadeante y secuencia repetida de 5 tonos)",
+      "incorrectas": ["Amarillo", "Azul", "Verde"],
+      "explicacion": "Prioridad alta = rojo; prioridad baja = amarillo; mensajes informativos = azul.",
+      "afirmaciones": ["ala-pri-01"]
+    },
+    {
+      "id": "q-ala-02",
+      "enunciado": "¿Qué color y qué señal acústica tiene una alarma de prioridad baja?",
+      "correcta": "Amarillo, con un tono intermitente cada unos 20 segundos",
+      "incorrectas": ["Rojo, con una secuencia de 5 tonos", "Azul, sin sonido", "Naranja, con tono continuo"],
+      "explicacion": "La alarma de prioridad alta es roja con secuencia repetida de 5 tonos.",
+      "afirmaciones": ["ala-pri-01"]
+    },
+    {
+      "id": "q-ala-03",
+      "enunciado": "¿Qué color tiene un mensaje informativo en el V60/V60 Plus?",
+      "correcta": "Azul",
+      "incorrectas": ["Rojo", "Amarillo", "Gris"],
+      "explicacion": "Los mensajes informativos aparecen con fondo azul e icono informativo y no requieren acción urgente.",
+      "afirmaciones": ["ala-pri-01"]
+    },
+    {
+      "id": "q-ala-04",
+      "enunciado": "Frec. alta, Frec. baja, Ventilación minuto baja y los volúmenes corrientes alto o bajo empiezan como prioridad baja. ¿Cuándo pasan a prioridad alta?",
+      "correcta": "Si la condición persiste más de 60 segundos",
+      "incorrectas": ["Si persiste más de 5 segundos", "Si persiste más de 10 minutos", "Nunca pasan a prioridad alta"],
+      "explicacion": "Además, Frec. baja es de prioridad alta desde el principio en ciertas condiciones (p. ej., ajuste > 4 rpm y sin respiraciones durante más de 15 s).",
+      "afirmaciones": ["ala-pri-02"]
+    },
+    {
+      "id": "q-ala-05",
+      "enunciado": "Con Frec. baja ajustada a 8 rpm, ¿cuándo es de prioridad alta desde el principio?",
+      "correcta": "Cuando no hay respiraciones durante más de 15 segundos",
+      "incorrectas": ["Cuando no hay respiraciones durante más de 60 segundos", "Cuando la FR es inferior a 4 rpm", "Nunca"],
+      "explicacion": "Con ajuste ≤ 4 rpm el criterio es no tener respiraciones durante más de 60/ajuste segundos; con ajuste > 4 rpm, más de 15 s.",
+      "afirmaciones": ["ala-pri-02"]
+    },
+    {
+      "id": "q-ala-06",
+      "enunciado": "La alarma «Desconexión paciente» se activa transcurridos:",
+      "correcta": "11 segundos",
+      "incorrectas": ["1 segundo", "30 segundos", "2 minutos"],
+      "explicacion": "Es una alarma de prioridad alta; la acción es comprobar al paciente, reconectar el circuito y confirmar los ajustes.",
+      "afirmaciones": ["ala-hab-01"]
+    },
+    {
+      "id": "q-ala-07",
+      "enunciado": "Suena «Desconexión paciente». Según el manual, tras comprobar el estado del paciente, ¿qué haces?",
+      "correcta": "Volver a conectar el circuito del paciente y confirmar los ajustes del ventilador y de la alarma",
+      "incorrectas": ["Subir la IPAP", "Apagar el ventilador", "Silenciar la alarma y esperar"],
+      "explicacion": "Si el problema persiste, se proporciona ventilación alternativa y se avisa para reparar el ventilador.",
+      "afirmaciones": ["ala-hab-01", "ala-hab-10"]
+    },
+    {
+      "id": "q-ala-08",
+      "enunciado": "Ante «Fuga baja-riesgo reinhalación CO2», si el puerto aprobado no está ocluido y los ajustes son correctos pero persiste, ¿qué indica el manual?",
+      "correcta": "Aumentar el flujo de referencia agregando una fuga o aumentando la EPAP, si es posible",
+      "incorrectas": ["Reducir la EPAP", "Ocluir el puerto de exhalación", "Aumentar el tiempo inspiratorio"],
+      "explicacion": "La alarma es de prioridad alta: se valora al paciente, se buscan puertos ocluidos y se revisan los ajustes de interfaz y puerto.",
+      "afirmaciones": ["ala-hab-02"]
+    },
+    {
+      "id": "q-ala-09",
+      "enunciado": "¿Existe en el V60/V60 Plus una alarma llamada «Apnea»?",
+      "correcta": "No; la ausencia de respiraciones se detecta con la alarma Frec. baja",
+      "incorrectas": ["Sí, es de prioridad alta y no se puede silenciar", "Sí, solo en modo CPAP", "Sí, solo en el V60 Plus"],
+      "explicacion": "Frec. baja se ajusta de 1 a 89 rpm.",
+      "afirmaciones": ["ala-hab-04"]
+    },
+    {
+      "id": "q-ala-10",
+      "enunciado": "¿Qué ocurre cuando se supera la alarma de Presión inspiratoria alta (PIA)?",
+      "correcta": "El ventilador pasa a exhalación (alarma de prioridad alta)",
+      "incorrectas": ["Se apaga el ventilador", "Sube automáticamente el límite de PIA", "Solo se enciende un mensaje azul"],
+      "explicacion": "La PIA se ajusta de 5 a 50 cmH2O y se restablece automáticamente tras una inspiración completa sin la condición.",
+      "afirmaciones": ["ala-hab-05"]
+    },
+    {
+      "id": "q-ala-11",
+      "enunciado": "En S/T y PCV, ¿dónde recomienda el manual fijar la alarma PIB?",
+      "correcta": "De 3 a 5 cmH2O por debajo de la IPAP",
+      "incorrectas": ["Igual que la IPAP", "20 cmH2O por debajo de la IPAP", "Siempre en OFF"],
+      "explicacion": "Así avisa de un fallo de activación entre los dos niveles de presión y de la pérdida de presión por fugas excesivas.",
+      "afirmaciones": ["ala-hab-05"]
+    },
+    {
+      "id": "q-ala-12",
+      "enunciado": "Se interrumpe la alimentación de CA y no hay batería (o está agotada). ¿Qué indica el manual?",
+      "correcta": "Interrumpir el uso del ventilador y proporcionar de inmediato ventilación alternativa",
+      "incorrectas": ["Mantener al paciente conectado hasta que vuelva la corriente", "Silenciar la alarma y esperar 2 minutos", "Aumentar la EPAP"],
+      "explicacion": "Con puertos de exhalación pasiva, sin energía no llega suficiente aire por el circuito y puede haber reinhalación. La alarma visual y acústica suena al menos 2 minutos.",
+      "afirmaciones": ["ala-hab-06"]
+    },
+    {
+      "id": "q-ala-13",
+      "enunciado": "Con la alarma «Batería int. baja», ¿cuánto tiempo adicional de funcionamiento aproximado indica el manual?",
+      "correcta": "Unos 15 minutos en condiciones normales",
+      "incorrectas": ["Unas 4 horas", "Unos 60 segundos", "No se indica ningún tiempo"],
+      "explicacion": "Es una alarma de prioridad alta; hay que conectar el ventilador a la alimentación de CA.",
+      "afirmaciones": ["ala-hab-06"]
+    },
+    {
+      "id": "q-ala-14",
+      "enunciado": "¿Qué intervalo tiene el ajuste de la alarma Frec. alta?",
+      "correcta": "5 a 90 rpm",
+      "incorrectas": ["1 a 89 rpm", "4 a 60 rpm", "10 a 120 rpm"],
+      "explicacion": "Frec. alta empieza como prioridad baja y pasa a alta si persiste más de 60 s.",
+      "afirmaciones": ["ala-hab-07"]
+    },
+    {
+      "id": "q-ala-15",
+      "enunciado": "Alarma «Circuito del paciente ocluido». ¿Qué hay que comprobar?",
+      "correcta": "Acumulación de líquido u obstáculos en el circuito y si el filtro está bloqueado",
+      "incorrectas": ["Solo el nivel de la batería", "La concentración de O2 del cilindro", "La relación I:E"],
+      "explicacion": "Se caracteriza por presión proximal y flujo bajos y es de prioridad alta.",
+      "afirmaciones": ["ala-hab-08"]
+    },
+    {
+      "id": "q-ala-16",
+      "enunciado": "La presión de suministro de oxígeno baja a menos de 30 psig. ¿Qué ocurre según el manual?",
+      "correcta": "Alarma de prioridad alta; el ventilador sigue dando todo el soporte de O2 posible y lo finaliza si la presión baja de 18 psig",
+      "incorrectas": ["Se apaga el ventilador inmediatamente", "El ventilador pasa a aire ambiente sin alarma", "Solo se muestra un mensaje azul"],
+      "explicacion": "La alarma de presión alta salta por encima de 92 psig.",
+      "afirmaciones": ["ala-hab-09"]
+    },
+    {
+      "id": "q-ala-17",
+      "enunciado": "Ante cualquier alarma, ¿cuál es el primer paso que indica el manual?",
+      "correcta": "Acercarse de inmediato al paciente y garantizar una ventilación suficiente y eficaz",
+      "incorrectas": ["Silenciar la alarma y buscar el mensaje en la pantalla", "Reiniciar el ventilador", "Llamar al servicio técnico"],
+      "explicacion": "Después se silencia si es posible y se corrige la condición según la tabla de alarmas.",
+      "afirmaciones": ["ala-hab-10"]
+    },
+    {
+      "id": "q-ala-18",
+      "enunciado": "¿Cuánto dura el silencio de una alarma con el botón Silenciar alarma?",
+      "correcta": "2 minutos",
+      "incorrectas": ["15 segundos", "10 minutos", "Hasta que se corrige la causa"],
+      "explicacion": "Algunas alarmas no se pueden silenciar y silenciar no corrige la causa.",
+      "afirmaciones": ["ala-hab-10"]
+    },
+    {
+      "id": "q-ala-19",
+      "enunciado": "La pantalla táctil no responde pero el ventilador sigue funcionando. ¿Qué es cierto?",
+      "correcta": "Sigue ventilando con los ajustes seleccionados y las alarmas continúan apareciendo",
+      "incorrectas": ["Deja de ventilar inmediatamente", "Pasa automáticamente a CPAP", "Se pierden todas las alarmas"],
+      "explicacion": "Si el paciente precisa cambiar ajustes, hay que dar ventilación alternativa. Para apagar el equipo se pulsa ON/Apagar y después Aceptar.",
+      "afirmaciones": ["ala-hab-11"]
+    },
+    {
+      "id": "q-ala-20",
+      "enunciado": "Autodisparo: ¿qué es?",
+      "correcta": "Ciclos disparados sin esfuerzo del paciente, a menudo por fugas o sensibilidad excesiva",
+      "incorrectas": ["Dos ciclos seguidos por un esfuerzo prolongado", "Ciclos que no se disparan a pesar del esfuerzo", "Ciclado demasiado temprano por presión alta"],
+      "explicacion": "Afirmación pendiente de revisión clínica.",
+      "afirmaciones": ["ala-asi-01"]
+    },
+    {
+      "id": "q-ala-21",
+      "enunciado": "Doble disparo: ¿qué lo suele causar?",
+      "correcta": "Un tiempo inspiratorio demasiado corto frente a la demanda del paciente",
+      "incorrectas": ["Un tiempo inspiratorio demasiado largo", "Una EPAP demasiado alta", "Un filtro de bacterias obstruido"],
+      "explicacion": "Afirmación pendiente de revisión clínica.",
+      "afirmaciones": ["ala-asi-02"]
+    },
+    {
+      "id": "q-ala-22",
+      "enunciado": "Ciclado tardío: ¿cómo se reconoce?",
+      "correcta": "La inspiración se prolonga y el paciente empieza a espirar mientras el equipo sigue en inspiración",
+      "incorrectas": ["El equipo cicla antes de que el paciente termine de inspirar", "No se dispara ningún ciclo", "Se muestra el mensaje «Vent. inoperativo»"],
+      "explicacion": "Afirmación pendiente de revisión clínica.",
+      "afirmaciones": ["ala-asi-03"]
+    }
+  ]
+}

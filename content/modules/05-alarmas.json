@@ -133,6 +133,16 @@
           "pendienteRevision": false,
           "verificacion": "directa",
           "notas": "Manual de usuario V60/V60 Plus (ref. 1152841_ES), pp. 9-1, 9-3 y 9-5."
+        },
+        {
+          "id": "ala-hab-11",
+          "texto": "Si la pantalla táctil no responde, el ventilador sigue funcionando con los ajustes seleccionados, los datos siguen siendo precisos y siguen apareciendo alarmas: se comprueba al paciente y, si necesita un cambio de ajustes, se proporciona ventilación alternativa y se avisa para reparar el ventilador. Para apagar el equipo con la pantalla bloqueada se pulsa la tecla ON/Apagar y después el botón Aceptar.",
+          "fuentes": [
+            "manual-v60"
+          ],
+          "pendienteRevision": false,
+          "verificacion": "directa",
+          "notas": "Manual de usuario V60/V60 Plus (ref. 1152841_ES), p. 9-6."
         }
       ]
     },

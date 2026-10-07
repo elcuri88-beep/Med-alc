@@ -25,6 +25,16 @@
             "bts-ics-2016"
           ],
           "pendienteRevision": true
+        },
+        {
+          "id": "mon-vig-03",
+          "texto": "Las ondas pueden reescalarse y la ventana de tiempo muestra 3, 6, 12 o 24 segundos; se pueden congelar con el botón de pausa y el cursor muestra los valores de presión, flujo y volumen en el punto elegido.",
+          "fuentes": [
+            "manual-v60"
+          ],
+          "pendienteRevision": false,
+          "verificacion": "directa",
+          "notas": "Manual de usuario V60/V60 Plus (ref. 1152841_ES), pp. 8-3 (escalado y congelado de ondas)."
         }
       ]
     },

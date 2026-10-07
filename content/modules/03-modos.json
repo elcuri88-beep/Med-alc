@@ -134,6 +134,22 @@
           "notas": "Manual de usuario V60/V60 Plus (ref. 1152841_ES), pp. 4-12 y 4-13."
         }
       ]
+    },
+    {
+      "id": "hft",
+      "titulo": "HFT (solo V60 Plus de serie)",
+      "afirmaciones": [
+        {
+          "id": "mod-hft-01",
+          "texto": "La terapia de alto flujo (HFT) no es un modo de administración de respiraciones: se accede a ella solo desde el modo En espera, las alarmas de paciente no están disponibles durante la HFT y el límite máximo de presión del sistema es de 45 cmH2O con flujo ≥ 20 L/min y de 30 cmH2O con flujo < 20 L/min.",
+          "fuentes": [
+            "manual-v60"
+          ],
+          "pendienteRevision": false,
+          "verificacion": "directa",
+          "notas": "Manual de usuario V60/V60 Plus (ref. 1152841_ES), pp. 4-6 y 4-7."
+        }
+      ]
     }
   ]
 }

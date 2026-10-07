@@ -1,0 +1,257 @@
+{
+  "modulo": "modos",
+  "preguntas": [
+    {
+      "id": "q-mod-01",
+      "enunciado": "¿Qué modos de ventilación tiene el V60/V60 Plus según el manual?",
+      "correcta": "CPAP, S/T, PCV, AVAPS y, opcionalmente, PPV",
+      "incorrectas": [
+        "CPAP, S, T, S/T, PC y AVAPS",
+        "CPAP, ASV y NAVA",
+        "S/T, VC-SIMV y PRVC"
+      ],
+      "explicacion": "Los modos son CPAP, S/T, PCV y AVAPS, además de PPV como opción. No hay modos S ni T independientes.",
+      "afirmaciones": [
+        "mod-st-01"
+      ]
+    },
+    {
+      "id": "q-mod-02",
+      "enunciado": "¿Dónde se administran las respiraciones espontáneas con presión de soporte en el V60/V60 Plus?",
+      "correcta": "Dentro del modo S/T (no existe un modo S independiente)",
+      "incorrectas": [
+        "En un modo S independiente",
+        "Solo en CPAP",
+        "Solo en PCV"
+      ],
+      "explicacion": "El manual no incluye un modo S independiente; las espontáneas con presión de soporte se dan en S/T.",
+      "afirmaciones": [
+        "mod-st-01"
+      ]
+    },
+    {
+      "id": "q-mod-03",
+      "enunciado": "¿Existe un modo T (temporizado puro) independiente en el V60/V60 Plus?",
+      "correcta": "No; las respiraciones temporizadas («Prog.») se administran dentro de S/T, PCV, AVAPS y PPV",
+      "incorrectas": [
+        "Sí, se selecciona en la ventana Modos",
+        "Sí, solo en el V60 Plus",
+        "Sí, solo con la opción PPV"
+      ],
+      "explicacion": "Según la Tabla 4-1 del manual, las respiraciones temporizadas son las obligatorias dentro de los otros modos.",
+      "afirmaciones": [
+        "mod-st-03"
+      ]
+    },
+    {
+      "id": "q-mod-04",
+      "enunciado": "En modo CPAP, ¿quién activa todas las respiraciones?",
+      "correcta": "El paciente (disparo y ciclado gestionados por Auto-Trak)",
+      "incorrectas": [
+        "El ventilador, por tiempo",
+        "El ajuste T. Insp.",
+        "La frecuencia de respaldo"
+      ],
+      "explicacion": "En CPAP el ventilador funciona como un sistema de flujo a demanda: el paciente determina temporización y volumen.",
+      "afirmaciones": [
+        "mod-cpap-01"
+      ]
+    },
+    {
+      "id": "q-mod-05",
+      "enunciado": "¿Para qué sirve el ajuste C-Flex?",
+      "correcta": "Reduce la presión al comienzo de la exhalación en CPAP (OFF, 1 a 3)",
+      "incorrectas": [
+        "Aumenta la IPAP durante la inspiración",
+        "Ajusta el nivel de sensibilidad de Auto-Trak",
+        "Aplica una rampa de presión de 5 a 45 minutos"
+      ],
+      "explicacion": "C-Flex mejora la CPAP tradicional aliviando la presión al inicio de la exhalación y volviendo al nivel CPAP antes de que termine.",
+      "afirmaciones": [
+        "mod-cpap-01"
+      ]
+    },
+    {
+      "id": "q-mod-06",
+      "enunciado": "¿Qué garantiza el modo S/T?",
+      "correcta": "La frecuencia programada: si el paciente no dispara en el intervalo fijado, el ventilador administra una respiración obligatoria",
+      "incorrectas": [
+        "Un volumen corriente objetivo mediante ajuste de presión",
+        "Que nunca haya respiraciones obligatorias",
+        "Solo respiraciones espontáneas sin soporte"
+      ],
+      "explicacion": "En S/T, las respiraciones espontáneas con presión de soporte y las obligatorias temporizadas se administran a IPAP.",
+      "afirmaciones": [
+        "mod-st-02"
+      ]
+    },
+    {
+      "id": "q-mod-07",
+      "enunciado": "En S/T, ¿qué cicla una respiración obligatoria (temporizada)?",
+      "correcta": "El tiempo inspiratorio programado (T. Insp.)",
+      "incorrectas": [
+        "Una caída del flujo al 25 %",
+        "El volumen corriente objetivo",
+        "Auto-Trak"
+      ],
+      "explicacion": "Las respiraciones obligatorias se ciclan por T. Insp.; las espontáneas, por los algoritmos de Auto-Trak.",
+      "afirmaciones": [
+        "mod-st-02"
+      ]
+    },
+    {
+      "id": "q-mod-08",
+      "enunciado": "En PCV, ¿qué determina el ciclo a la exhalación de las respiraciones espontáneas?",
+      "correcta": "El T. Insp. (igual que las respiraciones temporizadas)",
+      "incorrectas": [
+        "Auto-Trak",
+        "Una caída del flujo inspiratorio",
+        "El volumen corriente objetivo"
+      ],
+      "explicacion": "En PCV el T. Insp. es el criterio de ciclo para todas las respiraciones, también las activadas por el paciente.",
+      "afirmaciones": [
+        "mod-pc-01"
+      ]
+    },
+    {
+      "id": "q-mod-09",
+      "enunciado": "En PCV, ¿a qué presión se administran las respiraciones?",
+      "correcta": "A la IPAP programada, ya sean activadas por el ventilador o por el paciente",
+      "incorrectas": [
+        "A la EPAP",
+        "A un valor calculado para alcanzar un VT objetivo",
+        "Solo las del paciente a IPAP; las temporizadas a CPAP"
+      ],
+      "explicacion": "El ajuste IPAP define la presión inspiratoria aplicada para todas las respiraciones.",
+      "afirmaciones": [
+        "mod-pc-01"
+      ]
+    },
+    {
+      "id": "q-mod-10",
+      "enunciado": "¿Qué ajusta AVAPS de forma automática?",
+      "correcta": "La presión inspiratoria, entre P Mín y P Máx, para alcanzar el volumen corriente objetivo",
+      "incorrectas": [
+        "La FiO2",
+        "La frecuencia respiratoria",
+        "La EPAP"
+      ],
+      "explicacion": "AVAPS regula la presión aplicada tras una subida inicial para lograr el VT objetivo.",
+      "afirmaciones": [
+        "mod-avaps-01"
+      ]
+    },
+    {
+      "id": "q-mod-11",
+      "enunciado": "¿Qué intervalo de VT objetivo se puede programar en AVAPS?",
+      "correcta": "200 a 2000 ml",
+      "incorrectas": [
+        "50 a 500 ml",
+        "100 a 1000 ml",
+        "500 a 3000 ml"
+      ],
+      "explicacion": "El manual indica 200 a 2000 ml, con P Mín de 5 a 30 cmH2O y P Máx de 6 a 40 cmH2O.",
+      "afirmaciones": [
+        "mod-avaps-01"
+      ]
+    },
+    {
+      "id": "q-mod-12",
+      "enunciado": "Al iniciar AVAPS, ¿qué presión inspiratoria se aplica?",
+      "correcta": "La mayor de: EPAP + VT/60, EPAP + 8 cmH2O y P Mín",
+      "incorrectas": [
+        "La media entre P Mín y P Máx",
+        "Siempre P Máx",
+        "IPAP + 8 cmH2O"
+      ],
+      "explicacion": "El manual define la presión inicial como la mayor de esas tres cantidades (VT en ml, con 60 ml/cmH2O).",
+      "afirmaciones": [
+        "mod-avaps-01"
+      ]
+    },
+    {
+      "id": "q-mod-13",
+      "enunciado": "En AVAPS, la presión objetivo calculada es superior a P Máx. ¿Qué ocurre?",
+      "correcta": "El ventilador limita la presión a P Máx, no alcanza el VT objetivo y muestra un mensaje informativo",
+      "incorrectas": [
+        "Sube P Máx automáticamente",
+        "Salta una alarma roja y cambia a CPAP",
+        "Apaga el ventilador"
+      ],
+      "explicacion": "Se muestra «VT objetivo no alcanzado. P. Máx insuficiente» y la presión queda limitada a P Máx.",
+      "afirmaciones": [
+        "mod-avaps-02"
+      ]
+    },
+    {
+      "id": "q-mod-14",
+      "enunciado": "Según la Tabla 3-1 del manual, ¿en qué modelos está incluido el modo AVAPS?",
+      "correcta": "En el V60 y en el V60 Plus",
+      "incorrectas": [
+        "Solo en el V60 Plus",
+        "Solo en el V60",
+        "Es una opción de pago en ambos"
+      ],
+      "explicacion": "La Tabla 3-1 lo marca como incluido en ambos, aunque el listado de modos de la p. 4-7 lo califica de «opcional»: conviene confirmar la configuración del equipo.",
+      "afirmaciones": [
+        "mod-avaps-03"
+      ]
+    },
+    {
+      "id": "q-mod-15",
+      "enunciado": "¿Qué modelo incluye de serie la terapia de alto flujo (HFT)?",
+      "correcta": "V60 Plus",
+      "incorrectas": [
+        "V60",
+        "Ambos modelos",
+        "Ninguno; no existe terapia de alto flujo en esta plataforma"
+      ],
+      "explicacion": "En el V60 la HFT es opcional; el V60 Plus la incluye de serie.",
+      "afirmaciones": [
+        "mod-avaps-03"
+      ]
+    },
+    {
+      "id": "q-mod-16",
+      "enunciado": "¿Qué caracteriza al modo PPV (opcional)?",
+      "correcta": "La presión suministrada es proporcional al esfuerzo del paciente, con frecuencia de respaldo temporizada",
+      "incorrectas": [
+        "Administra siempre un volumen fijo",
+        "Es un modo de CPAP con rampa",
+        "Solo funciona con circuito activo"
+      ],
+      "explicacion": "PPV usa los ajustes PPV %, E Máx y R Máx; si el paciente no dispara, la frecuencia de respaldo activa una respiración temporizada.",
+      "afirmaciones": [
+        "mod-ppv-01"
+      ]
+    },
+    {
+      "id": "q-mod-17",
+      "enunciado": "¿Desde qué modo se accede a la terapia de alto flujo (HFT)?",
+      "correcta": "Desde el modo En espera",
+      "incorrectas": [
+        "Desde CPAP",
+        "Desde S/T",
+        "Desde AVAPS"
+      ],
+      "explicacion": "La HFT no se considera un modo de administración de respiraciones y solo se accede a ella desde En espera.",
+      "afirmaciones": [
+        "mod-hft-01"
+      ]
+    },
+    {
+      "id": "q-mod-18",
+      "enunciado": "Durante la HFT con flujo ≥ 20 L/min, ¿cuál es el límite máximo de presión del sistema?",
+      "correcta": "45 cmH2O",
+      "incorrectas": [
+        "30 cmH2O",
+        "25 cmH2O",
+        "60 cmH2O"
+      ],
+      "explicacion": "Con flujo < 20 L/min el límite es de 30 cmH2O. Las alarmas de paciente no están disponibles durante la HFT.",
+      "afirmaciones": [
+        "mod-hft-01"
+      ]
+    }
+  ]
+}
