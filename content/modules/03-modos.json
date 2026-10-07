@@ -10,11 +10,13 @@
       "afirmaciones": [
         {
           "id": "mod-cpap-01",
-          "texto": "En CPAP se aplica una presión continua; no hay soporte inspiratorio, por lo que la ventilación depende por completo del esfuerzo del paciente.",
+          "texto": "En CPAP el ventilador funciona como un sistema de flujo a demanda: el paciente activa todas las respiraciones y determina su temporización y su volumen, y el disparo y el ciclado los gestiona Auto-Trak. El ajuste opcional C-Flex reduce la presión al inicio de la exhalación (OFF, 1 a 3).",
           "fuentes": [
-            "definicion"
+            "manual-v60"
           ],
-          "pendienteRevision": false
+          "pendienteRevision": false,
+          "verificacion": "directa",
+          "notas": "Manual de usuario V60/V60 Plus (ref. 1152841_ES), pp. 4-8 y 6-24."
         },
         {
           "id": "mod-cpap-02",
@@ -35,33 +37,33 @@
       "afirmaciones": [
         {
           "id": "mod-st-01",
-          "texto": "Modo S (espontáneo): cada ciclo lo dispara el paciente y el equipo lo cicla; no hay frecuencia de respaldo.",
+          "texto": "El V60/V60 Plus no tiene un modo S (espontáneo) independiente: sus modos son CPAP, S/T, PCV, AVAPS y, opcionalmente, PPV. Las respiraciones espontáneas con presión de soporte se administran dentro de S/T.",
           "fuentes": [
-            "definicion",
             "manual-v60"
           ],
-          "pendienteRevision": true,
-          "notas": "Confirmar si el V60 ofrece un modo S independiente o si se obtiene dentro de S/T."
+          "pendienteRevision": false,
+          "notas": "Manual de usuario V60/V60 Plus (ref. 1152841_ES), pp. 4-7 y 6-24.",
+          "verificacion": "directa"
         },
         {
           "id": "mod-st-02",
-          "texto": "Modo S/T: el paciente dispara y cicla los ciclos espontáneos y, si no respira antes del intervalo programado, el equipo administra un ciclo temporizado a la frecuencia de seguridad.",
+          "texto": "En S/T se garantiza la frecuencia programada: admite respiraciones espontáneas con presión de soporte, activadas y ciclo por Auto-Trak, y respiraciones obligatorias temporizadas, todas a IPAP. Si el paciente no activa una respiración en el intervalo determinado por el ajuste de Frecuencia, el ventilador administra una respiración obligatoria cuyo ciclo lo marca T. Insp.",
           "fuentes": [
-            "definicion",
             "manual-v60"
           ],
-          "pendienteRevision": true,
-          "notas": "Fuente identificada y existente en PubMed, pero el texto completo no se pudo consultar (acceso bloqueado): recomendación sin contrastar."
+          "pendienteRevision": false,
+          "notas": "Manual de usuario V60/V60 Plus (ref. 1152841_ES), pp. 4-8 y 4-10.",
+          "verificacion": "directa"
         },
         {
           "id": "mod-st-03",
-          "texto": "Modo T (temporizado): todos los ciclos se inician por tiempo según la frecuencia programada, con independencia del esfuerzo del paciente.",
+          "texto": "El V60/V60 Plus no tiene un modo T (temporizado puro) independiente; las respiraciones temporizadas (indicadas como \"Prog.\") se administran como obligatorias dentro de S/T, PCV, AVAPS y PPV.",
           "fuentes": [
-            "definicion",
             "manual-v60"
           ],
-          "pendienteRevision": true,
-          "notas": "Confirmar disponibilidad de modo T en el V60."
+          "pendienteRevision": false,
+          "notas": "Manual de usuario V60/V60 Plus (ref. 1152841_ES), pp. 4-7 y 4-8.",
+          "verificacion": "directa"
         }
       ]
     },
@@ -71,12 +73,13 @@
       "afirmaciones": [
         {
           "id": "mod-pc-01",
-          "texto": "En PC los ciclos se inician por tiempo o por el paciente y se ciclan por el tiempo inspiratorio programado, no por flujo.",
+          "texto": "En PCV todas las respiraciones se administran a IPAP, controladas por presión, ya sean activadas por el ventilador (a la frecuencia programada) o por el paciente (Auto-Trak), y T. Insp. es el criterio de ciclo para todas las respiraciones, incluidas las espontáneas.",
           "fuentes": [
-            "definicion",
             "manual-v60"
           ],
-          "pendienteRevision": true
+          "pendienteRevision": false,
+          "verificacion": "directa",
+          "notas": "Manual de usuario V60/V60 Plus (ref. 1152841_ES), pp. 4-8 y 4-9."
         }
       ]
     },
@@ -86,20 +89,49 @@
       "afirmaciones": [
         {
           "id": "mod-avaps-01",
-          "texto": "AVAPS ajusta automáticamente la presión de soporte entre un mínimo y un máximo programados para alcanzar un volumen corriente objetivo.",
+          "texto": "AVAPS administra un volumen corriente objetivo (VT, 200 a 2000 ml) ajustando continuamente la presión inspiratoria entre P Mín (5 a 30 cmH2O) y P Máx (6 a 40 cmH2O), con respiraciones obligatorias temporizadas y espontáneas con presión de soporte. Al iniciar aplica la mayor de: EPAP + VT/60 ml/cmH2O, EPAP + 8 cmH2O o P Mín.",
           "fuentes": [
             "manual-v60"
           ],
-          "pendienteRevision": true,
-          "notas": "Confirmar disponibilidad según versión V60 / V60 Plus y los rangos programables."
+          "pendienteRevision": false,
+          "notas": "Manual de usuario V60/V60 Plus (ref. 1152841_ES), pp. 4-11 y 6-25 a 6-27.",
+          "verificacion": "directa"
         },
         {
           "id": "mod-avaps-02",
-          "texto": "AVAPS no compensa fugas no intencionales de forma ilimitada: con fugas muy elevadas el volumen estimado puede ser poco fiable.",
+          "texto": "Si la presión objetivo calculada queda fuera del intervalo P Mín–P Máx, no se puede alcanzar el volumen objetivo: el ventilador limita la presión a P Mín o P Máx y muestra un mensaje informativo (\"VT objetivo excedido. P. Mín demasiado alta\" o \"VT objetivo no alcanzado. P. Máx insuficiente\").",
           "fuentes": [
             "manual-v60"
           ],
-          "pendienteRevision": true
+          "pendienteRevision": false,
+          "verificacion": "directa",
+          "notas": "Manual de usuario V60/V60 Plus (ref. 1152841_ES), pp. 4-11, 9-8."
+        },
+        {
+          "id": "mod-avaps-03",
+          "texto": "La Tabla 3-1 indica que el modo AVAPS está incluido en el V60 y en el V60 Plus; PPV, Auto-Trak+ y HFT son opcionales en el V60 (HFT viene de serie en el V60 Plus). Sin embargo, el listado de modos de la p. 4-7 marca AVAPS como \"(opcional)\".",
+          "fuentes": [
+            "manual-v60"
+          ],
+          "pendienteRevision": false,
+          "verificacion": "directa",
+          "notas": "Manual de usuario V60/V60 Plus (ref. 1152841_ES), pp. 3-3 y 4-7. Contradicción interna del manual: confirmar con el equipo y la configuración del centro."
+        }
+      ]
+    },
+    {
+      "id": "ppv",
+      "titulo": "PPV (opcional)",
+      "afirmaciones": [
+        {
+          "id": "mod-ppv-01",
+          "texto": "PPV (ventilación con presión proporcional, opcional) administra respiraciones activadas por el paciente con una presión proporcional a su esfuerzo (ajustes PPV %, E Máx y R Máx), con una frecuencia de respaldo temporizada si el paciente no activa respiraciones.",
+          "fuentes": [
+            "manual-v60"
+          ],
+          "pendienteRevision": false,
+          "verificacion": "directa",
+          "notas": "Manual de usuario V60/V60 Plus (ref. 1152841_ES), pp. 4-12 y 4-13."
         }
       ]
     }

@@ -10,28 +10,33 @@
       "afirmaciones": [
         {
           "id": "man-lim-01",
-          "texto": "El filtro de entrada y los filtros de circuito se revisan y sustituyen con la periodicidad indicada por el fabricante.",
+          "texto": "Filtros: el filtro de la toma de aire se inspecciona cada mes y se sustituye si es necesario; el filtro del ventilador de refrigeración se inspecciona cada mes y, si está sucio, se lava o enjuaga y se seca por completo antes de reinstalarlo; el filtro antibacteriano del flujo principal se sustituye entre pacientes y a intervalos regulares según las directrices del centro y del fabricante.",
           "fuentes": [
             "manual-v60"
           ],
-          "pendienteRevision": true,
-          "notas": "Añadir periodicidades concretas solo desde el manual."
+          "pendienteRevision": false,
+          "notas": "Manual de usuario V60/V60 Plus (ref. 1152841_ES), pp. 10-4 y 10-5.",
+          "verificacion": "directa"
         },
         {
           "id": "man-lim-02",
-          "texto": "Entre pacientes, el circuito y la interfase desechables se sustituyen y el equipo se limpia y desinfecta con los productos y el procedimiento autorizados por el fabricante y por el servicio de control de infecciones del centro.",
+          "texto": "Limpieza del exterior y de la pantalla táctil: paño empapado sin gotear (no pulverizar líquidos sobre las superficies), con agua y jabón con detergente aprobado; desinfección con lejía al 5 % diluida 1:9 (2 min de contacto) o peróxido de hidrógeno al 3 % (15 min), con enjuague posterior. No se debe esterilizar el ventilador en autoclave. Los accesorios de un solo paciente no necesitan limpieza ni desinfección; el circuito se trata según el fabricante.",
           "fuentes": [
             "manual-v60"
           ],
-          "pendienteRevision": true
+          "pendienteRevision": false,
+          "verificacion": "directa",
+          "notas": "Manual de usuario V60/V60 Plus (ref. 1152841_ES), pp. 10-1 a 10-3."
         },
         {
           "id": "man-lim-03",
-          "texto": "Las comprobaciones periódicas y el mantenimiento preventivo los realiza el servicio técnico autorizado según el plan del fabricante.",
+          "texto": "La vida útil prevista del equipo es de 10 años. Mantenimiento preventivo: cada año, mantenimiento del ventilador y revisión y prueba de la batería de reserva (por personal autorizado); la batería de reserva se sustituye cada 5 años. Solo el personal autorizado debe reemplazar piezas internas.",
           "fuentes": [
             "manual-v60"
           ],
-          "pendienteRevision": true
+          "pendienteRevision": false,
+          "verificacion": "directa",
+          "notas": "Manual de usuario V60/V60 Plus (ref. 1152841_ES), pp. 10-4 y 10-5."
         }
       ]
     }

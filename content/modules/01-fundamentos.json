@@ -111,13 +111,13 @@
       "afirmaciones": [
         {
           "id": "fun-con-01",
-          "texto": "Contraindicaciones absolutas habituales: parada cardiorrespiratoria, obstrucción de vía aérea superior, imposibilidad de ajustar la interfase (cirugía o traumatismo facial) y neumotórax no drenado.",
+          "texto": "El manual del V60/V60 Plus enumera como contraindicaciones: carencia de impulso respiratorio espontáneo; incapacidad de mantener las vías respiratorias permeables o de evacuar adecuadamente las secreciones; riesgo de aspirar contenido gástrico; sinusitis aguda u otitis media; hipotensión; tos ferina no tratada; y epistaxis.",
           "fuentes": [
-            "bts-ics-2016",
-            "separ"
+            "manual-v60"
           ],
-          "pendienteRevision": true,
-          "notas": "Clasificar según el documento SEPAR concreto; distinguir absolutas y relativas."
+          "pendienteRevision": false,
+          "notas": "Manual de usuario V60/V60 Plus (ref. 1152841_ES), p. 3-2. Es la lista del fabricante para este equipo; difiere de las contraindicaciones de las guías (ver fun-con-02).",
+          "verificacion": "directa"
         },
         {
           "id": "fun-con-02",
@@ -125,7 +125,8 @@
           "fuentes": [
             "separ"
           ],
-          "pendienteRevision": true
+          "pendienteRevision": true,
+          "notas": "Lista basada en conocimiento general/SEPAR, sin contrastar. Difiere de la del manual (fun-con-01): el manual incluye hipotensión y no menciona otras entidades de esta lista; usar la del manual para el equipo y la guía para la indicación clínica."
         },
         {
           "id": "fun-con-03",

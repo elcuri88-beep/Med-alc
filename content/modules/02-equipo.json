@@ -10,29 +10,33 @@
       "afirmaciones": [
         {
           "id": "equ-pan-01",
-          "texto": "El V60 dispone de pantalla táctil con valores numéricos, curvas y alarmas, e indicadores luminosos de estado de alimentación y alarma.",
+          "texto": "El V60/V60 Plus tiene una pantalla táctil en color de 12,1 pulgadas, un botón Aceptar (con anillo de navegación en las versiones anteriores) y un panel de teclas; muestra los parámetros monitorizados como números y como ondas en tiempo real, y dispone de un LED de alarma en el panel frontal.",
           "fuentes": [
             "manual-v60"
           ],
-          "pendienteRevision": true,
-          "notas": "Describir con la nomenclatura exacta del manual (botones, LEDs, pantallas de configuración)."
+          "pendienteRevision": false,
+          "notas": "Manual de usuario V60/V60 Plus (ref. 1152841_ES), pp. 3-4 y 9-2.",
+          "verificacion": "directa"
         },
         {
           "id": "equ-pan-02",
-          "texto": "El oxígeno se conecta a la entrada de O2 de baja presión del equipo; la FiO2 resultante depende del flujo de O2, de las fugas y de las presiones.",
+          "texto": "El oxígeno se conecta a la entrada de alta presión de la parte posterior del equipo, que lo mezcla con aire ambiental con un mezclador; la concentración de O2 se puede ajustar del 21 al 100 % en todos los modos. El manual indica usar solo oxígeno de uso médico y verificar la concentración administrada con un monitor de oxígeno externo.",
           "fuentes": [
             "manual-v60"
           ],
-          "pendienteRevision": true,
-          "notas": "Confirmar tipo de entrada, flujo máximo y existencia de sensor de O2 según modelo."
+          "pendienteRevision": false,
+          "notas": "Manual de usuario V60/V60 Plus (ref. 1152841_ES), pp. 4-2, 4-3, 5-1 y 6-26.",
+          "verificacion": "directa"
         },
         {
           "id": "equ-pan-03",
-          "texto": "El aire de entrada pasa por un filtro que debe revisarse y sustituirse según las instrucciones del fabricante.",
+          "texto": "El aire entra por un filtro de toma de aire (que se inspecciona cada mes y se sustituye si es necesario, usando un filtro aprobado por Philips); el filtro del ventilador de refrigeración se limpia. Debe instalarse siempre un filtro de bacterias en la salida de gas del paciente.",
           "fuentes": [
             "manual-v60"
           ],
-          "pendienteRevision": true
+          "pendienteRevision": false,
+          "verificacion": "directa",
+          "notas": "Manual de usuario V60/V60 Plus (ref. 1152841_ES), pp. 9-10, 10-4 y 10-5."
         }
       ]
     },
@@ -42,29 +46,43 @@
       "afirmaciones": [
         {
           "id": "equ-cir-01",
-          "texto": "Circuito pasivo: una sola rama con puerto espiratorio (fuga intencional) por el que se elimina el gas espirado; es la configuración habitual en VMNI.",
+          "texto": "El V60/V60 Plus usa un circuito de paciente de un solo brazo con puerto de espiración (pasivo), que evacua de forma continua el gas del circuito durante la inspiración y la espiración para reducir al mínimo la reinhalación y garantizar la eliminación del CO2.",
           "fuentes": [
             "manual-v60"
           ],
-          "pendienteRevision": true
+          "pendienteRevision": false,
+          "verificacion": "directa",
+          "notas": "Manual de usuario V60/V60 Plus (ref. 1152841_ES), pp. 4-2 y 9-1."
         },
         {
           "id": "equ-cir-02",
-          "texto": "Circuito activo: tiene válvula espiratoria controlada por el equipo; permite medir volúmenes espirados con más fiabilidad y se usa cuando se quiere reducir la reinhalación o controlar mejor la espiración.",
+          "texto": "El manual del V60/V60 Plus no describe un circuito \"activo\" con válvula espiratoria controlada por el equipo: el ventilador se utiliza con circuito de un brazo y puerto de espiración. La distinción pasivo/activo de la especificación inicial no consta en este manual.",
           "fuentes": [
             "manual-v60"
           ],
-          "pendienteRevision": true,
-          "notas": "Revisar indicaciones y limitaciones exactas (monitorización de volumen, compatibilidad de modos y de AVAPS)."
+          "pendienteRevision": false,
+          "notas": "Manual de usuario V60/V60 Plus (ref. 1152841_ES), pp. 4-2 y 9-1. Mantener o eliminar esta distinción en la app según criterio del revisor clínico.",
+          "verificacion": "directa"
         },
         {
           "id": "equ-cir-03",
-          "texto": "Con circuito pasivo existe riesgo de reinhalación de CO2 si la EPAP es demasiado baja para lavar el circuito.",
+          "texto": "Para reducir la posibilidad de reinhalación de CO2, el manual indica aumentar la EPAP (a más presión, más flujo por el puerto de exhalación, que purga el CO2 del circuito) y tener presente que la reinhalación aumenta con tiempos inspiratorios más largos y con volúmenes corrientes mayores.",
           "fuentes": [
             "manual-v60"
           ],
-          "pendienteRevision": true,
-          "notas": "Verificar EPAP mínima recomendada por el fabricante."
+          "pendienteRevision": false,
+          "notas": "Manual de usuario V60/V60 Plus (ref. 1152841_ES), p. 3-2.",
+          "verificacion": "directa"
+        },
+        {
+          "id": "equ-cir-04",
+          "texto": "El ventilador necesita que se registre el tipo de mascarilla (ET/Traq, Fuga 1, Fuga 2 u Otra) y el puerto de exhalación (FEP, PED, Whisper Swivel, Otro o Ninguno) para conocer la fuga intencional; con el puerto \"Otro\" es obligatoria la prueba del puerto de exhalación. Si no se ejecuta o falla, se muestra \"Fuga tot.\" en lugar de \"Fuga pac.\".",
+          "fuentes": [
+            "manual-v60"
+          ],
+          "pendienteRevision": false,
+          "verificacion": "directa",
+          "notas": "Manual de usuario V60/V60 Plus (ref. 1152841_ES), pp. 6-15 a 6-17."
         }
       ]
     },
@@ -92,12 +110,13 @@
         },
         {
           "id": "equ-int-03",
-          "texto": "El casco (helmet) tiene espacio muerto elevado y requiere presiones y ajustes específicos; su uso con el V60 debe confirmarse con el fabricante y el protocolo local.",
+          "texto": "El manual del V60/V60 Plus no incluye el casco (helmet) entre las interfaces descritas; las mascarillas del manual son oronasales (AF541, AF531, PerformaTrak) y la facial total PerforMax, además de tubo endotraqueal o de traqueotomía. Su uso con el casco debe confirmarse con el fabricante.",
           "fuentes": [
-            "ers-ats-2017",
             "manual-v60"
           ],
-          "pendienteRevision": true
+          "pendienteRevision": false,
+          "verificacion": "directa",
+          "notas": "Manual de usuario V60/V60 Plus (ref. 1152841_ES), p. 6-15."
         },
         {
           "id": "equ-int-04",

@@ -10,36 +10,43 @@
       "afirmaciones": [
         {
           "id": "pue-chk-01",
-          "texto": "1. Montar el circuito (pasivo o activo según el caso) y colocar el filtro.",
+          "texto": "1. Montar el circuito del paciente con el filtro de bacterias del flujo principal (inspiratorio), la línea de presión proximal y el conector en T del sensor de oxígeno, además del humidificador y el nebulizador si se desean.",
           "fuentes": [
             "manual-v60"
           ],
-          "pendienteRevision": true
+          "pendienteRevision": false,
+          "verificacion": "directa",
+          "notas": "Manual de usuario V60/V60 Plus (ref. 1152841_ES), p. 5-4."
         },
         {
           "id": "pue-chk-02",
-          "texto": "2. Conectar a la red eléctrica y al oxígeno y encender el equipo; realizar las comprobaciones que indique el manual.",
+          "texto": "2. Conectar a la red eléctrica y a una fuente de oxígeno médico de alta presión, y encender el equipo. Al encender, arranca con el modo y los ajustes activos antes de apagarse: hay que comprobarlos y cambiarlos si hace falta.",
           "fuentes": [
             "manual-v60"
           ],
-          "pendienteRevision": true
+          "pendienteRevision": false,
+          "verificacion": "directa",
+          "notas": "Manual de usuario V60/V60 Plus (ref. 1152841_ES), pp. 5-1 y 6-1."
         },
         {
           "id": "pue-chk-03",
-          "texto": "3. Elegir la interfase y la talla; ajustar el arnés para limitar la fuga sin lesionar la piel.",
+          "texto": "3. Elegir la interfase y el puerto de exhalación y registrarlos en el ventilador (pestaña Menú › Masc./Puerto); ejecutar la prueba del puerto de exhalación si el puerto es \"Otro\".",
           "fuentes": [
-            "consenso-docente"
+            "manual-v60"
           ],
-          "pendienteRevision": true
+          "pendienteRevision": false,
+          "verificacion": "directa",
+          "notas": "Manual de usuario V60/V60 Plus (ref. 1152841_ES), pp. 6-15 a 6-17."
         },
         {
           "id": "pue-chk-04",
-          "texto": "4. Programar el modo y los parámetros iniciales según la indicación y el protocolo del centro.",
+          "texto": "4. Programar: abrir la ventana Modos, elegir el modo, ajustar los parámetros (los valores modificados aparecen en amarillo) y seleccionar \"Activar modo\" para aplicar. Antes de conectar a un paciente hay que realizar siempre la comprobación completa previa al funcionamiento y las pruebas de alarma; si falla alguna, no se debe usar el equipo.",
           "fuentes": [
-            "bts-ics-2016",
             "manual-v60"
           ],
-          "pendienteRevision": true
+          "pendienteRevision": false,
+          "verificacion": "directa",
+          "notas": "Manual de usuario V60/V60 Plus (ref. 1152841_ES), pp. 5-8 a 5-10, 6-1 y 6-2. Los valores iniciales concretos dependen de la indicación y del protocolo del centro (no los fija el manual)."
         },
         {
           "id": "pue-chk-05",
@@ -56,6 +63,16 @@
             "consenso-docente"
           ],
           "pendienteRevision": true
+        },
+        {
+          "id": "pue-chk-07",
+          "texto": "Las pruebas de alarma previas a la conexión del paciente incluyen: presión inspiratoria alta, volumen corriente bajo, desconexión paciente y circuito del paciente ocluido.",
+          "fuentes": [
+            "manual-v60"
+          ],
+          "pendienteRevision": false,
+          "verificacion": "directa",
+          "notas": "Manual de usuario V60/V60 Plus (ref. 1152841_ES), índice y pp. 5-9 y 5-10."
         }
       ]
     }

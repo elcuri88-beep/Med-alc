@@ -10,11 +10,13 @@
       "afirmaciones": [
         {
           "id": "mon-vig-01",
-          "texto": "En el equipo: presiones, volumen corriente estimado, frecuencia, fuga y alarmas activas.",
+          "texto": "En el equipo: el V60 muestra los parámetros monitorizados como números y como ondas en tiempo real (presión, flujo y volumen), con alarmas activas en pantalla. Los volúmenes mostrados son estimados y pueden ser inexactos con fugas significativas.",
           "fuentes": [
             "manual-v60"
           ],
-          "pendienteRevision": true
+          "pendienteRevision": false,
+          "verificacion": "directa",
+          "notas": "Manual de usuario V60/V60 Plus (ref. 1152841_ES), pp. 3-4, 8-3 y 9-7."
         },
         {
           "id": "mon-vig-02",

@@ -10,20 +10,23 @@
       "afirmaciones": [
         {
           "id": "ala-pri-01",
-          "texto": "Por convención (IEC 60601-1-8) la prioridad alta se señala en rojo, la media en amarillo y la baja en cian o amarillo.",
-          "fuentes": [
-            "iec-60601-1-8"
-          ],
-          "pendienteRevision": true,
-          "notas": "Norma IEC 60601-1-8 no consultada (de pago); convención de colores recordada de memoria, sin contrastar."
-        },
-        {
-          "id": "ala-pri-02",
-          "texto": "La clasificación de cada alarma del V60 en alta, media o baja debe cotejarse con el manual del equipo.",
+          "texto": "En el V60/V60 Plus la alarma de prioridad alta se muestra en rojo (LED parpadeante y secuencia repetida de 5 tonos); la de prioridad baja, en amarillo (tono intermitente cada unos 20 s); y los mensajes informativos, en azul.",
           "fuentes": [
             "manual-v60"
           ],
-          "pendienteRevision": true
+          "pendienteRevision": false,
+          "notas": "Manual de usuario V60/V60 Plus (ref. 1152841_ES), p. 9-3.",
+          "verificacion": "directa"
+        },
+        {
+          "id": "ala-pri-02",
+          "texto": "Frec. alta, Frec. baja, Ventilación minuto baja, Volumen corriente alto y Volumen corriente bajo empiezan como alarma de prioridad baja y pasan a alta si la condición persiste más de 60 segundos. Frec. baja es de prioridad alta desde el principio si el ajuste es ≤ 4 rpm y no hay respiraciones durante más de 60/ajuste, o si es > 4 rpm y no hay respiraciones durante más de 15 s.",
+          "fuentes": [
+            "manual-v60"
+          ],
+          "pendienteRevision": false,
+          "verificacion": "directa",
+          "notas": "Manual de usuario V60/V60 Plus (ref. 1152841_ES), pp. 9-10 y 9-15."
         }
       ]
     },
@@ -33,60 +36,103 @@
       "afirmaciones": [
         {
           "id": "ala-hab-01",
-          "texto": "Desconexión del circuito: comprobar primero al paciente, después las conexiones y la mascarilla, y reconectar; si persiste, cambiar el circuito.",
+          "texto": "Desconexión paciente (prioridad alta, se activa a los 11 segundos): comprobar el estado del paciente, volver a conectar el circuito, confirmar que los ajustes del ventilador y de la alarma son adecuados y, si persiste, proporcionar ventilación alternativa y avisar para reparar el ventilador.",
           "fuentes": [
-            "consenso-docente",
             "manual-v60"
           ],
-          "pendienteRevision": true
+          "pendienteRevision": false,
+          "verificacion": "directa",
+          "notas": "Manual de usuario V60/V60 Plus (ref. 1152841_ES), p. 9-10."
         },
         {
           "id": "ala-hab-02",
-          "texto": "Fuga excesiva: reposicionar o reajustar la mascarilla, revisar la talla, comprobar el circuito y valorar otra interfase.",
-          "fuentes": [
-            "consenso-docente"
-          ],
-          "pendienteRevision": true
-        },
-        {
-          "id": "ala-hab-03",
-          "texto": "Volumen minuto o volumen corriente bajo: valorar fugas, esfuerzo del paciente, secreciones y necesidad de aumentar presión de soporte o FR.",
-          "fuentes": [
-            "consenso-docente"
-          ],
-          "pendienteRevision": true
-        },
-        {
-          "id": "ala-hab-04",
-          "texto": "Apnea: comprobar si el paciente respira y está despierto; si no hay esfuerzo, asegurar la ventilación y avisar al médico.",
-          "fuentes": [
-            "consenso-docente"
-          ],
-          "pendienteRevision": true
-        },
-        {
-          "id": "ala-hab-05",
-          "texto": "Presión alta o baja: buscar obstrucción del circuito, tos, secreciones o fuga.",
-          "fuentes": [
-            "consenso-docente"
-          ],
-          "pendienteRevision": true
-        },
-        {
-          "id": "ala-hab-06",
-          "texto": "Fallo de alimentación: comprobar el cable y la batería y conectar un equipo alternativo si no se restablece de inmediato.",
+          "texto": "Fuga baja-riesgo reinhalación CO2 (prioridad alta): comprobar al paciente, buscar puertos de exhalación ocluidos y revisar los ajustes de interfaz y puerto; si no hay oclusión y persiste, aumentar el flujo de referencia agregando una fuga o aumentando la EPAP si es posible, o pasar a un nebulizador apropiado.",
           "fuentes": [
             "manual-v60"
           ],
-          "pendienteRevision": true
+          "pendienteRevision": false,
+          "verificacion": "directa",
+          "notas": "Manual de usuario V60/V60 Plus (ref. 1152841_ES), p. 9-11. El manual no tiene una alarma llamada \"fuga excesiva\"."
+        },
+        {
+          "id": "ala-hab-03",
+          "texto": "Ventilación minuto baja y Volumen corriente bajo (prioridad baja, pasan a alta tras 60 s): comprobar el estado del paciente, confirmar los ajustes del ventilador y de la alarma y, si persiste, proporcionar ventilación alternativa. El manual advierte que la lectura de VT espirado estimado puede ser inexacta con fugas significativas.",
+          "fuentes": [
+            "manual-v60"
+          ],
+          "pendienteRevision": false,
+          "verificacion": "directa",
+          "notas": "Manual de usuario V60/V60 Plus (ref. 1152841_ES), pp. 9-7 y 9-15."
+        },
+        {
+          "id": "ala-hab-04",
+          "texto": "El V60/V60 Plus no tiene una alarma \"Apnea\" como tal; la ausencia de respiraciones se detecta con la alarma Frec. baja (ajustable de 1 a 89 rpm).",
+          "fuentes": [
+            "manual-v60"
+          ],
+          "pendienteRevision": false,
+          "verificacion": "directa",
+          "notas": "Manual de usuario V60/V60 Plus (ref. 1152841_ES), pp. 6-27 y 9-10."
+        },
+        {
+          "id": "ala-hab-05",
+          "texto": "Presión inspiratoria alta (PIA, ajustable 5–50 cmH2O, prioridad alta): el ventilador pasa a exhalación. Presión inspiratoria baja (PIB, OFF–40 cmH2O, prioridad alta). En S/T y PCV el manual indica ajustar la PIB entre 3 y 5 cmH2O por debajo de la IPAP, para que avise de un fallo de activación o de una fuga excesiva; PIB T (5–60 s) es el retardo de la alarma.",
+          "fuentes": [
+            "manual-v60"
+          ],
+          "pendienteRevision": false,
+          "verificacion": "directa",
+          "notas": "Manual de usuario V60/V60 Plus (ref. 1152841_ES), pp. 6-27, 6-28, 9-13 y 9-14."
+        },
+        {
+          "id": "ala-hab-06",
+          "texto": "Si falla la alimentación de CA y no hay batería de reserva (o está agotada), suena una alarma visual y acústica durante al menos 2 minutos: hay que interrumpir el uso y dar ventilación alternativa, porque con puertos de exhalación pasiva sin energía no llega suficiente aire por el circuito y puede haber reinhalación. Batería int. baja (prioridad alta): quedan unos 15 minutos de funcionamiento.",
+          "fuentes": [
+            "manual-v60"
+          ],
+          "pendienteRevision": false,
+          "verificacion": "directa",
+          "notas": "Manual de usuario V60/V60 Plus (ref. 1152841_ES), pp. 9-1 y 9-8."
         },
         {
           "id": "ala-hab-07",
-          "texto": "Frecuencia alta: valorar taquipnea por fracaso de la VMNI, autodisparo o ansiedad.",
+          "texto": "Frec. alta (ajustable de 5 a 90 rpm): prioridad baja si la FR medida supera el ajuste, y alta si persiste más de 60 s. Acción del manual: comprobar el estado del paciente, confirmar ajustes y alarma y, si persiste, proporcionar ventilación alternativa.",
           "fuentes": [
-            "consenso-docente"
+            "manual-v60"
           ],
-          "pendienteRevision": true
+          "pendienteRevision": false,
+          "verificacion": "directa",
+          "notas": "Manual de usuario V60/V60 Plus (ref. 1152841_ES), pp. 6-27 y 9-10. Las causas probables (fracaso de la VMNI, autodisparo, ansiedad) de la versión anterior no constan en el manual y se han retirado."
+        },
+        {
+          "id": "ala-hab-08",
+          "texto": "Circuito del paciente ocluido (prioridad alta; presión proximal y flujo bajos): comprobar al paciente, buscar acumulación de líquido u obstáculos en el circuito y un filtro bloqueado, y confirmar los ajustes. Desconectar línea de presión proximal (prioridad alta): volver a conectarla.",
+          "fuentes": [
+            "manual-v60"
+          ],
+          "pendienteRevision": false,
+          "verificacion": "directa",
+          "notas": "Manual de usuario V60/V60 Plus (ref. 1152841_ES), p. 9-9."
+        },
+        {
+          "id": "ala-hab-09",
+          "texto": "Oxígeno no disponible, Presión suministro O2 baja (< 30 psig; el soporte de O2 finaliza por debajo de 18 psig) y Presión suministro O2 alta (> 92 psig) son alarmas de prioridad alta: comprobar al paciente, la fuente de O2 y, si persiste, ventilación alternativa.",
+          "fuentes": [
+            "manual-v60"
+          ],
+          "pendienteRevision": false,
+          "verificacion": "directa",
+          "notas": "Manual de usuario V60/V60 Plus (ref. 1152841_ES), pp. 9-12 y 9-14."
+        },
+        {
+          "id": "ala-hab-10",
+          "texto": "Respuesta general a una alarma: acercarse de inmediato al paciente, garantizar una ventilación suficiente y eficaz, silenciar la alarma si es posible (el silencio dura 2 minutos) y corregir la condición según la tabla de alarmas. Vent. inoperativo (LED fijo, prioridad alta) desactiva el flujo de O2 y el soplador: hay que garantizar de inmediato una ventilación alternativa.",
+          "fuentes": [
+            "manual-v60"
+          ],
+          "pendienteRevision": false,
+          "verificacion": "directa",
+          "notas": "Manual de usuario V60/V60 Plus (ref. 1152841_ES), pp. 9-1, 9-3 y 9-5."
         }
       ]
     },

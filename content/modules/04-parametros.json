@@ -28,27 +28,43 @@
         },
         {
           "id": "par-pre-03",
-          "texto": "El tiempo inspiratorio (mínimo y máximo) acota la duración de la inspiración en modos con ciclado por flujo.",
+          "texto": "T. Insp. (0,30 a 3,00 s) es el criterio de ciclo de las respiraciones temporizadas en S/T, AVAPS y PCV, y también de las espontáneas en PCV; en S/T y AVAPS el ciclado de las respiraciones espontáneas lo determina Auto-Trak.",
           "fuentes": [
             "manual-v60"
           ],
-          "pendienteRevision": true
+          "pendienteRevision": false,
+          "verificacion": "directa",
+          "notas": "Manual de usuario V60/V60 Plus (ref. 1152841_ES), pp. 4-8 y 6-25 (Tabla 4-1). El manual no describe un tiempo inspiratorio mínimo y máximo programables (se retira la formulación anterior)."
         },
         {
           "id": "par-pre-04",
-          "texto": "El rise time determina la rapidez con que se alcanza la IPAP: un rise time corto puede ser incómodo, uno largo puede acortar el tiempo efectivo de presión.",
+          "texto": "Subida (tiempo de subida) es la velocidad a la que se eleva la presión inspiratoria hasta la IPAP objetivo (1 a 5; 1 es la más rápida). Si el tiempo de subida es insuficiente para alcanzar la IPAP objetivo, se modifica el ajuste de Subida o de T. Insp.",
           "fuentes": [
             "manual-v60"
           ],
-          "pendienteRevision": true
+          "pendienteRevision": false,
+          "verificacion": "directa",
+          "notas": "Manual de usuario V60/V60 Plus (ref. 1152841_ES), p. 6-26."
         },
         {
           "id": "par-pre-05",
-          "texto": "La FR de seguridad (backup) debe elegirse para asegurar ventilación si el paciente deja de disparar.",
+          "texto": "En S/T, PCV y AVAPS la Frecuencia programada es la de respaldo: si el paciente no activa una respiración en el intervalo determinado por ese ajuste, el ventilador administra una respiración obligatoria.",
           "fuentes": [
-            "consenso-docente"
+            "manual-v60"
           ],
-          "pendienteRevision": true
+          "pendienteRevision": false,
+          "verificacion": "directa",
+          "notas": "Manual de usuario V60/V60 Plus (ref. 1152841_ES), pp. 4-9 a 4-11."
+        },
+        {
+          "id": "par-pre-06",
+          "texto": "Intervalos programables: IPAP 4–40 cmH2O; EPAP y CPAP 4–25 cmH2O (la EPAP debe ser ≤ IPAP); T. Insp. 0,30–3,00 s; Frecuencia 4–60 rpm (no se permite relación I:E invertida); Subida 1–5 (1 es la más rápida); Tiempo de rampa OFF o 5–45 min; O2 21–100 %.",
+          "fuentes": [
+            "manual-v60"
+          ],
+          "pendienteRevision": false,
+          "verificacion": "directa",
+          "notas": "Manual de usuario V60/V60 Plus (ref. 1152841_ES), pp. 6-24 a 6-26."
         }
       ]
     },
@@ -58,20 +74,23 @@
       "afirmaciones": [
         {
           "id": "par-aut-01",
-          "texto": "Auto-Trak ajusta de forma automática los umbrales de disparo y ciclado según la señal de flujo y compensa las fugas.",
+          "texto": "La sensibilidad Auto-Trak compensa automáticamente las fugas intencionales y no intencionales, mantiene una línea de base estable y ajusta los umbrales de activación y ciclado; el usuario no tiene que ajustar la sensibilidad de disparo/ciclado ni el flujo de línea de base. La opción Auto-Trak+ permite ajustar Trigger (Normal, +1 a +7) y Ciclo E (−2 a −1, Normal, +1 a +6).",
           "fuentes": [
             "manual-v60"
           ],
-          "pendienteRevision": true,
-          "notas": "Verificar nombre exacto (Digital Auto-Trak) y condiciones de funcionamiento."
+          "pendienteRevision": false,
+          "notas": "Manual de usuario V60/V60 Plus (ref. 1152841_ES), pp. 3-4, 4-2, 4-3, 4-6, 6-26 y 6-27.",
+          "verificacion": "directa"
         },
         {
           "id": "par-aut-02",
-          "texto": "La compensación de fugas tiene un límite: con fugas muy elevadas aparecen asincronías y alarma de fuga.",
+          "texto": "Para compensar las fugas, el ventilador necesita conocer la fuga intencional de la mascarilla y el puerto elegidos; recalcula el flujo de línea de base en cada respiración, al final de la exhalación, mediante el ajuste del flujo espiratorio y del volumen corriente. Si no se registran o falla la prueba del puerto, la fuga intencional se desconoce.",
           "fuentes": [
             "manual-v60"
           ],
-          "pendienteRevision": true
+          "pendienteRevision": false,
+          "verificacion": "directa",
+          "notas": "Manual de usuario V60/V60 Plus (ref. 1152841_ES), pp. 4-5, 4-6 y 6-16."
         }
       ]
     },
