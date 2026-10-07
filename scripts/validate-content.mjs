@@ -16,6 +16,8 @@ for (const f of readdirSync(dir).filter((x) => x.endsWith('.json'))) {
       if (!c.fuentes?.length) bad('sin fuentes');
       for (const src of c.fuentes ?? []) if (!ids.has(src)) bad(`fuente desconocida: ${src}`);
       if (c.fuentes?.includes('consenso-docente') && !c.pendienteRevision) bad('consenso-docente debe estar pendiente');
+      if (c.verificacion && !['directa','secundaria'].includes(c.verificacion)) bad('verificacion inválida');
+      if (c.verificacion && !c.notas) bad('verificacion sin nota');
       if (typeof c.pendienteRevision !== 'boolean') bad('falta pendienteRevision');
     }
 }

@@ -10,6 +10,7 @@ export interface Claim {
   texto: string;
   fuentes: string[];
   pendienteRevision: boolean;
+  verificacion?: 'directa' | 'secundaria';
   notas?: string;
 }
 

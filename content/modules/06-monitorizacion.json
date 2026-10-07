@@ -32,12 +32,13 @@
       "afirmaciones": [
         {
           "id": "mon-ree-01",
-          "texto": "Se recomienda una reevaluación clínica y gasométrica precoz (en torno a 1-2 h) tras iniciar la VMNI.",
+          "texto": "Una revisión de 2024 sitúa la reevaluación y la decisión de intubar a 1–2 h del inicio en edema cardiogénico y en agudización de EPOC.",
           "fuentes": [
-            "bts-ics-2016"
+            "acep-emp-2024"
           ],
-          "pendienteRevision": true,
-          "notas": "Confirmar los tiempos exactos que indica la guía."
+          "pendienteRevision": false,
+          "notas": "Fuente secundaria (revisión), no guía. La BTS/ICS (tiempos propios) sigue sin contrastar.",
+          "verificacion": "secundaria"
         },
         {
           "id": "mon-ree-02",
@@ -54,6 +55,16 @@
             "bts-ics-2016"
           ],
           "pendienteRevision": true
+        },
+        {
+          "id": "mon-ree-04",
+          "texto": "Criterios de intubación a 1–2 h en agudización de EPOC según la revisión: fatiga respiratoria a pesar de VMNI óptima, deterioro del nivel de conciencia y acidosis respiratoria grave (pH < 7,2). En edema cardiogénico: shock cardiogénico, deterioro del nivel de conciencia o fatiga respiratoria.",
+          "fuentes": [
+            "acep-emp-2024"
+          ],
+          "pendienteRevision": false,
+          "verificacion": "secundaria",
+          "notas": "Propuesta de los autores de la revisión (fuente secundaria); el umbral pH < 7,2 no consta como criterio de guía. Cotejar con protocolo local."
         }
       ]
     }

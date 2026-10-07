@@ -10,13 +10,14 @@
       "afirmaciones": [
         {
           "id": "fun-ind-01",
-          "texto": "En la agudización de EPOC con acidosis respiratoria hipercápnica, las guías recomiendan VMNI como tratamiento de primera línea además del tratamiento médico.",
+          "texto": "La ERS/ATS recomienda VMNI con dos niveles de presión en la insuficiencia respiratoria aguda con acidosis respiratoria aguda o aguda sobre crónica (pH ≤ 7,35) por agudización de EPOC (recomendación fuerte, certeza alta).",
           "fuentes": [
             "ers-ats-2017",
-            "bts-ics-2016"
+            "acep-emp-2024"
           ],
-          "pendienteRevision": true,
-          "notas": "Fuente identificada y existente en PubMed, pero el texto completo no se pudo consultar (acceso bloqueado): recomendación sin contrastar."
+          "pendienteRevision": false,
+          "notas": "Verificado en fuente secundaria (acep-emp-2024, que cita literalmente la ERS/ATS); falta cotejar con la guía original.",
+          "verificacion": "secundaria"
         },
         {
           "id": "fun-ind-02",
@@ -29,21 +30,25 @@
         },
         {
           "id": "fun-ind-03",
-          "texto": "En el edema agudo de pulmón cardiogénico, la ERS/ATS recomienda tratamiento con CPAP o VMNI con dos niveles de presión.",
+          "texto": "En el edema agudo de pulmón cardiogénico, la ERS/ATS recomienda VMNI con dos niveles de presión o CPAP (recomendación fuerte, certeza moderada).",
           "fuentes": [
-            "ers-ats-2017"
+            "ers-ats-2017",
+            "acep-emp-2024"
           ],
-          "pendienteRevision": true,
-          "notas": "Fuente identificada y existente en PubMed, pero el texto completo no se pudo consultar (acceso bloqueado): recomendación sin contrastar."
+          "pendienteRevision": false,
+          "notas": "Verificado en fuente secundaria (acep-emp-2024, que cita literalmente la ERS/ATS); falta cotejar con la guía original.",
+          "verificacion": "secundaria"
         },
         {
           "id": "fun-ind-04",
-          "texto": "En pacientes inmunodeprimidos con insuficiencia respiratoria aguda, la ERS/ATS sugiere VMNI (recomendación condicional).",
+          "texto": "En pacientes inmunodeprimidos con insuficiencia respiratoria aguda, la ERS/ATS sugiere VMNI precoz (recomendación condicional, certeza moderada).",
           "fuentes": [
-            "ers-ats-2017"
+            "ers-ats-2017",
+            "acep-emp-2024"
           ],
-          "pendienteRevision": true,
-          "notas": "Fuente identificada y existente en PubMed, pero el texto completo no se pudo consultar (acceso bloqueado): recomendación sin contrastar."
+          "pendienteRevision": false,
+          "notas": "Verificado en fuente secundaria (acep-emp-2024, que cita literalmente la ERS/ATS); falta cotejar con la guía original.",
+          "verificacion": "secundaria"
         },
         {
           "id": "fun-ind-05",
@@ -56,12 +61,47 @@
         },
         {
           "id": "fun-ind-06",
-          "texto": "La evidencia es insuficiente para emitir una recomendación general de VMNI en asma agudo, neumonía o insuficiencia respiratoria hipoxémica de novo.",
+          "texto": "Por incertidumbre de la evidencia, la ERS/ATS no ofrece recomendación sobre VMNI en el asma agudo ni en la insuficiencia respiratoria aguda de novo (hipoxémica).",
           "fuentes": [
-            "ers-ats-2017"
+            "ers-ats-2017",
+            "acep-emp-2024"
           ],
-          "pendienteRevision": true,
-          "notas": "Verificar la formulación exacta de cada recomendación (la guía distingue 'sin recomendación' y 'recomendación condicional')."
+          "pendienteRevision": false,
+          "notas": "Verificado en fuente secundaria (acep-emp-2024, que cita literalmente la ERS/ATS); falta cotejar con la guía original. Se ha retirado 'neumonía' del texto original porque no consta en la tabla consultada.",
+          "verificacion": "secundaria"
+        },
+        {
+          "id": "fun-ind-07",
+          "texto": "La ERS/ATS sugiere no usar VMNI en pacientes con hipercapnia sin acidosis en una agudización de EPOC (recomendación condicional, certeza baja).",
+          "fuentes": [
+            "ers-ats-2017",
+            "acep-emp-2024"
+          ],
+          "pendienteRevision": false,
+          "verificacion": "secundaria",
+          "notas": "Verificado en fuente secundaria (acep-emp-2024, que cita literalmente la ERS/ATS); falta cotejar con la guía original."
+        },
+        {
+          "id": "fun-ind-08",
+          "texto": "La ERS/ATS sugiere VMNI en pacientes con traumatismo torácico e insuficiencia respiratoria aguda (recomendación condicional, certeza moderada).",
+          "fuentes": [
+            "ers-ats-2017",
+            "acep-emp-2024"
+          ],
+          "pendienteRevision": false,
+          "verificacion": "secundaria",
+          "notas": "Verificado en fuente secundaria (acep-emp-2024, que cita literalmente la ERS/ATS); falta cotejar con la guía original."
+        },
+        {
+          "id": "fun-ind-09",
+          "texto": "La ERS/ATS recomienda un ensayo de VMNI con dos niveles de presión en pacientes con EPOC que se considera que requieren intubación, salvo que el paciente se deteriore de forma inmediata (recomendación fuerte, certeza moderada).",
+          "fuentes": [
+            "ers-ats-2017",
+            "acep-emp-2024"
+          ],
+          "pendienteRevision": false,
+          "verificacion": "secundaria",
+          "notas": "Verificado en fuente secundaria (acep-emp-2024, que cita literalmente la ERS/ATS); falta cotejar con la guía original. Revisar el contexto exacto de la población (la cita se refiere a EPOC con acidosis en la tabla consultada)."
         }
       ]
     },
@@ -91,10 +131,11 @@
           "id": "fun-con-03",
           "texto": "Si no hay mejoría clínica y gasométrica en la reevaluación temprana (primeras 1-2 h) o hay deterioro, se debe plantear la intubación y ventilación invasiva, salvo que exista una orden de limitación terapéutica.",
           "fuentes": [
+            "acep-emp-2024",
             "bts-ics-2016"
           ],
           "pendienteRevision": true,
-          "notas": "Cotejar los tiempos y los criterios de fracaso exactos con la guía."
+          "notas": "En el edema cardiogénico y la EPOC la revisión secundaria sitúa la reevaluación a 1–2 h. La BTS/ICS sigue sin contrastar."
         },
         {
           "id": "fun-con-04",
@@ -128,13 +169,13 @@
         },
         {
           "id": "fun-fis-03",
-          "texto": "La EPAP (equivalente a la PEEP) mantiene abiertas las vías aéreas, reduce el trabajo inspiratorio en presencia de auto-PEEP y mejora la oxigenación al reclutar alvéolos; en el V60 también garantiza el lavado del CO2 del circuito pasivo.",
+          "texto": "En la agudización de EPOC, la EPAP contrarresta el colapso dinámico de la vía aérea y la auto-PEEP, mientras que la IPAP (soporte inspiratorio) es la que reduce el trabajo inspiratorio de unos músculos fatigados.",
           "fuentes": [
-            "manual-v60",
-            "consenso-docente"
+            "acep-emp-2024"
           ],
-          "pendienteRevision": true,
-          "notas": "Dividir en dos afirmaciones y citar la sección del manual sobre lavado de CO2 con puerto espiratorio."
+          "pendienteRevision": false,
+          "notas": "Fuente secundaria (revisión) leída a texto completo; no es una guía. Falta cotejar con fuente primaria.",
+          "verificacion": "secundaria"
         },
         {
           "id": "fun-fis-04",
@@ -143,6 +184,16 @@
             "definicion"
           ],
           "pendienteRevision": false
+        },
+        {
+          "id": "fun-fis-05",
+          "texto": "En el edema agudo cardiogénico, la VMNI mejora la situación sobre todo por los efectos respiratorios y hemodinámicos de la PEEP/CPAP; es la presión espiratoria la que más la mejora, a diferencia de la EPOC, donde pesa más la IPAP.",
+          "fuentes": [
+            "acep-emp-2024"
+          ],
+          "pendienteRevision": false,
+          "verificacion": "secundaria",
+          "notas": "Fuente secundaria (revisión) leída a texto completo."
         }
       ]
     }

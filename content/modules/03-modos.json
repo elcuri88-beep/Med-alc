@@ -18,12 +18,14 @@
         },
         {
           "id": "mod-cpap-02",
-          "texto": "La CPAP es una opción en el edema agudo de pulmón cardiogénico.",
+          "texto": "En el edema agudo de pulmón cardiogénico la ERS/ATS recomienda CPAP o VMNI con dos niveles de presión (recomendación fuerte, certeza moderada).",
           "fuentes": [
-            "ers-ats-2017"
+            "ers-ats-2017",
+            "acep-emp-2024"
           ],
-          "pendienteRevision": true,
-          "notas": "Fuente identificada y existente en PubMed, pero el texto completo no se pudo consultar (acceso bloqueado): recomendación sin contrastar."
+          "pendienteRevision": false,
+          "notas": "Verificado en fuente secundaria (acep-emp-2024, que cita literalmente la ERS/ATS); falta cotejar con la guía original.",
+          "verificacion": "secundaria"
         }
       ]
     },

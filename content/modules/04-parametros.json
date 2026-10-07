@@ -18,12 +18,13 @@
         },
         {
           "id": "par-pre-02",
-          "texto": "La BTS/ICS sugiere iniciar con presiones bajas (IPAP e EPAP) e ir subiendo la IPAP según tolerancia y respuesta.",
+          "texto": "Una revisión de 2024 propone, en la agudización de EPOC, una EPAP de 5–8 cmH2O (por debajo de la auto-PEEP) y una IPAP de 10–12 cmH2O ajustada al trabajo respiratorio; y en el edema cardiogénico una EPAP de 8–10 cmH2O según tolerancia.",
           "fuentes": [
-            "bts-ics-2016"
+            "acep-emp-2024"
           ],
           "pendienteRevision": true,
-          "notas": "Copiar los valores de inicio y de objetivo de la guía solo tras cotejarlos con el texto original."
+          "notas": "Es una propuesta de los autores de la revisión (fuente secundaria, contexto de urgencias), no una recomendación de guía. Cotejar con el protocolo del centro. Se ha retirado la atribución a la BTS/ICS, que no se pudo contrastar.",
+          "verificacion": "secundaria"
         },
         {
           "id": "par-pre-03",

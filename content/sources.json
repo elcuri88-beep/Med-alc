@@ -48,5 +48,13 @@
     "titulo": "Conocimiento clínico de consenso pendiente de asignar a una fuente primaria.",
     "tipo": "pendiente",
     "nota": "Toda afirmación con esta fuente debe estar marcada como pendiente de revisión."
+  },
+  {
+    "id": "acep-emp-2024",
+    "titulo": "Noninvasive respiratory support in the emergency department: Controversies and state-of-the-art recommendations. J Am Coll Emerg Physicians Open 2024 (revisión de acceso abierto, PMC10920951).",
+    "tipo": "revision",
+    "pmid": "38464331",
+    "doi": "10.1002/emp2.13118",
+    "nota": "Fuente SECUNDARIA leída a texto completo. Su tabla de guías cita literalmente recomendaciones de la ERS/ATS 2017 con fuerza y certeza; sus pautas de ajuste son propuesta de los autores, no de la guía."
   }
 ]

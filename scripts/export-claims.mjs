@@ -12,7 +12,7 @@ for (const f of readdirSync(dir).filter((x) => x.endsWith('.json')).sort()) {
   for (const s of m.secciones)
     for (const c of s.afirmaciones) {
       n++;
-      out += `| ${c.id} | ${m.titulo} › ${s.titulo} | ${c.texto} | ${c.fuentes.join(', ')} | ${c.pendienteRevision ? 'PENDIENTE' : 'fuente identificada'} | ${c.notas ?? ''} |\n`;
+      out += `| ${c.id} | ${m.titulo} › ${s.titulo} | ${c.texto} | ${c.fuentes.join(', ')} | ${c.pendienteRevision ? 'PENDIENTE' : (c.verificacion === 'secundaria' ? 'contrastado (fuente secundaria)' : 'fuente identificada')} | ${c.notas ?? ''} |\n`;
     }
 }
 out += `\nTotal: ${n}\n\n## Fuentes\n` + Object.entries(sources).map(([k, v]) => `- **${k}**: ${v}`).join('\n') + '\n';

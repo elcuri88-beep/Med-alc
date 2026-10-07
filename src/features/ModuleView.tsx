@@ -25,6 +25,9 @@ export default function ModuleView() {
                 {c.pendienteRevision && (
                   <span className="rounded bg-alarm-medium/20 px-2 py-0.5 font-semibold text-amber-700 dark:text-amber-300">Pendiente de revisión</span>
                 )}
+                {c.verificacion === 'secundaria' && (
+                  <span className="rounded bg-emerald-100 px-2 py-0.5 font-semibold text-emerald-800 dark:bg-emerald-900 dark:text-emerald-200">Contrastado en fuente secundaria</span>
+                )}
                 {c.fuentes.map((f) => (
                   <span key={f} className="rounded bg-slate-100 px-2 py-0.5 dark:bg-slate-700" title={sourceById(f)?.titulo}>{f}</span>
                 ))}
