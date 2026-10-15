@@ -7,6 +7,7 @@
     "dev": "vite",
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview",
+    "build:artifact": "VITE_ARTIFACT=1 vite build --outDir dist-artifact --emptyOutDir",
     "test": "vitest run",
     "validate": "node scripts/validate-content.mjs",
     "claims": "node scripts/export-claims.mjs"
