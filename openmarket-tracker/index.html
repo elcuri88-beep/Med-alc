@@ -5,24 +5,28 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap">
 <style>
-/* Una pantalla: fila de activos arriba, cabecera del par y el gráfico ocupando el resto */
+/* Una pantalla: fila de activos arriba, cabecera del par con herramientas y el gráfico ocupando el resto */
 :root {
-  --bg: #f3f5f8; --panel: #ffffff; --line: #dfe4ec; --fg: #141a24; --muted: #5d6879;
+  --bg: #f3f5f8; --panel: #ffffff; --line: #e3e7ee; --fg: #141a24; --muted: #5d6879;
   --accent: #2f5bea; --accent-soft: #e6ecfd; --up: #0e9f6e; --down: #d63a4a;
-  --up-soft: rgba(14,159,110,.28); --down-soft: rgba(214,58,74,.28); --warn: #b7791f;
+  --up-soft: rgba(14,159,110,.22); --down-soft: rgba(214,58,74,.22); --area: rgba(47,91,234,.14);
+  --ema1: #c27c0e; --ema2: #8a4fd8; --warn: #b7791f;
   --ui: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
   --mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
 }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
-  --bg: #0b0f16; --panel: #121822; --line: #222b39; --fg: #e4e9f1; --muted: #8a96a8;
+  --bg: #0b0f16; --panel: #11161f; --line: #1f2733; --fg: #e4e9f1; --muted: #8a96a8;
   --accent: #6d8dff; --accent-soft: #1b2440; --up: #22c38e; --down: #f0566a;
-  --up-soft: rgba(34,195,142,.3); --down-soft: rgba(240,86,106,.3); --warn: #e0a84a; color-scheme: dark } }
+  --up-soft: rgba(34,195,142,.24); --down-soft: rgba(240,86,106,.24); --area: rgba(109,141,255,.16);
+  --ema1: #f0b44c; --ema2: #b58cff; --warn: #e0a84a; color-scheme: dark } }
 :root[data-theme="dark"] {
-  --bg: #0b0f16; --panel: #121822; --line: #222b39; --fg: #e4e9f1; --muted: #8a96a8;
+  --bg: #0b0f16; --panel: #11161f; --line: #1f2733; --fg: #e4e9f1; --muted: #8a96a8;
   --accent: #6d8dff; --accent-soft: #1b2440; --up: #22c38e; --down: #f0566a;
-  --up-soft: rgba(34,195,142,.3); --down-soft: rgba(240,86,106,.3); --warn: #e0a84a; color-scheme: dark }
+  --up-soft: rgba(34,195,142,.24); --down-soft: rgba(240,86,106,.24); --area: rgba(109,141,255,.16);
+  --ema1: #f0b44c; --ema2: #b58cff; --warn: #e0a84a; color-scheme: dark }
 
 * { box-sizing: border-box }
+[hidden] { display: none !important }
 html, body { height: 100% }
 body { background: var(--bg); color: var(--fg); font-family: var(--ui); font-size: 14px; }
 .num { font-family: var(--mono); font-variant-numeric: tabular-nums; }
@@ -36,42 +40,63 @@ button { cursor: pointer }
 
 /* Fila de activos */
 .bar { display: flex; align-items: center; gap: 10px; min-width: 0 }
-.brand { font-weight: 700; font-size: 15px; white-space: nowrap }
+.brand { font-weight: 700; font-size: 15px; white-space: nowrap; letter-spacing: -.01em }
 .pill { display: inline-flex; align-items: center; gap: 6px; font-size: 11.5px; color: var(--muted); white-space: nowrap }
 .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--muted) }
-.pill.live .dot { background: var(--up) } .pill.demo .dot { background: var(--warn) }
+.pill.live .dot { background: var(--up); box-shadow: 0 0 0 3px var(--up-soft) }
+.pill.demo .dot { background: var(--warn) }
 .syms { display: flex; gap: 4px; overflow-x: auto; flex: 1; min-width: 0; scrollbar-width: none }
 .syms::-webkit-scrollbar { display: none }
-.sym { display: flex; align-items: baseline; gap: 6px; border: 1px solid transparent; background: none; border-radius: 7px; padding: 5px 8px 5px 10px; white-space: nowrap; font-size: 13px }
+.sym { display: grid; grid-template-columns: auto auto; column-gap: 8px; align-items: baseline; border: 1px solid transparent; background: none; border-radius: 8px; padding: 4px 6px 4px 10px; white-space: nowrap; text-align: left; position: relative }
 .sym:hover { background: var(--panel) }
 .sym.on { background: var(--panel); border-color: var(--line) }
-.sym b { font-weight: 600 }
-.sym .num { font-size: 11.5px }
-.sym .rm { border: 0; background: none; color: var(--muted); padding: 0 2px; opacity: 0 }
+.sym b { font-weight: 600; font-size: 13px }
+.sym .px { font-size: 11px; color: var(--muted); grid-column: 1 }
+.sym .pc { font-size: 11px; grid-column: 2; grid-row: 1 / span 2; align-self: center; padding-right: 14px }
+.sym .rm { position: absolute; right: 3px; top: 2px; color: var(--muted); font-size: 12px; line-height: 1; padding: 2px; opacity: 0 }
 .sym:hover .rm, .sym.on .rm { opacity: 1 }
-form.add input { width: 96px; padding: 5px 8px; border: 1px solid var(--line); border-radius: 7px; background: var(--panel) }
-.iconbtn { border: 1px solid var(--line); background: var(--panel); border-radius: 7px; padding: 5px 10px; font-size: 12px }
+form.add input { width: 96px; padding: 6px 8px; border: 1px solid var(--line); border-radius: 8px; background: var(--panel) }
+.iconbtn { border: 1px solid var(--line); background: var(--panel); border-radius: 8px; padding: 6px 10px; font-size: 12px }
 
-/* Gráfico */
-.chartcard { flex: 1; min-height: 360px; display: flex; flex-direction: column; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; overflow: hidden }
-.chead { display: flex; align-items: center; gap: 22px; padding: 12px 14px; flex-wrap: wrap }
-.name { font-size: 15px; font-weight: 600; color: var(--muted) }
-.last { font-size: 26px; font-weight: 600; line-height: 1.1 }
+/* Tarjeta del gráfico */
+.chartcard { flex: 1; min-height: 380px; display: flex; flex-direction: column; background: var(--panel); border: 1px solid var(--line); border-radius: 12px; overflow: hidden }
+.chead { display: flex; align-items: center; gap: 22px; padding: 12px 14px 10px; flex-wrap: wrap }
+.name { font-size: 13px; font-weight: 600; color: var(--muted); display: flex; gap: 8px; align-items: baseline }
+.name .cd { font-family: var(--mono); font-size: 11px; font-weight: 400 }
+.last { font-size: 28px; font-weight: 600; line-height: 1.1; transition: color .3s }
 .stats { display: flex; gap: 18px; flex-wrap: wrap; font-size: 12px }
 .stats div { display: grid; gap: 1px }
 .stats small { color: var(--muted); font-size: 11px; font-family: var(--ui) }
-.tfs { margin-left: auto; display: flex; gap: 2px; background: var(--bg); padding: 3px; border-radius: 7px }
-.tfs button { border: 0; background: none; padding: 4px 10px; border-radius: 5px; font-size: 12px; color: var(--muted); font-family: var(--mono) }
-.tfs button.on { background: var(--panel); color: var(--fg); box-shadow: 0 1px 2px rgba(0,0,0,.15) }
-#chart { flex: 1; position: relative; min-height: 0 }
-.nochart { position: absolute; inset: 0; display: grid; place-items: center; color: var(--muted) }
+.tools { margin-left: auto; display: flex; gap: 8px; flex-wrap: wrap; align-items: center }
+.seg { display: flex; gap: 2px; background: var(--bg); padding: 3px; border-radius: 8px }
+.seg button { border: 0; background: none; padding: 4px 9px; border-radius: 6px; font-size: 12px; color: var(--muted); font-family: var(--mono); white-space: nowrap }
+.seg button.on { background: var(--panel); color: var(--fg); box-shadow: 0 1px 2px rgba(0,0,0,.15) }
+.seg button .sw { display: inline-block; width: 8px; height: 2px; border-radius: 1px; vertical-align: middle; margin-right: 5px; background: currentColor }
+.seg button[data-opt="ema20"] .sw { background: var(--ema1) }
+.seg button[data-opt="ema50"] .sw { background: var(--ema2) }
+
+#chart { flex: 1; position: relative; min-height: 0; border-top: 1px solid var(--line) }
+.legend { position: absolute; left: 12px; top: 8px; z-index: 3; pointer-events: none; font-family: var(--mono); font-size: 11.5px; display: flex; gap: 10px; flex-wrap: wrap; color: var(--muted); background: color-mix(in srgb, var(--panel) 80%, transparent); padding: 2px 6px; border-radius: 6px; max-width: calc(100% - 90px) }
+.legend b { font-weight: 500; color: var(--fg) }
+.legend .e1 { color: var(--ema1) } .legend .e2 { color: var(--ema2) }
+.nochart { position: absolute; inset: 0; display: grid; place-items: center; color: var(--muted); z-index: 4; background: var(--panel); text-align: center; padding: 16px }
+
+.foot { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; font-size: 11.5px; color: var(--muted) }
+kbd { font-family: var(--mono); font-size: 10.5px; border: 1px solid var(--line); border-bottom-width: 2px; border-radius: 4px; padding: 0 4px; background: var(--panel) }
 
 .toast { position: fixed; right: max(16px, env(safe-area-inset-right, 0px)); bottom: calc(16px + env(safe-area-inset-bottom, 0px)); background: var(--panel); border: 1px solid var(--line); border-left: 3px solid var(--warn); padding: 10px 14px; border-radius: 8px; box-shadow: 0 6px 24px rgba(0,0,0,.2); max-width: 320px; font-size: 13px; z-index: 20 }
 
-@media (max-width: 760px) {
+@media (max-width: 860px) {
   .bar { flex-wrap: wrap } .syms { order: 3; flex-basis: 100% }
-  .tfs { margin-left: 0 } .last { font-size: 22px }
+  .brand { margin-right: auto }
+  .chead { gap: 10px 18px }
+  .tools { margin-left: 0; flex-wrap: nowrap; overflow-x: auto; width: 100%; scrollbar-width: none }
+  .tools::-webkit-scrollbar { display: none }
+  .last { font-size: 23px }
+  .stats .wide { display: none }
+  .foot .keys { display: none }
 }
+@media (prefers-reduced-motion: reduce) { .last { transition: none } }
 </style>
 
 <div class="app">
@@ -85,40 +110,66 @@ form.add input { width: 96px; padding: 5px 8px; border: 1px solid var(--line); b
 
   <section class="chartcard" aria-label="Gráfico">
     <div class="chead">
-      <div><div class="name" id="cName">—</div><div class="last num" id="cLast">—</div></div>
+      <div>
+        <div class="name"><span id="cName">—</span><span class="cd" id="cCd" title="Tiempo hasta el cierre de la vela actual"></span></div>
+        <div class="last num" id="cLast">—</div>
+      </div>
       <div class="stats num">
         <div><small>24 h</small><span id="cChg">—</span></div>
-        <div><small>Máx. 24 h</small><span id="cHigh">—</span></div>
-        <div><small>Mín. 24 h</small><span id="cLow">—</span></div>
-        <div><small>Volumen 24 h</small><span id="cVol">—</span></div>
+        <div class="wide"><small>Máx. 24 h</small><span id="cHigh">—</span></div>
+        <div class="wide"><small>Mín. 24 h</small><span id="cLow">—</span></div>
+        <div class="wide"><small>Volumen 24 h</small><span id="cVol">—</span></div>
       </div>
-      <div class="tfs" id="tfs"></div>
+      <div class="tools">
+        <div class="seg" id="kind" aria-label="Tipo de gráfico">
+          <button type="button" data-kind="candles">Velas</button><button type="button" data-kind="line">Línea</button>
+        </div>
+        <div class="seg" id="opts" aria-label="Indicadores">
+          <button type="button" data-opt="ema20" title="Media móvil exponencial de 20 periodos"><span class="sw"></span>EMA 20</button>
+          <button type="button" data-opt="ema50" title="Media móvil exponencial de 50 periodos"><span class="sw"></span>EMA 50</button>
+          <button type="button" data-opt="vol" title="Volumen">Vol</button>
+          <button type="button" data-opt="log" title="Escala logarítmica">Log</button>
+        </div>
+        <div class="seg" id="tfs" aria-label="Marco temporal"></div>
+      </div>
     </div>
-    <div id="chart"><div class="nochart" id="nochart">Cargando gráfico…</div></div>
+    <div id="chart">
+      <div class="legend" id="legend"></div>
+      <div class="nochart" id="nochart">Cargando gráfico…</div>
+    </div>
   </section>
+
+  <div class="foot">
+    <span id="src">Datos: Binance spot</span>
+    <span class="keys"><kbd>←</kbd> <kbd>→</kbd> cambiar activo · <kbd>1</kbd>–<kbd>6</kbd> marco temporal · <kbd>L</kbd> velas/línea · <kbd>R</kbd> reajustar vista</span>
+  </div>
 </div>
 
-<script src="https://unpkg.com/lightweight-charts@4.1.3/dist/lightweight-charts.standalone.production.js"></script>
 <script>
 (() => {
+const LIBS = [
+  'https://unpkg.com/lightweight-charts@4.1.3/dist/lightweight-charts.standalone.production.js',
+  'https://cdn.jsdelivr.net/npm/lightweight-charts@4.1.3/dist/lightweight-charts.standalone.production.js',
+];
 const REST = 'https://data-api.binance.vision/api/v3';
 const WS = 'wss://data-stream.binance.vision/stream?streams=';
 const TFS = ['1m','5m','15m','1h','4h','1d'];
+const TF_SEC = { '1m': 60, '5m': 300, '15m': 900, '1h': 3600, '4h': 14400, '1d': 86400 };
 const QUOTES = ['USDT','USDC','FDUSD','BTC','ETH','BNB','EUR','TRY'];
-const KEY = 'mercado-abierto-v2';
+const KEY = 'mercado-abierto-v3';
 const DEMO_SEED = { BTCUSDT: 67250, ETHUSDT: 3480, SOLUSDT: 172, BNBUSDT: 590, XRPUSDT: 0.62, DOGEUSDT: 0.158 };
 const $ = id => document.getElementById(id);
 
 // ---------- estado ----------
-const defaults = () => ({ watch: ['BTCUSDT','ETHUSDT','SOLUSDT','BNBUSDT','XRPUSDT','DOGEUSDT'], sel: 'BTCUSDT', tf: '1h' });
+const defaults = () => ({ watch: ['BTCUSDT','ETHUSDT','SOLUSDT','BNBUSDT','XRPUSDT','DOGEUSDT'], sel: 'BTCUSDT', tf: '1h', kind: 'candles', ema20: true, ema50: false, vol: true, log: false });
 let S;
 try { S = Object.assign(defaults(), JSON.parse(localStorage.getItem(KEY) || 'null') || {}); } catch { S = defaults(); }
 const save = () => { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch {} };
 
 const T = {};            // sym -> {last, open, high, low, qvol}
 let mode = 'connecting'; // live | demo
-let ws = null, wsKey = '';
-let chart, candles, vols, lastBar = null, bars = [];
+let ws = null, wsKey = '', loadSeq = 0;
+let chart, candles, line, vols, e20, e50, bars = [], lastBar = null, hover = null;
 
 // ---------- formato ----------
 const split = s => { const q = QUOTES.find(q => s.endsWith(q) && s.length > q.length); return q ? [s.slice(0, -q.length), q] : [s, '']; };
@@ -128,7 +179,7 @@ const fmtP = p => {
   return p.toLocaleString('es-ES', { minimumFractionDigits: Math.min(d, 2), maximumFractionDigits: d });
 };
 const fmtPct = v => (v == null || !isFinite(v)) ? '—' : (v > 0 ? '+' : '') + v.toFixed(2).replace('.', ',') + ' %';
-const fmtBig = v => { if (!isFinite(v)) return '—'; const u = [[1e9,' mil M'],[1e6,' M'],[1e3,' k']].find(([n]) => v >= n); return u ? (v/u[0]).toFixed(2).replace('.', ',') + u[1] : v.toFixed(0); };
+const fmtBig = v => { if (v == null || !isFinite(v)) return '—'; const u = [[1e9,' mil M'],[1e6,' M'],[1e3,' k']].find(([n]) => v >= n); return u ? (v/u[0]).toFixed(2).replace('.', ',') + u[1] : v.toFixed(v < 10 ? 3 : 0).replace('.', ','); };
 const cls = v => v > 0 ? 'up' : v < 0 ? 'down' : 'muted';
 const chg = t => t && t.open ? (t.last - t.open) / t.open * 100 : null;
 const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
@@ -140,7 +191,7 @@ async function loadTickers(syms) {
   const d = await api('/ticker/24hr?symbols=' + encodeURIComponent(JSON.stringify(syms)));
   d.forEach(x => { T[x.symbol] = { last: +x.lastPrice, open: +x.openPrice, high: +x.highPrice, low: +x.lowPrice, qvol: +x.quoteVolume }; });
 }
-const klines = async (s, tf) => (await api(`/klines?symbol=${s}&interval=${tf}&limit=500`)).map(r => ({ time: r[0]/1000, open: +r[1], high: +r[2], low: +r[3], close: +r[4], volume: +r[5] }));
+const klines = async (s, tf) => (await api(`/klines?symbol=${s}&interval=${tf}&limit=1000`)).map(r => ({ time: r[0]/1000, open: +r[1], high: +r[2], low: +r[3], close: +r[4], volume: +r[5] }));
 
 function openSocket() {
   const key = S.watch.join(',') + '|' + S.sel + '|' + S.tf;
@@ -154,7 +205,7 @@ function openSocket() {
     if (stream.endsWith('@miniticker')) {
       T[data.s] = { last: +data.c, open: +data.o, high: +data.h, low: +data.l, qvol: +data.q };
       tick();
-    } else if (data.s === S.sel) {
+    } else if (data.s === S.sel && data.k.i === S.tf) {
       const k = data.k;
       pushBar({ time: k.t/1000, open: +k.o, high: +k.h, low: +k.l, close: +k.c, volume: +k.v });
     }
@@ -170,12 +221,12 @@ function demoTicker(s) {
   T[s] = { last: p, open: o, high: Math.max(p, o) * 1.01, low: Math.min(p, o) * .99, qvol: p * 1e5 * (5 + rnd() * 50) };
 }
 function demoKlines(s, tf) {
-  const sec = { '1m': 60, '5m': 300, '15m': 900, '1h': 3600, '4h': 14400, '1d': 86400 }[tf];
-  const now = Math.floor(Date.now() / 1000 / sec) * sec, vol = .004 * Math.sqrt(sec / 60) / 3;
-  let p = T[s].last, out = [];
-  for (let i = 0; i < 300; i++) {
-    const c = p, o = c / (1 + (rnd() - .5) * 2 * vol);
-    out.unshift({ time: now - i * sec, open: o, close: c, high: Math.max(o, c) * (1 + rnd() * vol), low: Math.min(o, c) * (1 - rnd() * vol), volume: 50 + rnd() * 400 });
+  const sec = TF_SEC[tf], now = Math.floor(Date.now() / 1000 / sec) * sec, vol = .004 * Math.sqrt(sec / 60) / 3;
+  let p = T[s].last, drift = 0, out = [];
+  for (let i = 0; i < 400; i++) {
+    drift = drift * .97 + (rnd() - .5) * vol * .3;
+    const c = p, o = c / (1 + (rnd() - .5) * 2 * vol + drift);
+    out.unshift({ time: now - i * sec, open: o, close: c, high: Math.max(o, c) * (1 + rnd() * vol), low: Math.min(o, c) * (1 - rnd() * vol), volume: (50 + rnd() * 400) * (1 + Math.abs(c - o) / c / vol) });
     p = o;
   }
   return out;
@@ -183,8 +234,21 @@ function demoKlines(s, tf) {
 function demoStep() {
   S.watch.forEach(s => { const t = T[s]; if (!t) return; t.last *= 1 + (rnd() - .5) * .0016; t.high = Math.max(t.high, t.last); t.low = Math.min(t.low, t.last); });
   const t = T[S.sel];
-  if (t && lastBar) pushBar({ ...lastBar, close: t.last, high: Math.max(lastBar.high, t.last), low: Math.min(lastBar.low, t.last), volume: lastBar.volume + rnd() * 3 });
+  if (t && lastBar) {
+    const sec = TF_SEC[S.tf], cur = Math.floor(Date.now() / 1000 / sec) * sec;
+    pushBar(cur > lastBar.time
+      ? { time: cur, open: lastBar.close, high: Math.max(lastBar.close, t.last), low: Math.min(lastBar.close, t.last), close: t.last, volume: rnd() * 5 }
+      : { ...lastBar, close: t.last, high: Math.max(lastBar.high, t.last), low: Math.min(lastBar.low, t.last), volume: lastBar.volume + rnd() * 3 });
+  }
   tick();
+}
+
+// ---------- indicadores ----------
+function ema(src, n) {
+  const k = 2 / (n + 1), out = [];
+  let v = null;
+  src.forEach((b, i) => { v = v == null ? b.close : b.close * k + v * (1 - k); if (i >= n - 1) out.push({ time: b.time, value: v }); });
+  return out;
 }
 
 // ---------- render ----------
@@ -192,13 +256,15 @@ function setStatus() {
   $('status').className = 'pill ' + mode;
   $('statusTxt').textContent = mode === 'live' ? 'En vivo' : mode === 'demo' ? 'Demostración' : 'Conectando…';
   $('status').title = mode === 'demo' ? 'No se pudo conectar con la API pública de Binance (en el visor de artefactos las llamadas externas están bloqueadas). Abre el archivo en el navegador para ver precios reales.' : 'Binance spot';
+  $('src').textContent = mode === 'demo' ? 'Datos simulados: sin conexión con Binance. Abre index.html en tu navegador para ver precios reales.' : 'Datos: Binance spot, en tiempo real';
 }
 function renderSyms() {
   $('syms').innerHTML = S.watch.map(s => {
     const t = T[s], c = chg(t);
-    return `<button type="button" role="tab" aria-selected="${s === S.sel}" class="sym ${s === S.sel ? 'on' : ''}" data-s="${s}"><b>${split(s)[0]}</b><span class="num ${cls(c)}">${fmtPct(c)}</span><span class="rm" data-rm="${s}" aria-label="Quitar" title="Quitar">×</span></button>`;
+    return `<button type="button" role="tab" aria-selected="${s === S.sel}" class="sym ${s === S.sel ? 'on' : ''}" data-s="${s}"><b>${split(s)[0]}</b><span class="px num">${fmtP(t && t.last)}</span><span class="pc num ${cls(c)}">${fmtPct(c)}</span><span class="rm" data-rm="${s}" aria-label="Quitar ${split(s)[0]}" title="Quitar">×</span></button>`;
   }).join('');
 }
+let prevLast = null;
 function renderHead() {
   const t = T[S.sel], c = chg(t), [b, q] = split(S.sel);
   $('cName').textContent = b + ' / ' + q;
@@ -209,44 +275,102 @@ function renderHead() {
   $('cLow').textContent = fmtP(t && t.low);
   $('cVol').textContent = t ? fmtBig(t.qvol) + ' ' + q : '—';
   document.title = t ? `${fmtP(t.last)} ${b} · Mercado Abierto` : 'Mercado Abierto';
+  prevLast = t && t.last;
+}
+function renderLegend() {
+  const b = hover || lastBar; if (!b) { $('legend').innerHTML = ''; return; }
+  const i = bars.findIndex(x => x.time === b.time), prev = i > 0 ? bars[i - 1] : null;
+  const c = prev ? (b.close - prev.close) / prev.close * 100 : null;
+  const at = (arr) => { const p = arr.find(x => x.time === b.time); return p ? fmtP(p.value) : '—'; };
+  const d = new Date(b.time * 1000);
+  const when = S.tf === '1d' ? d.toLocaleDateString('es-ES', { day: '2-digit', month: 'short', year: 'numeric' }) : d.toLocaleString('es-ES', { day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit' });
+  const k = b.close >= b.open ? 'up' : 'down';
+  $('legend').innerHTML = `<span>${when}</span><span>A <b class="${k}">${fmtP(b.open)}</b></span><span>M <b class="${k}">${fmtP(b.high)}</b></span><span>m <b class="${k}">${fmtP(b.low)}</b></span><span>C <b class="${k}">${fmtP(b.close)}</b></span><span class="${cls(c)}">${fmtPct(c)}</span>`
+    + (S.vol ? `<span>Vol <b>${fmtBig(b.volume)}</b></span>` : '')
+    + (S.ema20 ? `<span class="e1">EMA 20 ${at(emaCache.e20)}</span>` : '')
+    + (S.ema50 ? `<span class="e2">EMA 50 ${at(emaCache.e50)}</span>` : '');
+}
+function renderCountdown() {
+  if (!lastBar) { $('cCd').textContent = ''; return; }
+  const left = Math.max(0, lastBar.time + TF_SEC[S.tf] - Date.now() / 1000);
+  const h = Math.floor(left / 3600), m = Math.floor(left % 3600 / 60), s = Math.floor(left % 60);
+  $('cCd').textContent = 'cierre ' + (h ? h + ':' + String(m).padStart(2, '0') : m) + ':' + String(s).padStart(2, '0');
+}
+function renderControls() {
+  $('tfs').innerHTML = TFS.map(t => `<button type="button" data-tf="${t}" class="${t === S.tf ? 'on' : ''}">${t}</button>`).join('');
+  document.querySelectorAll('#kind button').forEach(b => b.classList.toggle('on', b.dataset.kind === S.kind));
+  document.querySelectorAll('#opts button').forEach(b => { b.classList.toggle('on', !!S[b.dataset.opt]); b.setAttribute('aria-pressed', !!S[b.dataset.opt]); });
 }
 let raf = 0;
-function tick() { if (raf) return; raf = requestAnimationFrame(() => { raf = 0; renderSyms(); renderHead(); }); }
-function renderTfs() { $('tfs').innerHTML = TFS.map(t => `<button type="button" data-tf="${t}" class="${t === S.tf ? 'on' : ''}">${t}</button>`).join(''); }
+function tick() { if (raf) return; raf = requestAnimationFrame(() => { raf = 0; renderSyms(); renderHead(); renderLegend(); }); }
 
 // ---------- gráfico ----------
 function chartColors() {
   return { layout: { background: { type: 'solid', color: css('--panel') }, textColor: css('--muted'), fontFamily: 'JetBrains Mono, monospace', fontSize: 11 },
     grid: { vertLines: { color: css('--line') }, horzLines: { color: css('--line') } },
+    crosshair: { vertLine: { labelBackgroundColor: css('--accent') }, horzLine: { labelBackgroundColor: css('--accent') } },
     rightPriceScale: { borderColor: css('--line') }, timeScale: { borderColor: css('--line'), timeVisible: true, secondsVisible: false } };
 }
-const candleColors = () => ({ upColor: css('--up'), downColor: css('--down'), wickUpColor: css('--up'), wickDownColor: css('--down') });
+function seriesStyle() {
+  candles.applyOptions({ upColor: css('--up'), downColor: css('--down'), wickUpColor: css('--up'), wickDownColor: css('--down'), visible: S.kind === 'candles' });
+  line.applyOptions({ lineColor: css('--accent'), topColor: css('--area'), bottomColor: 'rgba(0,0,0,0)', visible: S.kind === 'line' });
+  e20.applyOptions({ color: css('--ema1'), visible: S.ema20 });
+  e50.applyOptions({ color: css('--ema2'), visible: S.ema50 });
+  vols.applyOptions({ visible: S.vol });
+  chart.priceScale('right').applyOptions({ mode: S.log ? 1 : 0, scaleMargins: { top: .1, bottom: S.vol ? .2 : .06 } });
+}
 const volBar = b => ({ time: b.time, value: b.volume, color: b.close >= b.open ? css('--up-soft') : css('--down-soft') });
+const emaCache = { e20: [], e50: [] };
+function setEmas() { emaCache.e20 = ema(bars, 20); emaCache.e50 = ema(bars, 50); e20.setData(emaCache.e20); e50.setData(emaCache.e50); }
 function initChart() {
-  if (!window.LightweightCharts) { $('nochart').textContent = 'No se pudo cargar la librería de gráficos.'; return; }
-  chart = LightweightCharts.createChart($('chart'), Object.assign({ autoSize: true, localization: { locale: 'es-ES', priceFormatter: fmtP } }, chartColors()));
-  candles = chart.addCandlestickSeries(Object.assign({ borderVisible: false }, candleColors()));
+  const el = $('chart');
+  chart = LightweightCharts.createChart(el, Object.assign({ autoSize: true, localization: { locale: 'es-ES', priceFormatter: fmtP } }, chartColors()));
   vols = chart.addHistogramSeries({ priceFormat: { type: 'volume' }, priceScaleId: 'vol', lastValueVisible: false, priceLineVisible: false });
-  chart.priceScale('vol').applyOptions({ scaleMargins: { top: .85, bottom: 0 } });
-  const restyle = () => { chart.applyOptions(chartColors()); candles.applyOptions(candleColors()); vols.setData(bars.map(volBar)); };
+  chart.priceScale('vol').applyOptions({ scaleMargins: { top: .86, bottom: 0 } });
+  line = chart.addAreaSeries({ lineWidth: 2, priceLineVisible: true });
+  candles = chart.addCandlestickSeries({ borderVisible: false });
+  const ln = { lineWidth: 1.5, priceLineVisible: false, lastValueVisible: false, crosshairMarkerVisible: false };
+  e20 = chart.addLineSeries(ln); e50 = chart.addLineSeries(ln);
+  seriesStyle();
+  chart.subscribeCrosshairMove(p => {
+    const d = p && p.time ? p.seriesData.get(candles) : null;
+    hover = d ? Object.assign({ volume: (p.seriesData.get(vols) || {}).value }, d) : null;
+    renderLegend();
+  });
+  const restyle = () => { chart.applyOptions(chartColors()); seriesStyle(); vols.setData(bars.map(volBar)); };
   matchMedia('(prefers-color-scheme: dark)').addEventListener('change', restyle);
   new MutationObserver(restyle).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
 }
 function pushBar(b) {
-  if (!candles || (lastBar && b.time < lastBar.time)) return;
-  candles.update(b); vols.update(volBar(b));
-  if (lastBar && b.time === lastBar.time) bars[bars.length - 1] = b; else bars.push(b);
+  if (!candles || !lastBar || b.time < lastBar.time) return;
+  candles.update(b); line.update({ time: b.time, value: b.close }); vols.update(volBar(b));
+  if (b.time === lastBar.time) bars[bars.length - 1] = b; else bars.push(b);
   lastBar = b;
+  // Solo cambia el último punto de cada media: se recalcula a partir del valor anterior
+  [[20, 'e20', e20], [50, 'e50', e50]].forEach(([n, key, ser]) => {
+    const arr = emaCache[key]; if (bars.length < n) return;
+    const k = 2 / (n + 1), last = arr[arr.length - 1], same = last && last.time === b.time;
+    const prev = same ? arr[arr.length - 2] : last; if (!prev) return;
+    const pt = { time: b.time, value: b.close * k + prev.value * (1 - k) };
+    if (same) arr[arr.length - 1] = pt; else arr.push(pt);
+    ser.update(pt);
+  });
+  if (!hover) renderLegend();
 }
 async function loadChart() {
   if (!candles) return;
+  const seq = ++loadSeq;
   try {
-    bars = mode === 'live' ? await klines(S.sel, S.tf) : demoKlines(S.sel, S.tf);
-    candles.setData(bars); vols.setData(bars.map(volBar));
-    lastBar = bars[bars.length - 1];
-    chart.timeScale().fitContent();
+    const data = mode === 'live' ? await klines(S.sel, S.tf) : demoKlines(S.sel, S.tf);
+    if (seq !== loadSeq) return; // el usuario ya cambió de par o de marco
+    bars = data;
+    candles.setData(bars); line.setData(bars.map(b => ({ time: b.time, value: b.close }))); vols.setData(bars.map(volBar)); setEmas();
+    lastBar = bars[bars.length - 1]; hover = null;
+    chart.timeScale().resetTimeScale();
+    chart.timeScale().setVisibleLogicalRange({ from: bars.length - 150, to: bars.length + 4 });
     $('nochart').hidden = true;
-  } catch { $('nochart').hidden = false; $('nochart').textContent = 'No hay datos de velas para este par.'; }
+    renderLegend(); renderCountdown();
+  } catch { if (seq === loadSeq) { $('nochart').hidden = false; $('nochart').textContent = 'No hay datos de velas para este par.'; } }
 }
 
 // ---------- acciones ----------
@@ -263,12 +387,51 @@ async function addWatch(sym) {
   return true;
 }
 async function select(sym) {
-  S.sel = sym; save(); tick(); openSocket();
+  S.sel = sym; save(); prevLast = null; tick(); openSocket();
+  const tab = document.querySelector(`.sym[data-s="${sym}"]`); if (tab) tab.scrollIntoView({ block: 'nearest', inline: 'nearest' });
   await loadChart();
 }
+function setTf(tf) { if (tf === S.tf) return; S.tf = tf; save(); renderControls(); openSocket(); loadChart(); }
+function toggle(opt) {
+  if (opt === 'line' || opt === 'candles') S.kind = opt; else S[opt] = !S[opt];
+  save(); renderControls(); if (chart) seriesStyle(); renderLegend();
+}
+
+$('tfs').onclick = e => { const b = e.target.closest('[data-tf]'); if (b) setTf(b.dataset.tf); };
+$('kind').onclick = e => { const b = e.target.closest('[data-kind]'); if (b) toggle(b.dataset.kind); };
+$('opts').onclick = e => { const b = e.target.closest('[data-opt]'); if (b) toggle(b.dataset.opt); };
+$('syms').onclick = e => {
+  const rm = e.target.closest('[data-rm]');
+  if (rm) {
+    const s = rm.dataset.rm; if (S.watch.length <= 1) return;
+    S.watch = S.watch.filter(x => x !== s); save();
+    if (S.sel === s) select(S.watch[0]); else { tick(); openSocket(); }
+    return;
+  }
+  const b = e.target.closest('[data-s]'); if (b && b.dataset.s !== S.sel) select(b.dataset.s);
+};
+$('addSym').onsubmit = async e => { e.preventDefault(); const s = normSym($('symInput').value); if (await addWatch(s)) { $('symInput').value = ''; $('symInput').blur(); select(s); } };
+$('themeBtn').onclick = () => {
+  const root = document.documentElement, cur = root.dataset.theme || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  root.dataset.theme = cur === 'dark' ? 'light' : 'dark';
+};
+document.addEventListener('keydown', e => {
+  if (e.target.closest('input') || e.metaKey || e.ctrlKey || e.altKey) return;
+  const i = S.watch.indexOf(S.sel);
+  if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') { e.preventDefault(); select(S.watch[(i + (e.key === 'ArrowRight' ? 1 : -1) + S.watch.length) % S.watch.length]); }
+  else if (/^[1-6]$/.test(e.key)) setTf(TFS[+e.key - 1]);
+  else if (e.key === 'l' || e.key === 'L') toggle(S.kind === 'candles' ? 'line' : 'candles');
+  else if ((e.key === 'r' || e.key === 'R') && chart && bars.length) { chart.priceScale('right').applyOptions({ autoScale: true }); chart.timeScale().setVisibleLogicalRange({ from: bars.length - 150, to: bars.length + 4 }); }
+  else if (e.key === '/') { e.preventDefault(); $('symInput').focus(); }
+});
+setInterval(renderCountdown, 1000);
+
+// ---------- arranque ----------
+function loadScript(src) { return new Promise((ok, ko) => { const s = document.createElement('script'); s.src = src; s.onload = ok; s.onerror = ko; document.head.appendChild(s); }); }
+async function loadLib() { for (const src of LIBS) { try { await loadScript(src); if (window.LightweightCharts) return true; } catch {} } return false; }
 
 async function boot() {
-  initChart();
+  const libOk = loadLib();
   try {
     await loadTickers(S.watch.slice(0, 1));
     mode = 'live';
@@ -280,28 +443,13 @@ async function boot() {
     setInterval(demoStep, 1000);
   }
   if (!S.watch.includes(S.sel)) S.sel = S.watch[0];
-  setStatus(); renderTfs();
+  setStatus(); tick();
+  if (await libOk) initChart();
+  else $('nochart').textContent = 'No se pudo cargar la librería de gráficos. Revisa la conexión y recarga la página.';
   await select(S.sel);
 }
 
-$('tfs').onclick = e => { const b = e.target.closest('[data-tf]'); if (!b) return; S.tf = b.dataset.tf; save(); renderTfs(); openSocket(); loadChart(); };
-$('syms').onclick = e => {
-  const rm = e.target.closest('[data-rm]');
-  if (rm) {
-    const s = rm.dataset.rm; if (S.watch.length <= 1) return;
-    S.watch = S.watch.filter(x => x !== s); save();
-    if (S.sel === s) select(S.watch[0]); else { tick(); openSocket(); }
-    return;
-  }
-  const b = e.target.closest('[data-s]'); if (b && b.dataset.s !== S.sel) select(b.dataset.s);
-};
-$('addSym').onsubmit = async e => { e.preventDefault(); const s = normSym($('symInput').value); if (await addWatch(s)) { $('symInput').value = ''; select(s); } };
-$('themeBtn').onclick = () => {
-  const root = document.documentElement, cur = root.dataset.theme || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-  root.dataset.theme = cur === 'dark' ? 'light' : 'dark';
-};
-
-renderSyms(); setStatus();
+renderControls(); renderSyms(); setStatus();
 boot();
 })();
 </script>
