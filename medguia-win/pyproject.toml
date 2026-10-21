@@ -4,15 +4,22 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "medguia"
-version = "0.1.0"
+version = "0.2.0"
 description = "Consulta local de guías clínicas con RAG on-device (Windows)"
 requires-python = ">=3.12"
 dependencies = [
     "pymupdf>=1.24",
+    "sqlite-vec>=0.1.6",
+    "httpx>=0.27",
+    "keyring>=25",
+    "psutil>=6",
 ]
 
 [project.optional-dependencies]
+# PySide6 completo: incluye QtPdf para el visor de la página citada.
 ui = ["PySide6>=6.7"]
+# Gemma 4 y EmbeddingGemma en GPU. Compilar con CUDA; ver README.
+llm = ["llama-cpp-python"]
 dev = ["pytest>=8"]
 
 [tool.setuptools.packages.find]
@@ -20,3 +27,4 @@ where = ["src"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+pythonpath = ["."]
