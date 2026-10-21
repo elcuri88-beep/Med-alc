@@ -26,6 +26,8 @@ class Respuesta:
     problemas: list[Problema]
     segundos_primer_token: float | None
     segundos_total: float
+    mejor_similitud: float | None = None
+    umbral: float | None = None
 
 
 class Responder:
@@ -60,6 +62,8 @@ class Responder:
                 problemas=[],
                 segundos_primer_token=None,
                 segundos_total=time.perf_counter() - inicio,
+                mejor_similitud=recuperacion.mejor_similitud,
+                umbral=self._recuperador.umbral,
             )
 
         anio = self._anio_actual()
@@ -100,4 +104,6 @@ class Responder:
             problemas=problemas,
             segundos_primer_token=primer_token,
             segundos_total=time.perf_counter() - inicio,
+            mejor_similitud=recuperacion.mejor_similitud,
+            umbral=self._recuperador.umbral,
         )

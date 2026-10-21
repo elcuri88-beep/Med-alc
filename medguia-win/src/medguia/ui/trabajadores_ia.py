@@ -30,7 +30,7 @@ class TrabajadorRespuesta(QThread):
             if embedder is None:
                 raise RuntimeError("Falta EmbeddingGemma. Descárgalo en Ajustes.")
             responder = Responder(
-                Recuperador(store, embedder),
+                Recuperador(store, embedder, umbral_similitud=self._servicios.ajustes.umbral_similitud),
                 self._servicios.llm(),
                 ContadorAproximado(),
                 self._servicios.perfil(),

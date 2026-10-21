@@ -28,7 +28,7 @@ def evaluar_configuraciones(
     resumenes: list[ResumenModelo] = []
     store = Store(servicios.ruta_bd)
     try:
-        recuperador = Recuperador(store, embedder)
+        recuperador = Recuperador(store, embedder, umbral_similitud=servicios.ajustes.umbral_similitud)
         for clave in claves:
             if not servicios.instalado(clave):
                 raise ModeloNoInstalado(f"Falta el modelo «{servicios.catalogo[clave].nombre}».")

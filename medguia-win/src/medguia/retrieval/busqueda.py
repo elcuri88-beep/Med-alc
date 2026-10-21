@@ -17,6 +17,17 @@ K_CANDIDATOS = 40
 K_RRF = 60
 MAX_POR_DOCUMENTO = 3
 POOL_FINAL = 20
+FACTOR_K_CON_FILTRO = 12  # con filtros activos se miran más candidatos: los filtros se aplican después
+PALABRAS_VACIAS = frozenset(
+    "de la el los las un una unos unas y o u a en con por para del al que se es son como cual cuál "
+    "cuando cuándo qué cuáles sobre entre desde hasta sin más muy ser está están hay tiene tienen".split()
+)
+
+
+def terminos_de_busqueda(pregunta: str) -> str:
+    """Quita palabras vacías para que el BM25 no premie «de», «la», «en»… Si no queda nada, usa la pregunta."""
+    palabras = [p for p in pregunta.replace('"', " ").split() if p.lower().strip("¿?¡!.,;:()") not in PALABRAS_VACIAS]
+    return " ".join(palabras) or pregunta
 
 
 @dataclass(frozen=True)
@@ -24,6 +35,10 @@ class FiltroBusqueda:
     especialidades: frozenset[str] = field(default_factory=frozenset)
     sociedades: frozenset[str] = field(default_factory=frozenset)
     anio_minimo: int | None = None
+
+    @property
+    def activo(self) -> bool:
+        return bool(self.especialidades or self.sociedades or self.anio_minimo is not None)
 
     def admite(self, meta: MetaDocumento) -> bool:
         if self.especialidades and meta.especialidad not in self.especialidades:
@@ -63,6 +78,7 @@ class Recuperador:
         self._store = store
         self._embedder = embedder
         self._umbral = umbral_similitud
+        self.umbral = umbral_similitud
         self._k = k_candidatos
         self._max_por_documento = max_por_documento
         self._pool = pool
@@ -71,9 +87,10 @@ class Recuperador:
         filtro = filtro or FiltroBusqueda()
         documentos = {d.id: d for d in self._store.documentos()}
 
+        k = self._k * FACTOR_K_CON_FILTRO if filtro.activo else self._k
         vector = self._embedder.consulta(pregunta)
-        vecinos = self._store.vecinos(vector, self._k)
-        lexicos = self._store.buscar_texto(pregunta, self._k)
+        vecinos = self._store.vecinos(vector, k)
+        lexicos = self._store.buscar_texto(terminos_de_busqueda(pregunta), k)
 
         filas = self._store.fragmentos_por_ids({fid for fid, _ in vecinos} | {f.id for f in lexicos})
 

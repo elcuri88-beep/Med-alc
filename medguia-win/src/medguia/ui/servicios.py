@@ -38,6 +38,7 @@ class Ajustes:
     n_ctx: int = 8192
     openrouter_modelo: str = ""
     api_aceptada: bool = False  # el usuario aceptó que la consulta sale del dispositivo
+    umbral_similitud: float = 0.55  # por debajo, «las guías no cubren»; calibrar con la evaluación
     tema: str = "sistema"  # sistema | claro | oscuro
     escala_texto: float = 1.0  # equivalente a Dynamic Type: 1.0 a 1.6
     bloqueo_al_abrir: bool = False  # Windows Hello al arrancar

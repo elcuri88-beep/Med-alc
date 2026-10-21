@@ -12,11 +12,10 @@ from medguia.persistence.store import DimensionesIncompatibles
 PREFIJO_CONSULTA = "task: search result | query: "
 PREFIJO_DOCUMENTO = "title: {titulo} | text: {texto}"
 TITULO_SIN_DATO = "none"
+CARACTERES_POR_TOKEN_MINIMO = 3  # estimación conservadora para español
 
 
 class EmbeddingGemmaLocal:
-    nombre = "embeddinggemma-local"
-
     def __init__(
         self,
         ruta_gguf: Path,
@@ -26,6 +25,8 @@ class EmbeddingGemmaLocal:
         fabrica: Callable[..., object] | None = None,
     ) -> None:
         self.dimensiones = dimensiones
+        # El nombre incluye el archivo: otro GGUF (otra cuantización) da vectores incompatibles.
+        self.nombre = f"embeddinggemma:{ruta_gguf.name}"
         self._ruta = ruta_gguf
         self._n_ctx = n_ctx
         self._n_gpu_capas = n_gpu_capas
@@ -44,6 +45,8 @@ class EmbeddingGemmaLocal:
                     model_path=str(self._ruta),
                     embedding=True,
                     n_ctx=self._n_ctx,
+                    n_batch=self._n_ctx,  # con el valor por defecto (512) falla un fragmento de >512 tokens
+                    n_ubatch=self._n_ctx,
                     n_gpu_layers=self._n_gpu_capas,
                     verbose=False,
                 )
@@ -59,6 +62,9 @@ class EmbeddingGemmaLocal:
         return self._vector(f"{PREFIJO_CONSULTA}{texto}")
 
     def _vector(self, texto: str) -> list[float]:
+        # Una tabla atómica puede superar la ventana del modelo: se trunca solo lo que se embebe.
+        # El BM25 y el LLM siguen viendo el texto completo.
+        texto = texto[: self._n_ctx * CARACTERES_POR_TOKEN_MINIMO]
         with self._lock:
             respuesta = self._cargar().create_embedding(texto)
         valor = respuesta["data"][0]["embedding"]

@@ -40,6 +40,7 @@ class GemmaLocal:
                 self._llm = Llama(
                     model_path=str(self._ruta),
                     n_ctx=self._n_ctx,
+                    n_batch=min(self._n_ctx, 2048),  # prefill más rápido con contextos largos
                     n_gpu_layers=self._n_gpu_capas,
                     flash_attn=True,
                     verbose=False,

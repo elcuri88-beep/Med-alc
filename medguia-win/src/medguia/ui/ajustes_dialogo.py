@@ -62,6 +62,11 @@ class AjustesDialogo(QDialog):
         self._bloqueo = QCheckBox("Pedir Windows Hello al abrir la app")
         self._bloqueo.setChecked(ajustes.bloqueo_al_abrir)
         self._bloqueo.setEnabled(WindowsHello().disponible())
+        self._umbral = QDoubleSpinBox()
+        self._umbral.setRange(0.0, 1.0)
+        self._umbral.setSingleStep(0.05)
+        self._umbral.setValue(ajustes.umbral_similitud)
+        self._umbral.setToolTip("Similitud mínima para considerar que las guías cubren la pregunta")
         self._n_ctx = QSpinBox()
         self._n_ctx.setRange(2048, 32768)
         self._n_ctx.setSingleStep(1024)
@@ -89,6 +94,7 @@ class AjustesDialogo(QDialog):
         local.addRow("Proveedor", self._proveedor)
         local.addRow("Modelo LLM", self._modelo)
         local.addRow("Ventana de contexto", self._n_ctx)
+        local.addRow("Umbral de cobertura", self._umbral)
         local.addRow("Tema", self._tema)
         local.addRow("Tamaño de texto", self._escala)
         local.addRow(self._bloqueo)
@@ -170,6 +176,7 @@ class AjustesDialogo(QDialog):
                 n_ctx=self._n_ctx.value(),
                 openrouter_modelo=self._api_modelo.text().strip(),
                 api_aceptada=self._api_aceptada.isChecked(),
+                umbral_similitud=self._umbral.value(),
                 tema=self._tema.currentData(),
                 escala_texto=self._escala.value(),
                 bloqueo_al_abrir=self._bloqueo.isChecked(),

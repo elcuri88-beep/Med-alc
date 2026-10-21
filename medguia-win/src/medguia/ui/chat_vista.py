@@ -5,7 +5,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from pathlib import Path
 
-from PySide6.QtGui import QGuiApplication
+from PySide6.QtGui import QGuiApplication, QKeySequence, QShortcut
 from PySide6.QtWidgets import (
     QComboBox,
     QHBoxLayout,
@@ -74,6 +74,7 @@ class ChatVista(QWidget):
         self._nueva = QPushButton("Nueva conversación")
         self._copiar = QPushButton("Copiar respuesta (texto plano)")
         self._enviar.clicked.connect(self._consultar)
+        QShortcut(QKeySequence("Ctrl+Return"), self._pregunta, activated=self._consultar)
         self._nueva.clicked.connect(self._nueva_conversacion)
         self._copiar.clicked.connect(self._copiar_respuesta)
         self._copiar.setEnabled(False)
@@ -172,7 +173,7 @@ class ChatVista(QWidget):
         self._turnos.append(Turno(pregunta=pregunta))
         self._fuentes_lista.clear()
         self._verificacion.clear()
-        self._metricas.setText("Consultando…")
+        self._metricas.setText("Consultando… (la primera consulta tarda más: carga el modelo en la GPU)")
         self._enviar.setEnabled(False)
         self._copiar.setEnabled(False)
         self._pregunta.clear()
@@ -214,7 +215,15 @@ class ChatVista(QWidget):
             if respuesta.segundos_primer_token is not None
             else ""
         )
-        self._metricas.setText(f"{primero}Total {respuesta.segundos_total:.2f} s")
+        diagnostico = ""
+        if not respuesta.cubierta and respuesta.mejor_similitud is not None:
+            diagnostico = (
+                f" · Mejor similitud {respuesta.mejor_similitud:.2f} frente a un umbral de {respuesta.umbral:.2f}. "
+                "Si crees que la guía sí lo cubre, baja el umbral en Ajustes."
+            )
+        elif not respuesta.cubierta:
+            diagnostico = " · No hay fragmentos que cumplan los filtros activos."
+        self._metricas.setText(f"{primero}Total {respuesta.segundos_total:.2f} s{diagnostico}")
         self._copiar.setEnabled(True)
         self._renderizar()
 

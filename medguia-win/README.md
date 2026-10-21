@@ -3,6 +3,19 @@
 Consulta local de guías clínicas. Todo se queda en el PC: el LLM y los embeddings corren en local
 (Gemma 4 y EmbeddingGemma vía llama.cpp, en la GPU). La API externa es opcional y está desactivada por defecto.
 
+## Primeros pasos
+
+1. Ejecuta `scripts\instalar.ps1` una vez y, después, `scripts\iniciar.bat` para abrir la app.
+2. **Ajustes → Descargar modelos** (antes, configura `modelos.json`; ver más abajo).
+3. **Biblioteca → Importar PDF**: arrastra tus guías y revisa los metadatos. Espera a que pasen a «Listo».
+4. **Consulta**: escribe la pregunta. `Ctrl+Intro` también la envía.
+5. Revisa siempre las **fuentes** (doble clic abre el PDF en la página) y cualquier aviso de verificación.
+6. Si la app dice que las guías no cubren algo que sí está, mira la similitud que muestra y ajusta el
+   **umbral de cobertura** en Ajustes.
+
+La app es una ayuda de consulta de documentos, no un sistema de decisión clínica: no sustituye la lectura
+de la guía original ni el criterio del médico.
+
 ## Requisitos
 
 - Windows 10/11, Python 3.12 o superior.
@@ -158,6 +171,20 @@ Métricas:
 
 El informe sale en Markdown y en CSV junto a él. Para la comparación E2B frente a E4B, ejecuta la evaluación
 con ambos modelos instalados: la misma tabla con una fila por modelo.
+
+## Limitaciones conocidas
+
+- **Verificación heurística.** Detecta citas que no corresponden a un fragmento recuperado y cifras con unidad
+  que no aparecen en el fragmento citado. No entiende el sentido clínico: una respuesta puede pasarla y ser
+  incorrecta. Las dosis siempre se contrastan con el PDF.
+- **Cada pregunta es independiente.** El historial se ve en pantalla, pero no se envía al modelo; una
+  repregunta como «¿y en ancianos?» no hereda el contexto anterior.
+- **PDFs complejos.** Se leen las dos columnas en orden, se quitan cabeceras repetidas y se unen las palabras
+  partidas, pero un maquetado inusual puede mezclar texto. Los escaneos no tienen OCR.
+- **Tablas muy grandes** se mantienen enteras para el modelo, pero su vector solo cubre el principio
+  (límite de la ventana del modelo de embeddings). La búsqueda léxica sí las ve completas.
+- **El índice exportado** incluye la ruta local de los PDF. Al importarlo en otro equipo, el visor no los
+  encontrará hasta que vuelvas a importar los PDF.
 
 ## Estructura
 

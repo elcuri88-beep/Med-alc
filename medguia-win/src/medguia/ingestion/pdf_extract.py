@@ -1,6 +1,8 @@
 """Extracción de texto y tablas por página con PyMuPDF.
 
-Las tablas se devuelven como bloques atómicos para que el troceado nunca las parta.
+- Las tablas se devuelven como bloques atómicos para que el troceado nunca las parta.
+- Las páginas a dos columnas se leen columna a columna, no línea a línea.
+- Cabeceras y pies repetidos en las páginas se descartan, y los guiones de fin de línea se unen.
 """
 
 from __future__ import annotations
@@ -18,6 +20,10 @@ ENCABEZADO_NUMERADO = re.compile(r"^\d+(\.\d+)+\.?\s+\S|^\d+\.\s+[A-ZÁÉÍÓÚ�
 NUMERO_SUELTO = re.compile(r"^\d{1,4}$")
 MAX_LONGITUD_ENCABEZADO = 160
 FLAG_NEGRITA = 16  # bit de negrita en los flags de span de PyMuPDF
+FRANJA_MARGEN = 0.08  # fracción superior e inferior de la página donde buscar cabeceras y pies
+FRACCION_PAGINAS_REPETIDA = 0.4
+MINIMO_PAGINAS_PARA_REPETIDAS = 4
+ANCHO_MINIMO_COMPLETO = 0.16  # un bloque ocupa «toda la página» si cruza el centro por más de esta fracción
 
 
 @dataclass(frozen=True)
@@ -44,15 +50,25 @@ class _Linea:
     caja: pymupdf.Rect
 
 
+@dataclass(frozen=True)
+class _Elemento:
+    """Una línea de texto o una tabla, con su posición en la página."""
+
+    caja: pymupdf.Rect
+    lineas: tuple[_Linea, ...] = ()
+    tabla: str | None = None
+
+
 def extraer(
     ruta: Path,
     progreso: Callable[[int, int], None] | None = None,
 ) -> Extraccion:
     with pymupdf.open(ruta) as pdf:
         tamano_cuerpo = _tamano_cuerpo(pdf)
+        repetidas = _lineas_repetidas(pdf)
         resultado = Extraccion(paginas_total=pdf.page_count)
         for indice, pagina in enumerate(pdf, start=1):
-            _extraer_pagina(pagina, indice, tamano_cuerpo, resultado)
+            _extraer_pagina(pagina, indice, tamano_cuerpo, repetidas, resultado)
             if progreso:
                 progreso(indice, pdf.page_count)
     return resultado
@@ -67,30 +83,54 @@ def _tamano_cuerpo(pdf: pymupdf.Document) -> float:
     return contador.most_common(1)[0][0] if contador else 10.0
 
 
+def _clave_repetida(texto: str) -> str:
+    return re.sub(r"\d+", "#", texto.lower())
+
+
+def _en_margen(caja: pymupdf.Rect, alto: float) -> bool:
+    return caja.y1 < alto * FRANJA_MARGEN or caja.y0 > alto * (1 - FRANJA_MARGEN)
+
+
+def _lineas_repetidas(pdf: pymupdf.Document) -> set[str]:
+    """Líneas de los márgenes que se repiten en muchas páginas (cabeceras, pies, marcas de agua)."""
+    if pdf.page_count < MINIMO_PAGINAS_PARA_REPETIDAS:
+        return set()
+    paginas_por_clave: Counter[str] = Counter()
+    for pagina in pdf:
+        vistas = {
+            _clave_repetida(linea.texto)
+            for linea in _lineas(pagina)
+            if _en_margen(linea.caja, pagina.rect.height) and not NUMERO_SUELTO.match(linea.texto)
+        }
+        paginas_por_clave.update(vistas)
+    umbral = max(3, FRACCION_PAGINAS_REPETIDA * pdf.page_count)
+    return {clave for clave, n in paginas_por_clave.items() if n >= umbral}
+
+
 def _extraer_pagina(
     pagina: pymupdf.Page,
     numero: int,
     tamano_cuerpo: float,
+    repetidas: set[str],
     resultado: Extraccion,
 ) -> None:
+    alto, ancho = pagina.rect.height, pagina.rect.width
     tablas = pagina.find_tables().tables
     cajas_tabla = [pymupdf.Rect(t.bbox) for t in tablas]
-    lineas = [
-        linea
-        for linea in _lineas(pagina)
-        if not any(_dentro(linea.caja, caja) for caja in cajas_tabla)
-    ]
 
-    alto = pagina.rect.height
-    elementos: list[tuple[float, Bloque | _Linea]] = []
-    for tabla, caja in zip(tablas, cajas_tabla):
-        elementos.append((caja.y0, Bloque(numero, _texto_tabla(pagina, tabla), es_tabla=True)))
-    for linea in lineas:
-        if linea.caja.y0 > alto * 0.9 and NUMERO_SUELTO.match(linea.texto):
-            resultado.paginas_impresas[numero] = linea.texto
+    elementos = [
+        _Elemento(caja, tabla=_texto_tabla(pagina, tabla)) for tabla, caja in zip(tablas, cajas_tabla)
+    ]
+    # Se ordena por línea, no por bloque: PyMuPDF puede agrupar en un mismo bloque líneas de columnas distintas.
+    for linea in _lineas(pagina):
+        if any(_dentro(linea.caja, caja) for caja in cajas_tabla):
             continue
-        elementos.append((linea.caja.y0, linea))
-    elementos.sort(key=lambda par: par[0])
+        if NUMERO_SUELTO.match(linea.texto) and _en_margen(linea.caja, alto):
+            resultado.paginas_impresas.setdefault(numero, linea.texto)
+            continue
+        if _en_margen(linea.caja, alto) and _clave_repetida(linea.texto) in repetidas:
+            continue
+        elementos.append(_Elemento(linea.caja, lineas=(linea,)))
 
     parrafo: list[str] = []
     ultima_caja: pymupdf.Rect | None = None
@@ -98,42 +138,80 @@ def _extraer_pagina(
 
     def vaciar() -> None:
         if parrafo:
-            resultado.bloques.append(Bloque(numero, " ".join(parrafo)))
+            resultado.bloques.append(Bloque(numero, _unir_lineas(parrafo)))
             parrafo.clear()
 
-    for _, elemento in elementos:
-        if isinstance(elemento, Bloque):
+    for elemento in _ordenar(elementos, ancho):
+        if elemento.tabla is not None:
             vaciar()
             ultima_caja = None
-            resultado.bloques.append(elemento)
+            resultado.bloques.append(Bloque(numero, elemento.tabla, es_tabla=True))
             continue
-
-        if _es_encabezado(elemento, tamano_cuerpo):
-            vaciar()
-            resultado.bloques.append(Bloque(numero, elemento.texto, encabezado=True))
-            ultima_caja = elemento.caja
-            ultimo_tamano = elemento.tamano
-            continue
-
-        separacion_grande = (
-            ultima_caja is not None
-            and elemento.caja.y0 - ultima_caja.y1 > ultimo_tamano * 1.8
-        )
-        if separacion_grande:
-            vaciar()
-        parrafo.append(elemento.texto)
-        ultima_caja = elemento.caja
-        ultimo_tamano = elemento.tamano
+        for linea in elemento.lineas:
+            if _es_encabezado(linea, tamano_cuerpo):
+                vaciar()
+                resultado.bloques.append(Bloque(numero, linea.texto, encabezado=True))
+                ultima_caja = linea.caja
+                ultimo_tamano = linea.tamano
+                continue
+            cambio_de_columna = ultima_caja is not None and linea.caja.x0 > ultima_caja.x1
+            separacion_grande = (
+                ultima_caja is not None
+                and linea.caja.y0 - ultima_caja.y1 > ultimo_tamano * 1.8
+            )
+            if cambio_de_columna or separacion_grande:
+                vaciar()
+            parrafo.append(linea.texto)
+            ultima_caja = linea.caja
+            ultimo_tamano = linea.tamano
     vaciar()
 
     if not resultado.bloques or all(b.pagina != numero for b in resultado.bloques):
         resultado.paginas_sin_texto.append(numero)
 
 
+def _ordenar(elementos: list[_Elemento], ancho: float) -> list[_Elemento]:
+    """Orden de lectura: los elementos de ancho completo separan franjas; dentro de una franja con dos
+    columnas se lee primero toda la izquierda y luego toda la derecha."""
+    medio = ancho / 2
+    margen = ancho * ANCHO_MINIMO_COMPLETO / 2
+    ordenados: list[_Elemento] = []
+    izquierda: list[_Elemento] = []
+    derecha: list[_Elemento] = []
+
+    def vaciar() -> None:
+        ordenados.extend(sorted(izquierda, key=lambda e: e.caja.y0))
+        ordenados.extend(sorted(derecha, key=lambda e: e.caja.y0))
+        izquierda.clear()
+        derecha.clear()
+
+    for elemento in sorted(elementos, key=lambda e: (e.caja.y0, e.caja.x0)):
+        caja = elemento.caja
+        if caja.x0 < medio - margen and caja.x1 > medio + margen:
+            vaciar()
+            ordenados.append(elemento)
+        elif (caja.x0 + caja.x1) / 2 < medio:
+            izquierda.append(elemento)
+        else:
+            derecha.append(elemento)
+    vaciar()
+    return ordenados
+
+
+def _unir_lineas(lineas: list[str]) -> str:
+    """Une líneas de un párrafo. Un guion de fin de línea seguido de minúscula es una palabra partida."""
+    texto = ""
+    for linea in lineas:
+        if texto.endswith("-") and len(texto) > 1 and texto[-2].isalpha() and linea[:1].islower():
+            texto = texto[:-1] + linea
+        else:
+            texto = f"{texto} {linea}" if texto else linea
+    return texto
+
+
 def _lineas(pagina: pymupdf.Page) -> list[_Linea]:
     lineas: list[_Linea] = []
-    datos = pagina.get_text("dict")
-    for bloque in datos["blocks"]:
+    for bloque in pagina.get_text("dict")["blocks"]:
         if bloque.get("type") != 0:
             continue
         for linea in bloque["lines"]:
