@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "medguia"
+version = "0.1.0"
+description = "Consulta local de guías clínicas con RAG on-device (Windows)"
+requires-python = ">=3.12"
+dependencies = [
+    "pymupdf>=1.24",
+]
+
+[project.optional-dependencies]
+ui = ["PySide6>=6.7"]
+dev = ["pytest>=8"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
