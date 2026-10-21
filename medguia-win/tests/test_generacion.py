@@ -3,7 +3,6 @@ from pathlib import Path
 import pytest
 
 from medguia.domain.models import Ambito, FragmentoNuevo, MetaDocumento
-from medguia.domain.puertos import Mensaje
 from medguia.generation.prompt import SYSTEM_PROMPT, construir_mensajes, formatear_fragmento
 from medguia.generation.presupuesto import PerfilContexto, presupuesto_fragmentos, seleccionar
 from medguia.generation.responder import RESPUESTA_NO_CUBIERTA, Responder

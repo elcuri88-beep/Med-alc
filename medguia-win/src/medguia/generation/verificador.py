@@ -103,3 +103,28 @@ def _aparece(cifra: str, texto: str) -> bool:
     patron = r"(?<![\d.,])" + re.escape(normalizada) + r"(?![\d])"
     texto_normalizado = texto.replace(",", ".")
     return re.search(patron, texto_normalizado) is not None
+
+
+@dataclass(frozen=True)
+class ReferenciaCita:
+    titulo: str
+    anio: int | None
+    pagina: int | None
+
+
+def citas_de(respuesta: str) -> list[ReferenciaCita]:
+    """Citas [Documento, año, página] de una respuesta, sin comprobar que existan."""
+    referencias = []
+    for cita in CITA.findall(respuesta):
+        anio = ANIO.search(cita)
+        pagina = PAGINA.search(cita)
+        titulo = ANIO.sub("", cita)
+        titulo = PAGINA.sub("", titulo).strip(" ,;·")
+        referencias.append(
+            ReferenciaCita(
+                titulo=titulo,
+                anio=int(anio.group(0)) if anio else None,
+                pagina=int(pagina.group(1)) if pagina else None,
+            )
+        )
+    return referencias

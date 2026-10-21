@@ -109,6 +109,56 @@ la descarga con verificación de integridad y la interfaz en modo offscreen.
 **No cubiertas aquí:** Gemma 4 y EmbeddingGemma reales en GPU (requieren el equipo y los modelos),
 y el visor PDF (requiere PySide6 completo). Esas pruebas se hacen a mano; ver la guía de la Fase 2.
 
+## Consulta, historial y copia
+
+- **Historial** en memoria durante la sesión; «Nueva conversación» lo borra. No se guarda en disco.
+- **Copiar respuesta (texto plano)** deja en el portapapeles la respuesta sin formato Markdown, con sus fuentes.
+  Ojo: el historial del portapapeles de Windows puede conservarlo; bórralo si compartes el equipo.
+- El aviso «No introduzcas datos identificativos de pacientes» aparece fijo en todas las pantallas.
+
+## Apariencia y acceso
+
+- **Tema:** como Windows, claro u oscuro (Ajustes).
+- **Tamaño de texto:** de 100 % a 160 % (equivalente a Dynamic Type).
+- **Windows Hello:** opcional, al abrir la app. Requiere `pip install -e ".[hello]"`. Si Hello no está
+  disponible, la casilla aparece desactivada. Si el bloqueo está activado y Hello deja de estar disponible,
+  la app avisa y abre sin bloqueo.
+
+## Evaluación (Fase 4)
+
+El conjunto de preguntas lo escribes tú: la app no incluye preguntas ni respuestas clínicas.
+Parte de `evaluacion/plantilla_preguntas.json` y completa unas 30 preguntas:
+
+```json
+[
+  {"id": "hta-01", "pregunta": "¿Objetivo de PA en diabéticos?", "cubierta": true,
+   "documento": "Título exacto del documento", "pagina": 12},
+  {"id": "fuera-01", "pregunta": "¿Tratamiento de fractura de tibia en niños?", "cubierta": false}
+]
+```
+
+- `documento`: el título tal como aparece en la biblioteca. `pagina`: la página esperada (PDF o impresa).
+- `cubierta: false`: preguntas que las guías **no** responden. Comprueban que la app no inventa.
+
+Se puede ejecutar desde la pestaña **Evaluación** o por consola:
+
+```powershell
+python -m medguia.evaluation.cli evaluacion\mis_preguntas.json --modelos gemma-e4b gemma-e2b --salida informe.md
+```
+
+Métricas:
+
+| Métrica | Qué mide |
+|---|---|
+| Recuperación top 5 | Preguntas cubiertas donde el documento y la página esperados están entre los 5 primeros fragmentos |
+| Acierto de cita | Preguntas cubiertas donde la respuesta cita ese documento y esa página |
+| No cubiertas acertadas | Preguntas sin cobertura donde la app responde «no cubren» |
+| Primer token / total | Medianas de latencia |
+| Pico RAM / VRAM | Máximo durante la evaluación del modelo |
+
+El informe sale en Markdown y en CSV junto a él. Para la comparación E2B frente a E4B, ejecuta la evaluación
+con ambos modelos instalados: la misma tabla con una fila por modelo.
+
 ## Estructura
 
 - `domain/`: entidades y puertos (LLM, embeddings).

@@ -4,11 +4,12 @@ from __future__ import annotations
 
 from PySide6.QtCore import QTimer, Qt
 from PySide6.QtGui import QGuiApplication
-from PySide6.QtWidgets import QMainWindow, QPushButton, QTabWidget
+from PySide6.QtWidgets import QLabel, QMainWindow, QPushButton, QTabWidget, QVBoxLayout, QWidget
 
 from medguia.ui.ajustes_dialogo import AjustesDialogo
 from medguia.ui.biblioteca_vista import BibliotecaVista
 from medguia.ui.chat_vista import ChatVista
+from medguia.ui.evaluacion_vista import EvaluacionVista
 from medguia.ui.servicios import Servicios
 
 SEGUNDOS_ANTES_DE_LIBERAR = 60
@@ -23,10 +24,19 @@ class VentanaPrincipal(QMainWindow):
 
         self._biblioteca = BibliotecaVista(servicios)
         self._chat = ChatVista(servicios)
+        self._evaluacion = EvaluacionVista(servicios)
         self._pestanas = QTabWidget()
         self._pestanas.addTab(self._chat, "Consulta")
         self._pestanas.addTab(self._biblioteca, "Biblioteca")
-        self.setCentralWidget(self._pestanas)
+        self._pestanas.addTab(self._evaluacion, "Evaluación")
+
+        aviso = QLabel("No introduzcas datos identificativos de pacientes.")
+        aviso.setStyleSheet("font-weight: bold; padding: 4px; background: #fff3cd; color: #553c00;")
+        contenido = QWidget()
+        diseno = QVBoxLayout(contenido)
+        diseno.addWidget(aviso)
+        diseno.addWidget(self._pestanas)
+        self.setCentralWidget(contenido)
 
         boton_ajustes = QPushButton("Ajustes…")
         boton_ajustes.clicked.connect(self._abrir_ajustes)
@@ -49,6 +59,10 @@ class VentanaPrincipal(QMainWindow):
     def _abrir_ajustes(self) -> None:
         dialogo = AjustesDialogo(self._servicios, self)
         if dialogo.exec():
+            from medguia.ui.apariencia import aplicar
+            from PySide6.QtWidgets import QApplication
+
+            aplicar(QApplication.instance(), self._servicios.ajustes)
             self._chat.actualizar_proveedor()
             self._chat.recargar_filtros()
 

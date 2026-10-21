@@ -1,10 +1,11 @@
-"""Pantalla de consulta: pregunta, respuesta en streaming, fuentes citadas y verificación."""
+"""Pantalla de consulta: historial en memoria, respuesta en streaming, fuentes y copia en texto plano."""
 
 from __future__ import annotations
 
+from dataclasses import dataclass, field
 from pathlib import Path
 
-from PySide6.QtCore import Qt
+from PySide6.QtGui import QGuiApplication
 from PySide6.QtWidgets import (
     QComboBox,
     QHBoxLayout,
@@ -24,11 +25,19 @@ from medguia.generation.responder import Respuesta
 from medguia.persistence.store import Store
 from medguia.retrieval.busqueda import Candidato, FiltroBusqueda
 from medguia.ui.servicios import PROVEEDOR_API, Servicios
+from medguia.ui.texto import a_texto_plano
 from medguia.ui.trabajadores_ia import TrabajadorRespuesta
 from medguia.ui.visor_pdf import VisorPdf
 
-AVISO_PACIENTES = "No introduzcas datos identificativos de pacientes."
 TODOS = "(todas)"
+
+
+@dataclass
+class Turno:
+    pregunta: str
+    respuesta: Respuesta | None = None
+    parcial: str = ""
+    fuentes_texto: list[str] = field(default_factory=list)
 
 
 class ChatVista(QWidget):
@@ -36,10 +45,9 @@ class ChatVista(QWidget):
         super().__init__(parent)
         self._servicios = servicios
         self._trabajador: TrabajadorRespuesta | None = None
+        self._turnos: list[Turno] = []
         self._fuentes: list[Candidato] = []
 
-        self._aviso = QLabel(AVISO_PACIENTES)
-        self._aviso.setStyleSheet("font-weight: bold;")
         self._proveedor = QLabel()
         self._proveedor.setWordWrap(True)
 
@@ -63,10 +71,19 @@ class ChatVista(QWidget):
         self._pregunta.setPlaceholderText("Escribe la pregunta clínica…")
         self._pregunta.setMaximumHeight(90)
         self._enviar = QPushButton("Consultar")
+        self._nueva = QPushButton("Nueva conversación")
+        self._copiar = QPushButton("Copiar respuesta (texto plano)")
         self._enviar.clicked.connect(self._consultar)
+        self._nueva.clicked.connect(self._nueva_conversacion)
+        self._copiar.clicked.connect(self._copiar_respuesta)
+        self._copiar.setEnabled(False)
+        botones = QHBoxLayout()
+        for boton in (self._enviar, self._copiar, self._nueva):
+            botones.addWidget(boton)
+        botones.addStretch()
 
-        self._respuesta = QTextBrowser()
-        self._respuesta.setOpenExternalLinks(False)
+        self._historial = QTextBrowser()
+        self._historial.setOpenExternalLinks(False)
         self._verificacion = QLabel()
         self._verificacion.setStyleSheet("color: #b35c00;")
         self._verificacion.setWordWrap(True)
@@ -76,14 +93,13 @@ class ChatVista(QWidget):
         self._fuentes_lista.itemDoubleClicked.connect(self._abrir_fuente)
 
         diseno = QVBoxLayout(self)
-        diseno.addWidget(self._aviso)
         diseno.addWidget(self._proveedor)
         diseno.addLayout(filtros)
         diseno.addWidget(self._pregunta)
-        diseno.addWidget(self._enviar)
-        diseno.addWidget(self._respuesta, stretch=3)
+        diseno.addLayout(botones)
+        diseno.addWidget(self._historial, stretch=3)
         diseno.addWidget(self._verificacion)
-        diseno.addWidget(QLabel("Fuentes usadas"))
+        diseno.addWidget(QLabel("Fuentes de la última respuesta"))
         diseno.addWidget(self._fuentes_lista, stretch=1)
         diseno.addWidget(self._metricas)
 
@@ -94,9 +110,7 @@ class ChatVista(QWidget):
 
     def actualizar_proveedor(self) -> None:
         if self._servicios.ajustes.proveedor == PROVEEDOR_API:
-            self._proveedor.setText(
-                "⚠ Proveedor: API externa (OpenRouter). Cada consulta SALE DEL DISPOSITIVO."
-            )
+            self._proveedor.setText("⚠ Proveedor: API externa (OpenRouter). Cada consulta SALE DEL DISPOSITIVO.")
             self._proveedor.setStyleSheet("color: #b00020; font-weight: bold;")
         else:
             modelo = self._servicios.catalogo[self._servicios.ajustes.modelo_llm].nombre
@@ -126,6 +140,17 @@ class ChatVista(QWidget):
         if self._trabajador is not None and self._trabajador.isRunning():
             self._trabajador.wait()
 
+    def _nueva_conversacion(self) -> None:
+        if self._trabajando():
+            return
+        self._turnos.clear()
+        self._fuentes = []
+        self._fuentes_lista.clear()
+        self._verificacion.clear()
+        self._metricas.clear()
+        self._copiar.setEnabled(False)
+        self._historial.clear()
+
     # --- consulta ----------------------------------------------------------------
 
     def _filtro(self) -> FiltroBusqueda:
@@ -137,34 +162,47 @@ class ChatVista(QWidget):
             anio_minimo=self._anio_minimo.value() or None,
         )
 
+    def _trabajando(self) -> bool:
+        return self._trabajador is not None and self._trabajador.isRunning()
+
     def _consultar(self) -> None:
         pregunta = self._pregunta.toPlainText().strip()
-        if not pregunta or (self._trabajador and self._trabajador.isRunning()):
+        if not pregunta or self._trabajando():
             return
-        self._respuesta.clear()
-        self._verificacion.clear()
+        self._turnos.append(Turno(pregunta=pregunta))
         self._fuentes_lista.clear()
+        self._verificacion.clear()
         self._metricas.setText("Consultando…")
         self._enviar.setEnabled(False)
+        self._copiar.setEnabled(False)
+        self._pregunta.clear()
 
         self._trabajador = TrabajadorRespuesta(self._servicios, pregunta, self._filtro())
-        self._trabajador.token.connect(self._respuesta.insertPlainText)
+        self._trabajador.token.connect(self._al_token)
         self._trabajador.respondido.connect(self._mostrar)
         self._trabajador.fallo.connect(self._mostrar_fallo)
         self._trabajador.finished.connect(lambda: self._enviar.setEnabled(True))
         self._trabajador.start()
+        self._renderizar()
+
+    def _al_token(self, texto: str) -> None:
+        self._turnos[-1].parcial += texto
+        self._renderizar()
 
     def _mostrar(self, respuesta: Respuesta) -> None:
-        self._respuesta.setMarkdown(respuesta.texto)
+        turno = self._turnos[-1]
+        turno.respuesta = respuesta
+        turno.parcial = ""
         self._fuentes = respuesta.candidatos
+        self._fuentes_lista.clear()
+        turno.fuentes_texto = []
         for candidato in respuesta.candidatos:
             etiqueta = (
                 f"{candidato.documento.meta.titulo} · {candidato.documento.meta.anio} · "
                 f"p. {pagina_citada(candidato)} · {candidato.fragmento.seccion}"
             )
-            item = QListWidgetItem(etiqueta)
-            item.setData(Qt.ItemDataRole.UserRole, len(self._fuentes_lista))
-            self._fuentes_lista.addItem(item)
+            turno.fuentes_texto.append(etiqueta)
+            self._fuentes_lista.addItem(QListWidgetItem(etiqueta))
 
         if respuesta.problemas:
             resumen = "; ".join(f"{p.tipo}: {p.detalle}" for p in respuesta.problemas[:4])
@@ -177,16 +215,37 @@ class ChatVista(QWidget):
             else ""
         )
         self._metricas.setText(f"{primero}Total {respuesta.segundos_total:.2f} s")
+        self._copiar.setEnabled(True)
+        self._renderizar()
 
     def _mostrar_fallo(self, mensaje: str) -> None:
-        self._respuesta.setPlainText(f"No se pudo responder: {mensaje}")
+        turno = self._turnos[-1]
+        turno.parcial = f"No se pudo responder: {mensaje}"
+        turno.respuesta = None
         self._metricas.clear()
+        self._renderizar()
+
+    def _renderizar(self) -> None:
+        bloques = []
+        for turno in self._turnos:
+            bloques.append(f"**Pregunta:** {turno.pregunta}")
+            texto = turno.respuesta.texto if turno.respuesta else turno.parcial
+            bloques.append(texto or "…")
+        self._historial.setMarkdown("\n\n".join(bloques))
+        self._historial.verticalScrollBar().setValue(self._historial.verticalScrollBar().maximum())
+
+    def _copiar_respuesta(self) -> None:
+        turno = next((t for t in reversed(self._turnos) if t.respuesta), None)
+        if turno is None:
+            return
+        QGuiApplication.clipboard().setText(a_texto_plano(turno.respuesta.texto, turno.fuentes_texto))
+        self._metricas.setText("Respuesta copiada en texto plano.")
 
     def _abrir_fuente(self, item: QListWidgetItem) -> None:
-        candidato = self._fuentes[item.data(Qt.ItemDataRole.UserRole)]
-        ruta = Path(candidato.documento.ruta)
+        indice = self._fuentes_lista.row(item)
+        candidato = self._fuentes[indice]
         visor = VisorPdf(
-            ruta,
+            Path(candidato.documento.ruta),
             candidato.fragmento.pagina_inicio,
             candidato.documento.meta.titulo,
             parent=self,

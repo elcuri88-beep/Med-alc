@@ -1,0 +1,14 @@
+[
+  {
+    "id": "ejemplo-cubierta",
+    "pregunta": "Escribe aquí la pregunta tal como la haría el médico",
+    "cubierta": true,
+    "documento": "Título exacto del documento tal como aparece en la biblioteca",
+    "pagina": 1
+  },
+  {
+    "id": "ejemplo-no-cubierta",
+    "pregunta": "Escribe aquí una pregunta que las guías NO respondan",
+    "cubierta": false
+  }
+]

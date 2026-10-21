@@ -53,23 +53,25 @@ def test_chat_sin_modelo_muestra_el_fallo_sin_colgarse(aplicacion, pdf_guia: Pat
     store = Store(servicios.ruta_bd)
     store.cerrar()
     chat = ChatVista(servicios)
-    chat._pregunta.setPlainText("presión objetivo")
+    from medguia.ui.chat_vista import Turno
 
+    chat._turnos.append(Turno(pregunta="presión objetivo"))
     trabajador = TrabajadorRespuesta(servicios, "presión objetivo", chat._filtro())
     trabajador.fallo.connect(chat._mostrar_fallo)
     trabajador.start()
     trabajador.wait()
     aplicacion.processEvents()
 
-    assert "No se pudo responder" in chat._respuesta.toPlainText()
+    assert "No se pudo responder" in chat._historial.toPlainText()
 
 
 def test_ventana_principal_se_construye_con_sus_pestanas(aplicacion, servicios: Servicios) -> None:
     ventana = VentanaPrincipal(servicios)
 
-    assert ventana._pestanas.count() == 2
+    assert ventana._pestanas.count() == 3
     assert ventana._pestanas.tabText(0) == "Consulta"
     assert ventana._pestanas.tabText(1) == "Biblioteca"
+    assert ventana._pestanas.tabText(2) == "Evaluación"
     ventana.close()
 
 

@@ -20,6 +20,8 @@ dependencies = [
 ui = ["PySide6>=6.7"]
 # Gemma 4 y EmbeddingGemma en GPU. Compilar con CUDA; ver README.
 llm = ["llama-cpp-python"]
+# Bloqueo con Windows Hello (nombres de paquete pywinrt; verificar en tu equipo).
+hello = ["winrt-runtime", "winrt-Windows.Security.Credentials.UI", "winrt-Windows.Foundation"]
 dev = ["pytest>=8"]
 
 [tool.setuptools.packages.find]

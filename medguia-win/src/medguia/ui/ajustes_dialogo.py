@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from PySide6.QtWidgets import (
+    QDoubleSpinBox,
     QCheckBox,
     QComboBox,
     QDialog,
@@ -20,6 +21,7 @@ from PySide6.QtWidgets import (
 
 from medguia.models import gestor
 from medguia.models.gestor import ram_total_gb, vram_total_gb
+from medguia.ui.bloqueo import WindowsHello
 from medguia.ui.servicios import PROVEEDOR_API, PROVEEDOR_LOCAL, Ajustes, Servicios
 from medguia.ui.trabajadores_ia import TrabajadorDescarga
 
@@ -49,6 +51,17 @@ class AjustesDialogo(QDialog):
         self._modelo.setCurrentIndex(self._modelo.findData(ajustes.modelo_llm))
         self._estado_modelo = QLabel()
 
+        self._tema = QComboBox()
+        for etiqueta, valor in (("Como Windows", "sistema"), ("Claro", "claro"), ("Oscuro", "oscuro")):
+            self._tema.addItem(etiqueta, valor)
+        self._tema.setCurrentIndex(self._tema.findData(ajustes.tema))
+        self._escala = QDoubleSpinBox()
+        self._escala.setRange(1.0, 1.6)
+        self._escala.setSingleStep(0.1)
+        self._escala.setValue(ajustes.escala_texto)
+        self._bloqueo = QCheckBox("Pedir Windows Hello al abrir la app")
+        self._bloqueo.setChecked(ajustes.bloqueo_al_abrir)
+        self._bloqueo.setEnabled(WindowsHello().disponible())
         self._n_ctx = QSpinBox()
         self._n_ctx.setRange(2048, 32768)
         self._n_ctx.setSingleStep(1024)
@@ -76,6 +89,9 @@ class AjustesDialogo(QDialog):
         local.addRow("Proveedor", self._proveedor)
         local.addRow("Modelo LLM", self._modelo)
         local.addRow("Ventana de contexto", self._n_ctx)
+        local.addRow("Tema", self._tema)
+        local.addRow("Tamaño de texto", self._escala)
+        local.addRow(self._bloqueo)
         botones_modelo = QHBoxLayout()
         botones_modelo.addWidget(self._boton_descargar)
         botones_modelo.addWidget(self._boton_borrar)
@@ -154,6 +170,9 @@ class AjustesDialogo(QDialog):
                 n_ctx=self._n_ctx.value(),
                 openrouter_modelo=self._api_modelo.text().strip(),
                 api_aceptada=self._api_aceptada.isChecked(),
+                tema=self._tema.currentData(),
+                escala_texto=self._escala.value(),
+                bloqueo_al_abrir=self._bloqueo.isChecked(),
             )
         )
         self.accept()
