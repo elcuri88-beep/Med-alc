@@ -4,7 +4,12 @@ param([switch]$ConLlm)
 $ErrorActionPreference = "Stop"
 Set-Location (Join-Path $PSScriptRoot "..")
 
-if (-not (Test-Path ".venv")) { python -m venv .venv }
+# Python 3.12 o 3.13: las versiones mas nuevas suelen no tener aun paquetes compilados.
+$py = $null
+foreach ($v in "3.12", "3.13") { & py "-$v" --version 2>$null; if ($LASTEXITCODE -eq 0) { $py = "-$v"; break } }
+if (-not $py) { throw "No encuentro Python 3.12 ni 3.13. Instala Python 3.12 desde python.org." }
+if (Test-Path ".venv") { Remove-Item -Recurse -Force .venv }
+& py $py -m venv .venv
 & .venv\Scripts\python.exe -m pip install --upgrade pip
 & .venv\Scripts\python.exe -m pip install -e ".[ui,dev]"
 

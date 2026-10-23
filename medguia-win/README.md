@@ -18,7 +18,8 @@ de la guía original ni el criterio del médico.
 
 ## Requisitos
 
-- Windows 10/11, Python 3.12 o superior.
+- Windows 10/11 y **Python 3.12 o 3.13**. Las versiones más nuevas pueden no tener aún paquetes compilados
+  (PyMuPDF, PySide6, sqlite-vec); se pueden tener varias versiones instaladas a la vez.
 - RTX 5080 (16 GB de VRAM) con drivers recientes y CUDA Toolkit 12.8 o superior (Blackwell, sm_120).
 - 32 GB de RAM en el equipo de referencia. Con 16 GB o menos se recomienda E2B.
 
